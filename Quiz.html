@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        header {
+            text-align: center;
+            font-size: 50px;
+            color: #049eb9;
+        }
+        footer {
+            background-color: aqua;
+            text-align: center;
+        }
+        #final_score {
+            font-size: x-large;
+            color: green;
+            text-align: center;
+        }
+        button {
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <div id="ShowS">
+        <header>
+            <h1>Welcome to my Quiz</h1>
+        </header>
+        <div style="text-align: center;">
+            <button type="button" id="Start" onclick="Start()">Start the Quiz</button>
+        </div>
+    </div>
+
+    <div id="Q" style="display: none;">
+        <p style="font-weight: bold;" id="1Q">4598/2</p>
+        <input id="1Q1A" type="radio" name="answer1">
+        <label for="1Q1A">2255</label><br>
+        <input id="1Q2A" type="radio" name="answer1">
+        <label for="1Q2A">2288</label><br>
+        <input id="1Q3A" type="radio" name="answer1">
+        <label for="1Q3A">2276</label><br>
+        <input id="1Q4A" type="radio" name="answer1">
+        <label for="1Q4A">2299</label><br>
+        <hr>
+        <p style="font-weight: bold;" id="2Q">123*5</p>
+        <input id="2Q1A" type="radio" name="answer2">
+        <label for="2Q1A">615</label><br>
+        <input id="2Q2A" type="radio" name="answer2">
+        <label for="2Q2A">920</label><br>
+        <input id="2Q3A" type="radio" name="answer2">
+        <label for="2Q3A">480</label><br>
+        <input id="2Q4A" type="radio" name="answer2">
+        <label for="2Q4A">600</label><br>
+        <hr>
+        <p style="font-weight: bold;" id="3Q">70/2*4+9-2</p>
+        <input id="3Q1A" type="radio" name="answer3">
+        <label for="3Q1A">200</label><br>
+        <input id="3Q2A" type="radio" name="answer3">
+        <label for="3Q2A">137</label><br>
+        <input id="3Q3A" type="radio" name="answer3">
+        <label for="3Q3A">147</label><br>
+        <input id="3Q4A" type="radio" name="answer3">
+        <label for="3Q4A">157</label><br>
+
+        <div style="text-align: center;">
+            <button type="button" id="submit" onclick="calculate()">Submit</button>
+        </div><br>
+        <div id="end" style="display: none;">
+            <footer>
+                <marquee behavior="scroll" direction="right"><h1>Thanks for Your Support</h1></marquee>
+            </footer>
+        </div><br>
+
+        <div id="final_score"></div>
+    </div>
+    <script>
+        function Start() {
+            document.getElementById("ShowS").style.display = "none";
+            alert("The Quiz is Starting");
+            document.getElementById("Q").style.display = "block";
+        }
+
+        function calculate() {
+            var correct_answer = 0;
+
+            if (document.getElementById("1Q3A").checked) {
+                correct_answer += 1;
+            }
+
+            if (document.getElementById("2Q1A").checked) {
+                correct_answer += 1;
+            }
+
+            if (document.getElementById("3Q3A").checked) {
+                correct_answer += 1;
+            }
+
+            document.getElementById("final_score").innerText = "Your Score is " + correct_answer;
+            document.getElementById("end").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
