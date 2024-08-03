@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        header{
+            background-color: rgb(3, 191, 248);
+            text-align: center;
+            font-size: 50px;
+        }
+        .input{
+            height: 30px;
+            width: 300px;
+            font-size: x-large;
+        }
+        .calculator{
+            text-align: center;
+        }
+        body{
+            background-color: rgb(1, 16, 224);
+        }
+        button {
+            width: 60px;
+            height: 70px;
+            margin: 1px;
+            font-size: 1.2em;
+            background-color: aqua;
+        }
+        footer{
+            background-color: rgb(3, 191, 248);
+            text-align: center;
+            font-size: 30px;
+        }
+        marquee{
+            font-size: 1.2em;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <div class="calculator"> 
+        <input class="input" type="text" id="final_output" readonly><br><br>
+        <button onclick="Show('1')">1</button>
+        <button onclick="Show('2')">2</button>
+        <button onclick="Show('3')">3</button><br>
+        <button onclick="Show('4')">4</button>
+        <button onclick="Show('5')">5</button>
+        <button onclick="Show('6')">6</button><br>
+        <button onclick="Show('7')">7</button>
+        <button onclick="Show('8')">8</button>
+        <button onclick="Show('9')">9</button><br>
+        <button onclick="Show('0')">0</button>
+        <button onclick="Show('.')">.</button><br>
+        <button onclick="Show('/')">/</button>
+        <button onclick="Show('*')">*</button>
+        <button onclick="Show('+')">+</button>
+        <button onclick="Show('-')">-</button><br>
+        <button onclick="Calculate_result()">=</button>
+        <button onclick="Clear()">CE</button>
+</div>
+<footer>
+    <marquee behavior="scroll" direction="right">
+        <a href="https://www.w3schools.com/css/default.asp" target="_blank">w3schools</a>
+    </marquee>
+    <a href="home.html">Go to Home</a>    
+</footer>
+ 
+
+    <script>
+        function Show(op_num) {
+            const Show = op_num;
+            document.getElementById('final_output').value += Show;
+        }
+
+        function Calculate_result() {
+            try{
+                const result = eval(document.getElementById('final_output').value);
+                document.getElementById('final_output').value = result;
+            }
+            catch(e){
+               let error = document.getElementById('final_output').value
+               document.getElementById('final_output').value='Error!@2*6747+356*&^75'
+            }
+        }
+        function Clear() {
+            document.getElementById('final_output').value=''
+        }
+    </script>
+</body>
+</html>

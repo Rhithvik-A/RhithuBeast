@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test your Memory</title>
+    <style>
+        header{
+            font-size: 100px;
+            text-align: center;
+            color: rgb(95, 241, 252);
+        }
+        .start-button {
+            text-align: center;
+            font-size: x-large;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Start_sreen" style="display: block;">
+        <header>
+            <h1>Welcome to my Memory game</h1>
+        </header>
+        <div class="start-button">
+            <button onclick="Start()" id="start-button" style="font-size: x-large;">Start Memory Game</button>
+        </div>
+    </div>
+
+    <div id="images">
+        <img src="../IMAGES/apple.png" alt="" style="width: 50px; height: 50px;">
+    </div>
+    <script>
+        function Start() {
+            alert('The Game is starting')
+            document.getElementById("Start_sreen").style.display = "none";
+
+        }
+    </script>
+</body>
+</html>
