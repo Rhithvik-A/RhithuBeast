@@ -34,7 +34,7 @@
         </div>
 
         <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="bananna" src="../IMAGES/bananna.png" alt="bananna" style="width: 50px; height: 50px; display: block;">
+            <img id="bananna" src="../IMAGES/bananna.png" alt="bananna" onclick="bananna()" style="width: 50px; height: 50px; display: block;">
         </div>
 
         <div style="width: 50px; height: 50px; border: 1px solid black;" >
@@ -71,18 +71,18 @@
 
     </div>
 
-    <div>
+    <div id="questines" style="display: none;">
         <ol>
-            <li>Point out 'strawberry'</li>
-            <li>Point out 'watermelon'</li>
-            <li>Point out 'cherry'</li>
-            <li>Point out 'pineapple'</li>
-            <li>Point out 'mango'</li>
-            <li>Point out 'Apple'</li>
-            <li>Point out 'Apple'</li>
-            <li>Point out 'Apple'</li>
-            <li>Point out 'Apple'</li>
-            <li>Point out 'Apple'</li>
+            <li id="Q1" style="display: none;">Point out strawberry</li>
+            <li id="Q2" style="display: none;">Point out watermelon</li>
+            <li id="Q3" style="display: none;">Point out cherry</li>
+            <li id="Q4" style="display: none;">Point out pineapple</li>
+            <li id="Q5" style="display: none;">Point out mango</li>
+            <li id="Q6" style="display: none;">Point out apple</li>
+            <li id="Q7" style="display: none;">Point out kewi</li>
+            <li id="Q8" style="display: none;">Point out bananna</li>
+            <li id="Q9" style="display: none;">Point out orange</li>
+            <li id="Q10" style="display: none;">Point out grapes</li>
         </ol>
     </div>
     <script>
@@ -92,6 +92,7 @@
             alert('Quickly see all the images and after the time gets over point out the image to the respsctive question. You will get ' + time + ' seconds to memorize the images')
             document.getElementById("Start_sreen").style.display = "none";
             document.getElementById("images").style.display = "block";
+            
             
             startCountdown(time);
         }
@@ -128,9 +129,16 @@
             document.getElementById('strawberry').style.display = "none";
             document.getElementById('mango').style.display = "none";
             document.getElementById('pineapple').style.display = "none";
-            questines();
+            questines()
         }
         
+        function questines() {
+            ans = 0
+            document.getElementById(Q1).style.display="block";
+            function apple() {
+                ans = ans + 0;
+            }
+        }
     </script>
 </body>
 </html>
