@@ -30,8 +30,60 @@
     <div id="images" style="display: none;">
         <div id="timer"></div>
         <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="apple" src="../IMAGES/apple.png" alt="apple" style="width: 50px; height: 50px; display: block;">
+            <img id="apple" src="../IMAGES/apple.png" alt="apple" onclick="apple()" style="width: 50px; height: 50px; display: block;">
         </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="bananna" src="../IMAGES/bananna.png" alt="bananna" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="orange" src="../IMAGES/orange.png" alt="orange" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="watermelon" src="../IMAGES/watermelon.png" alt="watermelon" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="kewi" src="../IMAGES/kewi.png" alt="kewi" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="cherry" src="../IMAGES/cherry.png" alt="cherry" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="grapes" src="../IMAGES/grapes.png" alt="grapes" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="strawberry" src="../IMAGES/strawberry.png" alt="strawberry" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="mango" src="../IMAGES/mango.png" alt="mango" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="pineapple" src="../IMAGES/pineapple.png" alt="pineapple" style="width: 50px; height: 50px; display: block;">
+        </div>
+
+    </div>
+
+    <div>
+        <ol>
+            <li>Point out 'strawberry'</li>
+            <li>Point out 'watermelon'</li>
+            <li>Point out 'cherry'</li>
+            <li>Point out 'pineapple'</li>
+            <li>Point out 'mango'</li>
+            <li>Point out 'Apple'</li>
+            <li>Point out 'Apple'</li>
+            <li>Point out 'Apple'</li>
+            <li>Point out 'Apple'</li>
+            <li>Point out 'Apple'</li>
+        </ol>
     </div>
     <script>
         time =10;
@@ -67,7 +119,18 @@
         function hideImages()
         {
             document.getElementById('apple').style.display = "none";
+            document.getElementById('bananna').style.display = "none";
+            document.getElementById('orange').style.display = "none";
+            document.getElementById('watermelon').style.display = "none";
+            document.getElementById('kewi').style.display = "none";
+            document.getElementById('cherry').style.display = "none";
+            document.getElementById('grapes').style.display = "none";
+            document.getElementById('strawberry').style.display = "none";
+            document.getElementById('mango').style.display = "none";
+            document.getElementById('pineapple').style.display = "none";
+            questines();
         }
+        
     </script>
 </body>
 </html>
