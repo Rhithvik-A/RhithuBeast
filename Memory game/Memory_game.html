@@ -27,14 +27,46 @@
         </div>
     </div>
 
-    <div id="images">
-        <img src="../IMAGES/apple.png" alt="" style="width: 50px; height: 50px;">
+    <div id="images" style="display: none;">
+        <div id="timer"></div>
+        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+            <img id="apple" src="../IMAGES/apple.png" alt="apple" style="width: 50px; height: 50px; display: block;">
+        </div>
     </div>
     <script>
+        time =10;
         function Start() {
             alert('The Game is starting')
+            alert('Quickly see all the images and after the time gets over point out the image to the respsctive question. You will get ' + time + ' seconds to memorize the images')
             document.getElementById("Start_sreen").style.display = "none";
+            document.getElementById("images").style.display = "block";
+            
+            startCountdown(time);
+        }
 
+        intervalId = null
+        display = document.getElementById('timer');
+        timer = null
+        function startCountdown(duration) {
+            timer  = duration   
+            display.innerText = timer
+            intervalId = setInterval(display_time, 1000);
+
+        }
+
+        function display_time()
+        {
+            timer = timer - 1   
+            display.textContent = timer
+            if (timer < 0) {
+                clearInterval(intervalId);
+                display.innerText = 'Time\'s up!';
+                hideImages();
+            }
+        }
+        function hideImages()
+        {
+            document.getElementById('apple').style.display = "none";
         }
     </script>
 </body>
