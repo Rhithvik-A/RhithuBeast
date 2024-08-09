@@ -51,15 +51,15 @@
             <img id="banana" src="../IMAGES/bananna.png" alt="banana" style= "width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('orange')">
             <img id="orange" src="../IMAGES/orange.png" alt="orange" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('watermelon')">
             <img id="watermelon" src="../IMAGES/watermelon.png" alt="watermelon"  style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('kiwi')">
             <img id="kiwi" src="../IMAGES/kewi.png" alt="kiwi" style="width: 50px; height: 50px; display: block;">
         </div>
 
@@ -106,7 +106,9 @@
     </nav>
 
     <footer id="ans" style="display: none;">
-            <marquee behavior="scroll" direction="right"><a href="Quiz/Quiz.html"></a>Math Quiz</marquee>
+        <marquee behavior="scroll" direction="right">
+            <a href="Quiz/Quiz.html" target="_blank">Memory Game</a>
+        </marquee>
             <a href="../../home.html">Go to Home</a>
     </footer>
 
@@ -275,7 +277,7 @@
                 
             }
             if (points < 6 && points > 3) {
-                message = document.getElementById('final_answer').innerText='You have a avarage memory. Your score is: ' + points;
+                message = document.getElementById('final_answer').innerText='You have a average memory. Your score is: ' + points;
                 
             }
             if (points < 9 && points > 6) {
