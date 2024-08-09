@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test your Memory</title>
     <style>
-        header{
+        header {
             font-size: 100px;
             text-align: center;
             color: rgb(95, 241, 252);
@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <div id="Start_sreen" style="display: block;">
+    <div id="Start_screen" style="display: block;">
         <header>
             <h1>Welcome to my Memory game</h1>
         </header>
@@ -29,116 +29,217 @@
 
     <div id="images" style="display: none;">
         <div id="timer"></div>
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="apple" src="../IMAGES/apple.png" alt="apple" onclick="apple()" style="width: 50px; height: 50px; display: block;">
+        <div style="width: 50px; height: 50px; border: 1px solid black;"  onclick="checkgo_to_next_question('apple')">
+            <img id="apple" src="../IMAGES/apple.png" alt="apple" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="bananna" src="../IMAGES/bananna.png" alt="bananna" onclick="bananna()" style="width: 50px; height: 50px; display: block;">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('banana')">
+            <img id="banana" src="../IMAGES/bananna.png" alt="banana" style= "width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
             <img id="orange" src="../IMAGES/orange.png" alt="orange" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="watermelon" src="../IMAGES/watermelon.png" alt="watermelon" style="width: 50px; height: 50px; display: block;">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
+            <img id="watermelon" src="../IMAGES/watermelon.png" alt="watermelon"  style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="kewi" src="../IMAGES/kewi.png" alt="kewi" style="width: 50px; height: 50px; display: block;">
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('cherry')">
+            <img id="kiwi" src="../IMAGES/kewi.png" alt="kiwi" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
-            <img id="cherry" src="../IMAGES/cherry.png" alt="cherry" style="width: 50px; height: 50px; display: block;">
+        <div style="width: 50px; height: 50px; border: 1px solid black; "onclick="checkgo_to_next_question('cherry')">
+            <img id="cherry" src="../IMAGES/cherry.png" alt="cherry"  style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+        <div style="width: 50px; height: 50px; border: 1px solid black;"  onclick="checkgo_to_next_question('grapes')">
             <img id="grapes" src="../IMAGES/grapes.png" alt="grapes" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('strawberry')" >
             <img id="strawberry" src="../IMAGES/strawberry.png" alt="strawberry" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('mango')">
             <img id="mango" src="../IMAGES/mango.png" alt="mango" style="width: 50px; height: 50px; display: block;">
         </div>
 
-        <div style="width: 50px; height: 50px; border: 1px solid black;" >
+        <div style="width: 50px; height: 50px; border: 1px solid black;" onclick="checkgo_to_next_question('pineapple')">
             <img id="pineapple" src="../IMAGES/pineapple.png" alt="pineapple" style="width: 50px; height: 50px; display: block;">
         </div>
-
     </div>
 
-    <div id="questines" style="display: none;">
+    <div id="questions">
         <ol>
-            <li id="Q1" style="display: none;">Point out strawberry</li>
-            <li id="Q2" style="display: none;">Point out watermelon</li>
-            <li id="Q3" style="display: none;">Point out cherry</li>
-            <li id="Q4" style="display: none;">Point out pineapple</li>
-            <li id="Q5" style="display: none;">Point out mango</li>
-            <li id="Q6" style="display: none;">Point out apple</li>
-            <li id="Q7" style="display: none;">Point out kewi</li>
-            <li id="Q8" style="display: none;">Point out bananna</li>
-            <li id="Q9" style="display: none;">Point out orange</li>
-            <li id="Q10" style="display: none;">Point out grapes</li>
+            <div id="Q1" style="display: none;"><li>Point out strawberry</li></div>
+            <div id="Q2" style="display: none;"><li>Point out watermelon</li></div>
+            <div id="Q3" style="display: none;"><li>Point out cherry</li></div>
+            <div id="Q4" style="display: none;"><li>Point out pineapple</li></div>
+            <div id="Q5" style="display: none;"><li>Point out mango</li></div>
+            <div id="Q6" style="display: none;"><li>Point out apple</li></div>
+            <div id="Q7" style="display: none;"><li>Point out kiwi</li></div>
+            <div id="Q8" style="display: none;"><li>Point out banana</li></div>
+            <div id="Q9" style="display: none;"><li>Point out orange</li></div>
+            <div id="Q10" style="display: none;"><li>Point out grapes</li></div>
         </ol>
     </div>
     <script>
-        time =10;
+        let time = 15;
         function Start() {
-            alert('The Game is starting')
-            alert('Quickly see all the images and after the time gets over point out the image to the respsctive question. You will get ' + time + ' seconds to memorize the images')
-            document.getElementById("Start_sreen").style.display = "none";
+            alert('The Game is starting');
+            alert('Quickly see all the images and after the time gets over point out the image to the respective question. You will get ' + time + ' seconds to memorize the images');
+            document.getElementById("Start_screen").style.display = "none";
             document.getElementById("images").style.display = "block";
-            
             
             startCountdown(time);
         }
 
-        intervalId = null
-        display = document.getElementById('timer');
-        timer = null
-        function startCountdown(duration) {
-            timer  = duration   
-            display.innerText = timer
-            intervalId = setInterval(display_time, 1000);
+        let intervalId = null;
+        let display = document.getElementById('timer');
+        let timer = null;
 
+        function startCountdown(duration) {
+            timer = duration;
+            display.innerText = timer;
+            intervalId = setInterval(display_time, 1000);
         }
 
-        function display_time()
-        {
-            timer = timer - 1   
-            display.textContent = timer
+        function display_time() {
+            timer = timer - 1;
+            display.textContent = timer;
             if (timer < 0) {
                 clearInterval(intervalId);
-                display.innerText = 'Time\'s up!';
+                display.innerText = "Time's up!";
                 hideImages();
             }
         }
-        function hideImages()
-        {
+        function hideImages() {
             document.getElementById('apple').style.display = "none";
-            document.getElementById('bananna').style.display = "none";
+            document.getElementById('banana').style.display = "none";
             document.getElementById('orange').style.display = "none";
             document.getElementById('watermelon').style.display = "none";
-            document.getElementById('kewi').style.display = "none";
+            document.getElementById('kiwi').style.display = "none";
             document.getElementById('cherry').style.display = "none";
             document.getElementById('grapes').style.display = "none";
             document.getElementById('strawberry').style.display = "none";
             document.getElementById('mango').style.display = "none";
             document.getElementById('pineapple').style.display = "none";
-            questines()
+            Q1();
         }
-        
-        function questines() {
-            ans = 0
-            document.getElementById(Q1).style.display="block";
-            function apple() {
-                ans = ans + 0;
+        let q_counter = 1;
+        let points = 0;
+        let question = '';
+        function checkgo_to_next_question(answer) {
+            if (question === answer){
+                points++
+                
             }
+
+
+            if (q_counter == 1) {
+                Q1()
+            }  
+            else if (q_counter == 2) {
+                Q2()
+            }  
+            else if (q_counter == 3) {
+                Q3()
+            }  
+            else if (q_counter == 4) {
+                Q4()
+            }  
+            else if (q_counter == 5) {
+                Q5()
+            }  
+            else if (q_counter == 6) {
+                Q6()
+            }  
+            else if (q_counter == 7) {
+                Q7()
+            }  
+            else if (q_counter == 8) {
+                Q8()
+            }  
+            else if (q_counter == 9) {
+                Q9()
+            }  
+            else if (q_counter == 10) {
+                Q10()
+            } 
+             
+        } 
+
+        function Q1() {
+            question = 'strawberry';
+            document.getElementById('Q1').style.display = "block";
+            q_counter++
+ 
         }
+
+        function Q2() {
+            question = 'watermelon';
+            document.getElementById('Q2').style.display = "block";
+            q_counter++
+   
+        }
+
+        function Q3() {
+            question = 'cherry';
+            document.getElementById('Q3').style.display = "block";
+            q_counter++
+   
+        }
+
+        function Q4() {
+            question = 'pineapple';
+            document.getElementById('Q4').style.display = "block";
+            q_counter++
+   
+        }
+
+        function Q5() {
+            question = 'mango';
+            document.getElementById('Q5').style.display = "block";
+            q_counter++
+
+   
+        }
+
+        function Q6() {
+            question = 'apple';
+            document.getElementById('Q6').style.display = "block";
+            q_counter++
+  
+        }
+
+        function Q7() {
+            question = 'kiwi';
+            document.getElementById('Q7').style.display = "block";
+            q_counter++
+   
+        }
+
+        function Q8() {
+            question = 'banana';
+            document.getElementById('Q8').style.display = "block";
+            q_counter++
+   
+        }
+
+        function Q9() {
+            question = 'orange';
+            document.getElementById('Q9').style.display = "block";
+            q_counter++
+  
+        }
+
+        function Q10() {
+            question = 'grapes';
+            document.getElementById('Q10').style.display = "block";
+             
+        }
+
     </script>
 </body>
 </html>
