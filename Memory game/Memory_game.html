@@ -17,18 +17,11 @@
         }
         nav{
             text-align: center;
-            font-size: 100px;
-            color: rgb(95, 241, 252);
-        }
-        footer{
-            color: rgb(95, 241, 252);
-            text-align: center;
-            font-size: 30px;
-
         }
         marquee{
             font-size: 1.2em;
         }
+
     </style>
 </head>
 <body>
@@ -99,18 +92,13 @@
         </ol>
     </div>
 
-    <nav>
-        <div id="result">
-            <h2 id="final_answer"></h2>
-        </div>
-    </nav>
+    <div id="ans" style="display: none;">
+        <nav>
+               <!--<i id="final_answer" style="font-size: 150px; color: aqua; text-align: center;"></i>--> 
+                <marquee behavior="scroll" direction="right" style="color: aliceblue; background-color: aqua; font-size: 70px;">Thanks for your Support</marquee>
+        </nav>  
+    </div>
 
-    <footer id="ans" style="display: none;">
-        <marquee behavior="scroll" direction="right">
-            <a href="Quiz/Quiz.html" target="_blank">Memory Game</a>
-        </marquee>
-            <a href="../../home.html">Go to Home</a>
-    </footer>
 
     <script>
         let time = 15;
@@ -161,132 +149,100 @@
         function checkgo_to_next_question(answer) {
             if (question === answer){
                 points++
+                console.log(points)
             }
+            q_counter++;
 
-
-            if (q_counter == 1) {
+            if (q_counter == 1) 
                 Q1()
-            }  
-            else if (q_counter == 2) {
+            else if (q_counter == 2) 
                 Q2()
-            }  
-            else if (q_counter == 3) {
+            else if (q_counter == 3) 
                 Q3()
-            }  
-            else if (q_counter == 4) {
+            else if (q_counter == 4) 
                 Q4()
-            }  
-            else if (q_counter == 5) {
+            else if (q_counter == 5) 
                 Q5()
-            }  
-            else if (q_counter == 6) {
+            else if (q_counter == 6) 
                 Q6()
-            }  
-            else if (q_counter == 7) {
+            else if (q_counter == 7) 
                 Q7()
-            }  
-            else if (q_counter == 8) {
+            else if (q_counter == 8) 
                 Q8()
-            }  
-            else if (q_counter == 9) {
+            else if (q_counter == 9) 
                 Q9()
-            }  
-            else if (q_counter == 10) {
+            else if (q_counter == 10) 
                 Q10()
-            } 
-             
+            else if (q_counter > 10)
+                result() 
         } 
 
         function Q1() {
             question = 'strawberry';
             document.getElementById('Q1').style.display = "block";
-            q_counter++
- 
         }
 
         function Q2() {
             question = 'watermelon';
             document.getElementById('Q2').style.display = "block";
-            q_counter++
-   
         }
 
         function Q3() {
             question = 'cherry';
             document.getElementById('Q3').style.display = "block";
-            q_counter++
-   
         }
 
         function Q4() {
             question = 'pineapple';
             document.getElementById('Q4').style.display = "block";
-            q_counter++
-   
         }
 
         function Q5() {
             question = 'mango';
             document.getElementById('Q5').style.display = "block";
-            q_counter++
-
-   
         }
 
         function Q6() {
             question = 'apple';
             document.getElementById('Q6').style.display = "block";
-            q_counter++
-  
         }
 
         function Q7() {
             question = 'kiwi';
             document.getElementById('Q7').style.display = "block";
-            q_counter++
-   
         }
 
         function Q8() {
             question = 'banana';
             document.getElementById('Q8').style.display = "block";
-            q_counter++
-   
         }
 
         function Q9() {
             question = 'orange';
             document.getElementById('Q9').style.display = "block";
-            q_counter++
-  
         }
 
         function Q10() {
             question = 'grapes';
             document.getElementById('Q10').style.display = "block";
-            result()
         }
         function result() {
-            let message = ''
             document.getElementById('images').style.display='none';
             document.getElementById('questions').style.display='none';
             document.getElementById('ans').style.display = 'block';
-            document.getElementById('result').style.display = 'block';
+            
             if (points < 3 || points == 3) {
-                message = document.getElementById('final_answer').innerText='You must improve your memory. Your score is: ' + points;
-                
+                document.getElementById('final_answer').innerText='You must improve your memory. Your score is: ' + points;
             }
             if (points < 6 && points > 3) {
-                message = document.getElementById('final_answer').innerText='You have a average memory. Your score is: ' + points;
-                
+                document.getElementById('final_answer').innerText='You have a average memory. Your score is: ' + points;
             }
             if (points < 9 && points > 6) {
-                message = document.getElementById('final_answer').innerText='You have a great memory. Your score is: ' + points;
-                
+                document.getElementById('final_answer').innerText='You have a great memory. Your score is: ' + points;
             }
             if (points == 10) {
-                message = document.getElementById('final_answer').innerText='You you have a marvellous memory. Your score is: ' + points;
-                
+                document.getElementById('final_answer').innerText='You you have a marvellous memory. Your score is: ' + points;
+                document.getElementById('result').value = message;
             }
         }
     </script>
