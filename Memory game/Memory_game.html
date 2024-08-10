@@ -18,9 +18,11 @@
         nav{
             text-align: center;
         }
-        marquee{
-            font-size: 1.2em;
-        }
+        @keyframes marquee {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+}
+
 
     </style>
 </head>
@@ -94,9 +96,19 @@
 
     <div id="ans" style="display: none;">
         <nav>
-               <!--<i id="final_answer" style="font-size: 150px; color: aqua; text-align: center;"></i>--> 
-                <marquee behavior="scroll" direction="right" style="color: aliceblue; background-color: aqua; font-size: 70px;">Thanks for your Support</marquee>
-        </nav>  
+            <i id="final_answer" style="font-size: 250px; color: aqua; text-align: center;"></i>
+            <div style="background-color: aqua;">
+                <div style="overflow: hidden; white-space: nowrap;">
+                    <div style="display: inline-block; padding-left: 100%; animation: marquee 10s linear infinite; font-size: 100px; color: aliceblue; background-color: aqua;">
+                        Thanks for your Support
+                        <a href="Quiz/Quiz.html" target="_blank">Quiz</a>
+                    </div>
+                </div>
+                <a href="../../home.html">Go to Home</a>    
+            </div>
+
+        </nav>
+        
     </div>
 
 
