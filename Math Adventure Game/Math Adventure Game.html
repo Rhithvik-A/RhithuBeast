@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Adventure Game</title>
+    <link rel="icon" href="../IMAGES/official_logo.png" type="image/png"> 
+    <style>
+
+        #choose_class {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header style="text-align: center; font-size: 150px;" id="Start_screen">
+        <h1 style="color: aqua; font-size: 150px;"><i>Math Adventure Game</i></h1>
+        <button onclick="hide_start_screen()">
+            <i style="font-size: 100px;">Start the Adventure</i>
+        </button>
+    </header>
+
+    <audio id="start_sound">
+        <source src="../Sound/Adventure_starting-sound.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="choose_class">
+        <button style="font-size: 40px;" onclick="lower_class()">Class: 2 or less</button><br>
+       <!-- <button style="font-size: 40px;">Class: 3-5</button><br>
+        <button style="font-size: 40px;">Class: 6-8</button><br>
+        <button style="font-size: 40px;">Class: 9-12</button><br>
+        <button style="font-size: 40px;">Classes more than this</button>-->
+    </div>
+
+    <div id="low_class_choose_op" style="display: none;">
+        <h2><i style="color: aqua; font-size: 50px;">Suggest You take Addition First</i></h2>
+        <ol>
+            <button onclick="low_add()"><i style="font-size: 40px;"><li>Addition</li></i></button><br>
+            <button><i style="font-size: 40px;"><li>Subtraction</li></i></button><br>
+            <button><i style="font-size: 40px; color: gray;"><li>Multiplecation</li></i></button><br>
+        </ol>
+    </div>
+
+    <div id="low_add" style="display: none;">
+        <nav>
+            <h1 style="text-align: center;"><i style="font-size: 150px; color: aqua ; text-align: center;">Addition</i></h1>
+        </nav>
+            <i style="font-size: 30px;">
+                Addition is a basic math operation where you combine two or more numbers to get a total. It's like putting things together. For example, if you have 2 apples and get 3 more, you now have 5 apples. The plus sign (+) shows that you are adding numbers. Addition helps us count and understand amounts in daily life.Addition is one of the fundemental operation in mathetics.
+            </i><hr>
+            <button onclick="low_add_more()"><i style="font-size: 40px;">Still didn't understand</i></button><br>
+            <button onclick="low_add_eg_ex()" style="font-size: 40px;"><i>Example Exercises</i></button><br>
+            <button style="font-size: 40px;"><i>Ready For Exam</i></button><br>
+    </div>
+
+    <div id="low_add_more" style="display: none;">
+        <i style="font-size: 40px;">
+            Addition is the mathematical process of combining two or more numbers to get a total or sum. For example, if you add 2 and 3, the sum is 5. The symbol for addition is "+".<br><br>
+            
+            Here's the basic concept: <br><br>
+
+            a+b=c
+            
+            Where:<br><br>
+
+            a and b are the numbers being added.<br><br>
+
+            c is the sum or result of the addition.</i><br><br>
+
+            <div style="text-align: center;">
+                <button onclick="low_add_eg_ex()" style="font-size: 40px;"><i>Example Exercises</i></button><br><br>
+                <button style="font-size: 40px;"><i>Ready For Exam</i></button><br>
+            </div>
+
+    </div>
+
+    <div id="low_add_eg_ex" style="display: none;">
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br><hr>
+
+
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br><hr>
+
+
+        <i style="font-weight: bold; font-size: 40px;">5 + 3</i><br><br>
+        <input id="3Q1A" type="radio" readonly>
+        <label for="3Q1A">8</label><br>
+
+        <input id="3Q2A" type="radio" readonly>
+        <label for="3Q2A">53</label><br>
+
+        <input id="3Q3A" type="radio" readonly>
+        <label for="3Q3A">2</label><br><br><hr>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">75 + 25</i><br><br>
+        <input id="4Q1A" type="radio" readonly>
+        <label for="4Q1A">100</label><br>
+
+        <input id="4Q2A" type="radio" readonly>
+        <label for="4Q2A">5</label><br>
+
+        <input id="4Q3A" type="radio" readonly>
+        <label for="4Q3A">7515</label><br><hr>
+
+        <i style="font-weight: bold; font-size: 40px;">458 + 457</i><br><br>
+        <input id="5Q1A" type="radio" readonly>
+        <label for="5Q1A">5489</label><br>
+
+        <input id="5Q2A" type="radio" readonly>
+        <label for="5Q2A">453</label><br>
+
+        <input id="5Q3A" type="radio" readonly>
+        <label for="5Q3A">915</label><br><br><hr><br><hr>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">You have 1 balloon, and your friend gives you 2 more balloons. How many balloons do you have now?</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">3</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" readonly>
+        <label for="1Q1A">112</label><br>
+
+        <input id="1Q2A" type="radio" readonly>
+        <label for="1Q2A">3</label><br>
+
+        <input id="1Q3A" type="radio" readonly>
+        <label for="1Q3A">2</label><br><br>
+
+        
+        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" readonly>
+        <label for="2Q1A">32</label><br>
+
+        <input id="2Q2A" type="radio" readonly>
+        <label for="2Q2A">5</label><br>
+
+        <input id="2Q3A" type="radio" readonly>
+        <label for="2Q3A">4</label><br>
+
+    </div>
+
+    <script>
+        function hide_start_screen() {
+            document.getElementById('start_sound').play();
+            document.getElementById("Start_screen").style.display = "none";
+            document.getElementById("choose_class").style.display = "block";
+        }
+
+        function lower_class() {
+            document.getElementById('choose_class').style.display = "none";
+            document.getElementById("low_class_choose_op").style.display = "block";
+        }
+        function low_add() {
+            document.getElementById("low_class_choose_op").style.display = "none";
+            document.getElementById("low_add").style.display = "block";
+        }
+
+        function low_add_more() {
+            document.getElementById("low_add_more").style.display = "block";
+            document.getElementById("low_add").style.display = "none";
+        }
+        function low_add_eg_ex() {
+            document.getElementById("low_add_more").style.display = "none";
+            document.getElementById("low_add_eg_ex").style.display = "block";
+            document.getElementById("low_add").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
