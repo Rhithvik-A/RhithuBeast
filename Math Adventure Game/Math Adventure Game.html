@@ -25,18 +25,18 @@
     </audio>
 
     <div id="choose_class">
-        <button style="font-size: 40px;" onclick="lower_class()">Class: 2 or less</button><br>
+        <button style="font-size: 40px;" onclick="lower_class()"><i>Class: 2 or less</i></button><br>
        <!-- <button style="font-size: 40px;">Class: 3-5</button><br>
         <button style="font-size: 40px;">Class: 6-8</button><br>
         <button style="font-size: 40px;">Class: 9-12</button><br>
-        <button style="font-size: 40px;">Classes more than this</button>-->
+        <button style="font-size: 40px;">Classes more than these</button>-->
     </div>
 
     <div id="low_class_choose_op" style="display: none;">
-        <h2><i style="color: aqua; font-size: 50px;">Suggest You take Addition First</i></h2>
+        <h2><i style="color: aqua; font-size: 50px; text-align: center;">Suggest You take Addition First Because The Other Two Are Locked.</i></h2>
         <ol>
             <button onclick="low_add()"><i style="font-size: 40px;"><li>Addition</li></i></button><br>
-            <button><i style="font-size: 40px;"><li>Subtraction</li></i></button><br>
+            <button><i style="font-size: 40px; color: gray;"><li>Subtraction</li></i></button><br>
             <button><i style="font-size: 40px; color: gray;"><li>Multiplecation</li></i></button><br>
         </ol>
     </div>
@@ -69,182 +69,121 @@
 
             <div style="text-align: center;">
                 <button onclick="low_add_eg_ex()" style="font-size: 40px;"><i>Example Exercises</i></button><br><br>
-                <button style="font-size: 40px;"><i>Ready For Exam</i></button><br>
+                <button onclick="low_add_exam()" style="font-size: 40px;"><i>Ready For Exam</i></button><br>
             </div>
 
     </div>
 
     <div id="low_add_eg_ex" style="display: none;">
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
+        <i id="1Q" style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
+        <input id="1Q1A" type="radio" name="answer1" readonly>
         <label for="1Q1A">112</label><br>
 
-        <input id="1Q2A" type="radio" readonly>
+        <input id="1Q2A" type="radio" name="answer1" readonly>
         <label for="1Q2A">3</label><br>
 
-        <input id="1Q3A" type="radio" readonly>
+        <input id="1Q3A" type="radio" name="answer1" readonly>
         <label for="1Q3A">2</label><br><br><hr>
 
 
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
+        <i id="2Q" style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
+        <input id="2Q1A" type="radio" name="answer2" readonly>
         <label for="2Q1A">32</label><br>
 
-        <input id="2Q2A" type="radio" readonly>
+        <input id="2Q2A" type="radio" name="answer2" readonly>
         <label for="2Q2A">5</label><br>
 
-        <input id="2Q3A" type="radio" readonly>
+        <input id="2Q3A" type="radio" name="answer2" readonly>
         <label for="2Q3A">4</label><br><hr>
 
 
-        <i style="font-weight: bold; font-size: 40px;">5 + 3</i><br><br>
-        <input id="3Q1A" type="radio" readonly>
+        <i id="3Q" style="font-weight: bold; font-size: 40px;">5 + 3</i><br><br>
+        <input id="3Q1A" type="radio" name="answer3" readonly>
         <label for="3Q1A">8</label><br>
 
-        <input id="3Q2A" type="radio" readonly>
+        <input id="3Q2A" type="radio"name="answer3"  readonly>
         <label for="3Q2A">53</label><br>
 
-        <input id="3Q3A" type="radio" readonly>
+        <input id="3Q3A" type="radio"name="answer3"  readonly>
         <label for="3Q3A">2</label><br><br><hr>
 
         
-        <i style="font-weight: bold; font-size: 40px;">75 + 25</i><br><br>
-        <input id="4Q1A" type="radio" readonly>
+        <i id="4Q" style="font-weight: bold; font-size: 40px;">75 + 25</i><br><br>
+        <input id="4Q1A" type="radio"name="answer4"  readonly>
         <label for="4Q1A">100</label><br>
 
-        <input id="4Q2A" type="radio" readonly>
+        <input id="4Q2A" type="radio"name="answer4" readonly>
         <label for="4Q2A">5</label><br>
 
-        <input id="4Q3A" type="radio" readonly>
+        <input id="4Q3A" type="radio"name="answer4" readonly>
         <label for="4Q3A">7515</label><br><hr>
 
-        <i style="font-weight: bold; font-size: 40px;">458 + 457</i><br><br>
-        <input id="5Q1A" type="radio" readonly>
+        <i id="5Q" style="font-weight: bold; font-size: 40px;">458 + 457</i><br><br>
+        <input id="5Q1A" type="radio"name="answer5" readonly>
         <label for="5Q1A">5489</label><br>
 
-        <input id="5Q2A" type="radio" readonly>
+        <input id="5Q2A" type="radio"name="answer5" readonly>
         <label for="5Q2A">453</label><br>
 
-        <input id="5Q3A" type="radio" readonly>
+        <input id="5Q3A" type="radio"name="answer5" readonly>
         <label for="5Q3A">915</label><br><br><hr><br><hr>
 
         
-        <i style="font-weight: bold; font-size: 40px;">You have 1 balloon, and your friend gives you 2 more balloons. How many balloons do you have now?</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">3</label><br>
+        <i id="6Q" style="font-weight: bold; font-size: 40px;">You have 1 balloon, and your friend gives you 2 more balloons. How many balloons do you have now?</i><br><br>
+        <input id="6Q1A" type="radio"name="answer6" readonly>
+        <label for="6Q1A">3</label><br>
 
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
+        <input id="6Q2A" type="radio"name="answer6" readonly>
+        <label for="6Q2A">5</label><br>
 
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
+        <input id="6Q3A" type="radio"name="answer6" readonly>
+        <label for="6Q3A">4</label><br>
 
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
-        <label for="1Q1A">112</label><br>
+        <i id="7Q" style="font-weight: bold; font-size: 40px;">You collect 3 seashells at the beach, and then you find 3 more. How many seashells do you have altogether?</i><br><br>
+        <input id="7Q1A" type="radio"name="answer7" readonly>
+        <label for="7Q1A">6</label><br>
 
-        <input id="1Q2A" type="radio" readonly>
-        <label for="1Q2A">3</label><br>
+        <input id="7Q2A" type="radio"name="answer7" readonly>
+        <label for="7Q2A">3</label><br>
 
-        <input id="1Q3A" type="radio" readonly>
-        <label for="1Q3A">2</label><br><br>
-
-        
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">32</label><br>
-
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
-
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
-
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
-        <label for="1Q1A">112</label><br>
-
-        <input id="1Q2A" type="radio" readonly>
-        <label for="1Q2A">3</label><br>
-
-        <input id="1Q3A" type="radio" readonly>
-        <label for="1Q3A">2</label><br><br>
+        <input id="7Q3A" type="radio"name="answer7" readonly>
+        <label for="7Q3A">7</label><br><br>
 
         
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">32</label><br>
+        <i id="8Q" style="font-weight: bold; font-size: 40px;"> Find pairs of numbers that add up to 5.</i><br><br>
+        <input id="8Q1A" type="radio"name="answer8" readonly>
+        <label for="8Q1A">0 & 5</label><br>
 
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
+        <input id="8Q2A" type="radio"name="answer8"  readonly>
+        <label for="8Q2A">2 & 4</label><br>
 
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
+        <input id="8Q3A" type="radio"name="answer8"  readonly>
+        <label for="8Q3A">6 & 4</label><br>
 
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
-        <label for="1Q1A">112</label><br>
+        <i id="9Q" style="font-weight: bold; font-size: 40px;">There are 4 toy cars on the table, and you find 1 more under the couch. How many toy cars do you have now?</i><br><br>
+        <input id="9Q1A" type="radio"name="answer9"  readonly>
+        <label for="1Q1A">41</label><br>
 
-        <input id="1Q2A" type="radio" readonly>
-        <label for="1Q2A">3</label><br>
+        <input id="9Q2A" type="radio"name="answer9"  readonly>
+        <label for="9Q2A">6</label><br>
 
-        <input id="1Q3A" type="radio" readonly>
-        <label for="1Q3A">2</label><br><br>
-
-        
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">32</label><br>
-
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
-
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
-
-
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
-        <label for="1Q1A">112</label><br>
-
-        <input id="1Q2A" type="radio" readonly>
-        <label for="1Q2A">3</label><br>
-
-        <input id="1Q3A" type="radio" readonly>
-        <label for="1Q3A">2</label><br><br>
+        <input id="9Q3A" type="radio"name="answer9"  readonly>
+        <label for="9Q3A">5</label><br><br>
 
         
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">32</label><br>
+        <i id="10Q" style="font-weight: bold; font-size: 40px;">You see 2 birds on a tree. Then, 3 more birds join them. How many birds are there in total?</i><br><br>
+        <input id="10Q1A" type="radio"name="answer10"  readonly>
+        <label for="10Q1A">7</label><br>
 
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
+        <input id="10Q2A" type="radio"name="answer10" readonly>
+        <label for="10Q2A">5</label><br>
 
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
-
-        <i style="font-weight: bold; font-size: 40px;">1 + 1</i><br><br>
-        <input id="1Q1A" type="radio" readonly>
-        <label for="1Q1A">112</label><br>
-
-        <input id="1Q2A" type="radio" readonly>
-        <label for="1Q2A">3</label><br>
-
-        <input id="1Q3A" type="radio" readonly>
-        <label for="1Q3A">2</label><br><br>
-
-        
-        <i style="font-weight: bold; font-size: 40px;">3 + 2</i><br><br>
-        <input id="2Q1A" type="radio" readonly>
-        <label for="2Q1A">32</label><br>
-
-        <input id="2Q2A" type="radio" readonly>
-        <label for="2Q2A">5</label><br>
-
-        <input id="2Q3A" type="radio" readonly>
-        <label for="2Q3A">4</label><br>
-
+        <input id="10Q3A" type="radio"name="answer10" readonly>
+        <label for="10Q3A">23</label><br><hr><br><hr>
+        <i id="low_add_eg_ex_ans" style="font-size: 60px; color: aqua;"></i><br><hr>
+        <button onclick="calculate_low_add_eg_ex()" style="font-size: 40px;"><i>Submit</i></button><br><br>
+        <button onclick="retry_quiz()" style="font-size: 40px;"><i>Retry</i></button><br><br>
+        <button onclick="low_add_exam()" style="font-size: 40px;"><i>Ready For Exam</i></button><br>
     </div>
 
     <script>
@@ -272,6 +211,104 @@
             document.getElementById("low_add_eg_ex").style.display = "block";
             document.getElementById("low_add").style.display = "none";
         }
+            function calculate_low_add_eg_ex() {
+    let points = 0;
+
+    // Question 1
+    if (document.getElementById('1Q3A').checked) {
+        points += 1;
+        document.getElementById('1Q').style.color = 'Green';
+    } else {
+        document.getElementById('1Q').style.color = 'Red';
+    }
+
+    // Question 2
+    if (document.getElementById('2Q2A').checked) {
+        points += 1;
+        document.getElementById('2Q').style.color = 'Green';
+    } else {
+        document.getElementById('2Q').style.color = 'Red';
+    }
+
+    // Question 3
+    if (document.getElementById('3Q1A').checked) {
+        points += 1;
+        document.getElementById('3Q').style.color = 'Green';
+    } else {
+        document.getElementById('3Q').style.color = 'Red';
+    }
+
+    // Question 4
+    if (document.getElementById('4Q1A').checked) {
+        points += 1;
+        document.getElementById('4Q').style.color = 'Green';
+    } else {
+        document.getElementById('4Q').style.color = 'Red';
+    }
+
+    // Question 5
+    if (document.getElementById('5Q3A').checked) {
+        points += 1;
+        document.getElementById('5Q').style.color = 'Green';
+    } else {
+        document.getElementById('5Q').style.color = 'Red';
+    }
+
+    // Question 6
+    if (document.getElementById('6Q1A').checked) {
+        points += 1;
+        document.getElementById('6Q').style.color = 'Green';
+    } else {
+        document.getElementById('6Q').style.color = 'Red';
+    }
+
+    // Question 7
+    if (document.getElementById('7Q1A').checked) {
+        points += 1;
+        document.getElementById('7Q').style.color = 'Green';
+    } else {
+        document.getElementById('7Q').style.color = 'Red';
+    }
+
+    // Question 8
+    if (document.getElementById('8Q1A').checked) {
+        points += 1;
+        document.getElementById('8Q').style.color = 'Green';
+    } else {
+        document.getElementById('8Q').style.color = 'Red';
+    }
+
+    // Question 9
+    if (document.getElementById('9Q3A').checked) {
+        points += 1;
+        document.getElementById('9Q').style.color = 'Green';
+    } else {
+        document.getElementById('9Q').style.color = 'Red';
+    }
+
+    // Question 10
+    if (document.getElementById('10Q2A').checked) {
+        points += 1;
+        document.getElementById('10Q').style.color = 'Green';
+    } else {
+        document.getElementById('10Q').style.color = 'Red';
+    }
+
+    // Optionally, you can display the score
+    document.getElementById('low_add_eg_ex_ans').innerText= 'Your score is : ' +points;
+}
+
+function retry_quiz() {
+    const answers = document.querySelectorAll('input[type="radio"]');
+    answers.forEach(answer => {
+        answer.checked = false;
+    });
+    const color_code_delet_low_add_eg_ex = document.querySelectorAll('#low_add_eg_ex i');
+color_code_delet_low_add_eg_ex.forEach(element => {
+    element.style.color = 'black';
+});
+        document.getElementById('low_add_eg_ex_ans').innerText= ''
+}
     </script>
 </body>
 </html>
