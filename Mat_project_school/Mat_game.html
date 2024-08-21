@@ -126,7 +126,10 @@
             <label for="10Q3A">CCLXXXIX</label><br><hr><br><hr>
 
             <button style="font-size: 60px;" onclick="low_add_exam_calculate()"><i>Submit</i></button><br>
-            <i id="low_add_eg_ex_ans" style="font-size: 40px; color: aqua;"></i>
+            <i id="low_add_eg_ex_ans" style="font-size: 40px; color: #023020;"></i>
+
+            <i style="display: none; font-size: 40px; text-align: center;" id="final_answer">WE HOPE YOU ENJOYED OUR PRESENTATION</i>
+            
 
         
     </div>
@@ -219,6 +222,7 @@
             }
             
             document.getElementById('low_add_eg_ex_ans').innerHTML = 'You scored ' + points + ' out of 10!';
+            document.getElementById('final_answer').style.display = 'block';
             if (points < 5) {
                 document.getElementById('body').style.backgroundColor = 'Orange' 
             }else{
