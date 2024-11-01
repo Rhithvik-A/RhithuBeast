@@ -77,6 +77,7 @@
 
     <div id="choose_class">
         <button style="font-size: 40px;" onclick="lower_class()"><i>Class: 2 or less</i></button><br>
+        <i>Comming Soon</i>
        <!-- <button style="font-size: 40px;">Class: 3-5</button><br>
         <button style="font-size: 40px;">Class: 6-8</button><br>
         <button style="font-size: 40px;">Class: 9-12</button><br>
@@ -308,30 +309,30 @@
             <ol>
                 <li><i id="1Q_exam" style="font-weight: bold; font-size: 40px;">458 + 96</i><br><br>
                 <input id="1Q1A_exam" type="radio" name="answer1">
-                <label for="1Q1A_exam">550</label><br>
+                <label for="1Q1A_exam">564</label><br>
             
                 <input id="1Q2A_exam" type="radio" name="answer1">
                 <label for="1Q2A_exam">554</label><br>
             
                 <input id="1Q3A_exam" type="radio" name="answer1">
-                <label for="1Q3A_exam">45896</label><br><br><hr>
+                <label for="1Q3A_exam">45894</label><br><br><hr>
             
                 <li><i id="2Q_exam" style="font-weight: bold; font-size: 40px;">789 + 50</i><br><br>
                 <input id="2Q1A_exam" type="radio" name="answer2">
                 <label for="2Q1A_exam">839</label><br>
             
                 <input id="2Q2A_exam" type="radio" name="answer2">
-                <label for="2Q2A_exam">78950</label><br>
+                <label for="2Q2A_exam">78959</label><br>
             
                 <input id="2Q3A_exam" type="radio" name="answer2">
-                <label for="2Q3A_exam">800</label><br><hr>
+                <label for="2Q3A_exam">809</label><br><hr>
             
                 <li><i id="3Q_exam" style="font-weight: bold; font-size: 40px;">75 + 75</i><br><br>
                 <input id="3Q1A_exam" type="radio" name="answer3">
-                <label for="3Q1A_exam">151</label><br>
+                <label for="3Q1A_exam">250</label><br>
             
                 <input id="3Q2A_exam" type="radio" name="answer3">
-                <label for="3Q2A_exam">7575</label><br>
+                <label for="3Q2A_exam">7570</label><br>
             
                 <input id="3Q3A_exam" type="radio" name="answer3">
                 <label for="3Q3A_exam">150</label><br><br><hr>
@@ -348,27 +349,27 @@
             
                 <li><i id="5Q_exam" style="font-weight: bold; font-size: 40px;">459 + 459</i><br><br>
                 <input id="5Q1A_exam" type="radio" name="answer5">
-                <label for="5Q1A_exam">459459</label><br>
+                <label for="5Q1A_exam">958</label><br>
             
                 <input id="5Q2A_exam" type="radio" name="answer5">
                 <label for="5Q2A_exam">918</label><br>
             
                 <input id="5Q3A_exam" type="radio" name="answer5">
-                <label for="5Q3A_exam">915</label><br><br><hr><br><hr>
+                <label for="5Q3A_exam">928</label><br><br><hr><br><hr>
             
                 <button style="font-size: 40px;" onclick="low_add_exam_calculate()">Submit</button>
             </ol>
             
         
-            <div id="failed_exam" style="display: none;">
+            <div id="low_add_failed_exam" style="display: none;">
                 <i id="low_add_exam_fail_mark" style="font-size: 40px; color: aqua;"></i><br>
-                <button onclick="re_exam()" style="font-size: 40px; text-align: center;"><i>Retry Exam</i></button>
+                <button onclick="re_exam_low_add()" style="font-size: 40px; text-align: center;"><i>Retry Exam</i></button>
             </div>
             <div id="passed_exam" style="display: none;">
                 <i id="low_add_exam_pass_mark" style="font-size: 40px; color: aqua;"></i><br>
                 <h1><i style="font-size: 60px;">Suggest You Take Subtraction Because Multiplication Is Locked</i></h1><br><br>
-                <button onclick="low_add_finished()" style="font-size: 40px;"><i>Addition - Finished</i></button>
-                <button style="font-size: 40px;"><i>Subtraction</i></button><br><br>
+                <button onclick="low_add_finished()" style="font-size: 40px; color: gold;"><i>Addition - Finished</i></button><br><br>
+                <button style="font-size: 40px;" onclick="show_sub()"><i>Subtraction</i></button><br><br>
                 <button style="font-size: 40px; color: gray;"><i>Multiplication</i></button>
             </div>
         </div>
@@ -376,7 +377,260 @@
         </div>
     
     </div>
+    <div id="low_sub" style="display: none;">
+        <div id="low_sub_ss" style="display: block;">
+            <nav>
+                <h1 style="text-align: center;"><i style="font-size: 150px; color: aqua;">Subtraction</i></h1>
+            </nav>
     
+            <i style="font-size: 40px;">
+                Subtraction is a mathematical operation where you take one number away from another to find <br> the difference between them.
+            </i><br><br>
+            <button style="font-size: 40px;" onclick="show_low_sub_more()"><i>Still did not understand</i></button><br><br>
+            <button style="font-size: 40px;" onclick="show_low_sub_eg_ex()"><i>Example Exercises</i></button><br><br>
+            <button style="font-size: 40px;" onclick="show_low_sub_exam()"><i>Exam</i></button>
+        </div>
+        
+        <div id="low_sub_more" style="display: none;">
+
+            <nav>
+                <h1 style="text-align: center;"><i style="font-size: 150px; color: aqua;">Subtraction</i></h1>
+            </nav>
+
+            <i style="font-size: 40px;">
+
+                Subtraction is the process of taking one number away from another. For example, if you have 5 apples and you give 2 apples to a friend, you subtract 2 from 5, leaving you with 3 apples. The equation would be: <br><br>
+
+                5
+                −
+                2
+                =
+                3 <br><br>
+                So, subtraction helps you find out how much is left after taking something away.
+            </i><br><br>
+            <button style="font-size: 40px;" onclick="show_low_sub_eg_ex()"><i>Example Exercises</i></button><br><br>
+            <button style="font-size: 40px;" onclick="show_low_sub_exam()"><i>Exam</i></button>
+        </div>
+    
+
+    <div id="low_sub_eg_ex" style="display: none;">
+
+        <i id="1Q" style="font-weight: bold; font-size: 40px;">1 - 1</i><br><br>
+        <ol type="A">
+            <label for="1Q1A"><li>110</li></label>
+            <input id="1Q1A" type="radio" name="answer1" readonly><br>
+    
+            <label for="1Q2A"><li>10</li></label>
+            <input id="1Q2A" type="radio" name="answer1" readonly><br>
+    
+            <label for="1Q3A"><li>0</li></label>
+            <input id="1Q3A" type="radio" name="answer1" readonly><br><br>
+        </ol>
+        <audio id="sound_5" controls>
+            <source src="../Sound/Mat_adventure_5.mp3" type="audio/mp3">
+        </audio>
+        <hr>
+
+
+        <i id="2Q" style="font-weight: bold; font-size: 40px;">3 - 2</i><br><br>
+        <ol type="A">
+            <label for="2Q1A"><li>11</li></label><br>
+            <input id="2Q1A" type="radio" name="answer2" readonly>
+    
+            <label for="2Q2A"><li>1</li></label><br>
+            <input id="2Q2A" type="radio" name="answer2" readonly>
+    
+            <label for="2Q3A"><li>111</li></label><br><br>
+            <input id="2Q3A" type="radio" name="answer2" readonly>
+
+        </ol>
+        <audio id="sound_5" controls>
+            <source src="../Sound/Mat_adventure_5.mp3" type="audio/mp3">
+        </audio>
+
+        <hr>
+
+
+        <i id="3Q" style="font-weight: bold; font-size: 40px;">12 - 4</i><br><br>
+        <ol type="A">
+            <label for="3Q1A"><li>8</li></label>
+            <input id="3Q1A" type="radio" name="answer3" readonly><br>
+    
+            <label for="3Q2A"><li>58</li></label> 
+            <input id="3Q2A" type="radio"name="answer3"  readonly><br>
+    
+            <label for="3Q3A"><li>16</li></label>  
+            <input id="3Q3A" type="radio"name="answer3"  readonly><br>
+        </ol>
+        <audio id="sound_5" controls>
+            <source src="../Sound/Mat_adventure_5.mp3" type="audio/mp3">
+        </audio>
+       <hr>
+
+        
+        <i id="4Q" style="font-weight: bold; font-size: 40px;">120 - 20</i><br><br>
+        <ol type="A">
+            <label for="4Q1A"><li>100</li></label>
+            <input id="4Q1A" type="radio"name="answer4"  readonly><br>
+    
+            <label for="4Q2A"><li>10</li></label>
+            <input id="4Q2A" type="radio"name="answer4" readonly><br>
+    
+            <label for="4Q3A"><li>140</li></label>
+            <input id="4Q3A" type="radio"name="answer4" readonly><br>
+        </ol>
+        <audio id="sound_5" controls>
+            <source src="../Sound/Mat_adventure_7.mp3" type="audio/mp3">
+        </audio>
+        <hr>
+
+        <i id="5Q" style="font-weight: bold; font-size: 40px;">458 - 457</i><br><br>
+        <ol type="A">
+            <label for="5Q1A"><li>111</li></label>
+            <input id="5Q1A" type="radio"name="answer5" readonly><br>
+            <label for="5Q2A"><li>1</li></label>
+            <input id="5Q2A" type="radio"name="answer5" readonly><br>
+            <label for="5Q3A"><li>11</li></label>
+            <input id="5Q3A" type="radio"name="answer5" readonly><br>    
+        </ol>
+        <audio id="sound_5" controls>
+            <source src="../Sound/Mat_adventure_8.mp3" type="audio/mp3">
+        </audio>
+       <hr><hr>
+
+        
+        <i id="6Q" style="font-weight: bold; font-size: 40px;">You have 5 balloon, and your friend takes 2 balloons. How many balloons do you have <br>now?</i><br><br>
+        <input id="6Q1A" type="radio"name="answer6" readonly>
+        <label for="6Q1A">3</label><br>
+
+        <input id="6Q2A" type="radio"name="answer6" readonly>
+        <label for="6Q2A">5</label><br>
+
+        <input id="6Q3A" type="radio"name="answer6" readonly>
+        <label for="6Q3A">4</label><br>
+
+        <i id="7Q" style="font-weight: bold; font-size: 40px;">You collect 10 seashells at the beach, and then 4 of them fell. How many seashells do you have <br>altogether?</i><br><br>
+        <input id="7Q1A" type="radio"name="answer7" readonly>
+        <label for="7Q1A">6</label><br>
+
+        <input id="7Q2A" type="radio"name="answer7" readonly>
+        <label for="7Q2A">3</label><br>
+
+        <input id="7Q3A" type="radio"name="answer7" readonly>
+        <label for="7Q3A">7</label><br><br>
+
+        
+        <i id="8Q" style="font-weight: bold; font-size: 40px;"> Find pairs of numbers that subtract up to 5.</i><br><br>
+        <input id="8Q1A" type="radio"name="answer8" readonly>
+        <label for="8Q1A">15 & 5</label><br>
+
+        <input id="8Q2A" type="radio"name="answer8"  readonly>
+        <label for="8Q2A">15 & 4</label><br>
+
+        <input id="8Q3A" type="radio"name="answer8"  readonly>
+        <label for="8Q3A">15 & 6</label><br>
+
+        <i id="9Q" style="font-weight: bold; font-size: 40px;">There are 4 toy cars on the table, and 1 fell under the couch. How many toy cars do you have now?</i><br><br>
+        <input id="9Q1A" type="radio"name="answer9"  readonly>
+        <label for="1Q1A">43</label><br>
+
+        <input id="9Q2A" type="radio"name="answer9"  readonly>
+        <label for="9Q2A">63</label><br>
+
+        <input id="9Q3A" type="radio"name="answer9"  readonly>
+        <label for="9Q3A">3</label><br><br>
+
+        
+        <i id="10Q" style="font-weight: bold; font-size: 40px;">You see 15 birds on a tree. Then, 5 birds flew away. How many birds are there in total?</i><br><br>
+        <input id="10Q1A" type="radio"name="answer10"  readonly>
+        <label for="10Q1A">7</label><br>
+
+        <input id="10Q2A" type="radio"name="answer10" readonly>
+        <label for="10Q2A">10</label><br>
+
+        <input id="10Q3A" type="radio"name="answer10" readonly>
+        <label for="10Q3A">23</label><br><hr><br><hr>
+        <i id="low_sub_eg_ex_ans" style="font-size: 60px; color: aqua;"></i><br><hr>
+        <button onclick="calculate_low_add_eg_ex()" style="font-size: 40px;"><i>Submit</i></button><br><br>
+        <button onclick="retry_quiz()" style="font-size: 40px;"><i>Retry</i></button><br><br>
+        <button onclick="show_low_sub_exam()" style="font-size: 40px;"><i>Ready For Exam</i></button><br>
+
+    </div>
+</div>
+    <div id="low_sub_exam" style="display: none;">
+
+        <ol>
+            <li><i id="1Q_exam" style="font-weight: bold; font-size: 40px;">458 - 96</i><br><br>
+            <input id="1Q1A_exam" type="radio" name="answer1">
+            <label for="1Q1A_exam">352</label><br>
+        
+            <input id="1Q2A_exam" type="radio" name="answer1">
+            <label for="1Q2A_exam">362</label><br>
+        
+            <input id="1Q3A_exam" type="radio" name="answer1">
+            <label for="1Q3A_exam">342</label><br><br><hr>
+        
+            <li><i id="2Q_exam" style="font-weight: bold; font-size: 40px;">789 - 50</i><br><br>
+            <input id="2Q1A_exam" type="radio" name="answer2">
+            <label for="2Q1A_exam">739</label><br>
+        
+            <input id="2Q2A_exam" type="radio" name="answer2">
+            <label for="2Q2A_exam">78959</label><br>
+        
+            <input id="2Q3A_exam" type="radio" name="answer2">
+            <label for="2Q3A_exam">709</label><br><hr>
+        
+            <li><i id="3Q_exam" style="font-weight: bold; font-size: 40px;">75 - 75</i><br><br>
+            <input id="3Q1A_exam" type="radio" name="answer3">
+            <label for="3Q1A_exam">250</label><br>
+        
+            <input id="3Q2A_exam" type="radio" name="answer3">
+            <label for="3Q2A_exam">150</label><br>
+        
+            <input id="3Q3A_exam" type="radio" name="answer3">
+            <label for="3Q3A_exam">0</label><br><br><hr>
+        
+            <li><i id="4Q_exam" style="font-weight: bold; font-size: 40px;">80 - 50</i><br><br>
+            <input id="4Q1A_exam" type="radio" name="answer4">
+            <label for="4Q1A_exam">140</label><br>
+        
+            <input id="4Q2A_exam" type="radio" name="answer4">
+            <label for="4Q2A_exam">30</label><br>
+        
+            <input id="4Q3A_exam" type="radio" name="answer4">
+            <label for="4Q3A_exam">130</label><br><hr>
+        
+            <li><i id="5Q_exam" style="font-weight: bold; font-size: 40px;">459 - 458</i><br><br>
+            <input id="5Q1A_exam" type="radio" name="answer5">
+            <label for="5Q1A_exam">11</label><br>
+        
+            <input id="5Q2A_exam" type="radio" name="answer5">
+            <label for="5Q2A_exam">1</label><br>
+        
+            <input id="5Q3A_exam" type="radio" name="answer5">
+            <label for="5Q3A_exam">111</label><br><br><hr><br><hr>
+        
+            <button style="font-size: 40px;" onclick="low_sub_exam_calculate()">Submit</button>
+        </ol>
+        
+    
+        <div id="low_sub_failed_exam" style="display: none;">
+            <i id="low_sub_exam_fail_mark" style="font-size: 40px; color: aqua;"></i><br>
+            <button onclick="re_exam_low_sub()" style="font-size: 40px; text-align: center;"><i>Retry Exam</i></button>
+        </div>
+        <div id="passed_exam" style="display: none;">
+            <i id="low_sub_exam_pass_mark" style="font-size: 40px; color: aqua;"></i><br>
+            <h1><i style="font-size: 60px;">Suggest You Take Multiplication</i></h1><br><br>
+            <button style="font-size: 40px; color: gold;"><i>Addition - Finished</i></button><br><br>
+            <button style="font-size: 40px; color: gold;"><i>Subtraction - Finished</i></button><br><br>
+            <button onclick="show_low_mul()" style="font-size: 40px; color: rgb(255, 255, 255);"><i>Multiplication</i></button>
+        </div>
+    
+
+    </div>
+
+
+
     <script>
         function hide_start_screen() {
             document.getElementById('start_sound').play();
@@ -511,6 +765,10 @@
                 }
 
                 function low_add_exam() {
+                    document.getElementById("sound_4").pause();
+            document.getElementById("sound_2").pause();
+            document.getElementById("sound_3").pause();
+            document.getElementById("sound_5").pause();
                     document.getElementById("low_add_eg_ex").style.display = "none";
                     document.getElementById("low_add_more").style.display = "none";
                     document.getElementById("low_add_ss").style.display = "none";
@@ -568,16 +826,16 @@
 
         if (low_add_final_point < 3) {
             document.getElementById('low_add_exam_fail_mark').innerText = 'Your Score is: ' + low_add_final_point + ' You have Failed the Examination'
-            document.getElementById('failed_exam').style.display = "block";
-            //console.log(low_add_final_point);
+            document.getElementById('low_add_failed_exam').style.display = "block";
+            //console.log(low_sub_final_point);
         } else {
             document.getElementById('low_add_exam_pass_mark').innerText = 'Your Score is: ' + low_add_final_point + 'You have Passed the Examination'
             document.getElementById('passed_exam').style.display = "block";
-            //console.log(low_add_final_point);
+            //console.log(low_sub_final_point);
         }
     }
 
-    function re_exam() {
+    function re_exam_low_add() {
         const answers = document.querySelectorAll('input[type="radio"]');
             answers.forEach(answer => {
                 answer.checked = false;
@@ -587,7 +845,223 @@
             element.style.color = 'black';
         });
                 document.getElementById('low_add_exam_fail_mark').innerText= ''
+                document.getElementById('low_add_failed_exam').style.display = "none";
 }
+
+
+
+
+
+
+
+
+
+
+
+    function show_sub() {
+        document.getElementById('low_add').style.display = "none"
+        document.getElementById('low_sub').style.display = "block"
+    }
+
+    function show_low_sub_more() {
+            document.getElementById('low_sub_ss').style.display = "none"
+            document.getElementById('low_sub_more').style.display = "block"
+        }
+
+        function show_low_sub_eg_ex() {
+            document.getElementById('low_sub_ss').style.display = "none"
+            document.getElementById('low_sub_more').style.display = "none"
+            document.getElementById('low_sub_eg_ex').style.display = "block"
+        }
+        function calculate_low_add_eg_ex() {
+            let points = 0;
+            // Question 1
+            if (document.getElementById('1Q3A').checked) {
+                points += 1;
+                document.getElementById('1Q').style.color = 'Green';
+            } else {
+                document.getElementById('1Q').style.color = 'Red';
+            }
+
+            // Question 2
+            if (document.getElementById('2Q2A').checked) {
+                points += 1;
+                document.getElementById('2Q').style.color = 'Green';
+            } else {
+                document.getElementById('2Q').style.color = 'Red';
+            }
+
+            // Question 3
+            if (document.getElementById('3Q1A').checked) {
+                points += 1;
+                document.getElementById('3Q').style.color = 'Green';
+            } else {
+                document.getElementById('3Q').style.color = 'Red';
+            }
+
+            // Question 4
+            if (document.getElementById('4Q1A').checked) {
+                points += 1;
+                document.getElementById('4Q').style.color = 'Green';
+            } else {
+                document.getElementById('4Q').style.color = 'Red';
+            }
+
+            // Question 5
+            if (document.getElementById('5Q2A').checked) {
+                points += 1;
+                document.getElementById('5Q').style.color = 'Green';
+            } else {
+                document.getElementById('5Q').style.color = 'Red';
+            }
+
+            // Question 6
+            if (document.getElementById('6Q1A').checked) {
+                points += 1;
+                document.getElementById('6Q').style.color = 'Green';
+            } else {
+                document.getElementById('6Q').style.color = 'Red';
+            }
+
+            // Question 7
+            if (document.getElementById('7Q1A').checked) {
+                points += 1;
+                document.getElementById('7Q').style.color = 'Green';
+            } else {
+                document.getElementById('7Q').style.color = 'Red';
+            }
+
+            // Question 8
+            if (document.getElementById('8Q1A').checked) {
+                points += 1;
+                document.getElementById('8Q').style.color = 'Green';
+            } else {
+                document.getElementById('8Q').style.color = 'Red';
+            }
+
+            // Question 9
+            if (document.getElementById('9Q3A').checked) {
+                points += 1;
+                document.getElementById('9Q').style.color = 'Green';
+            } else {
+                document.getElementById('9Q').style.color = 'Red';
+            }
+
+            // Question 10
+            if (document.getElementById('10Q2A').checked) {
+                points += 1;
+                document.getElementById('10Q').style.color = 'Green';
+            } else {
+                document.getElementById('10Q').style.color = 'Red';
+            }
+
+            // Optionally, you can display the score
+            document.getElementById('low_sub_eg_ex_ans').innerText= 'Your score is : ' +points;
+        }
+
+        function retry_quiz() {
+            const answers = document.querySelectorAll('input[type="radio"]');
+            answers.forEach(answer => {
+                answer.checked = false;
+            });
+            const color_code_delet_low_add_eg_ex = document.querySelectorAll('#low_sub_eg_ex i');
+        color_code_delet_low_add_eg_ex.forEach(element => {
+            element.style.color = 'black';
+        });
+                document.getElementById('low_sub_eg_ex_ans').innerText= ''
+                }
+
+
+                function show_low_sub_exam() {
+                    document.getElementById('low_sub_ss').style.display = "none"
+                    document.getElementById('low_sub_more').style.display = "none"
+                    document.getElementById('low_sub_eg_ex').style.display = "none" 
+                    document.getElementById('low_sub_exam').style.display = "block" 
+                }
+
+    function low_sub_exam_calculate() {
+
+        let low_sub_final_point = 0
+
+        // Question 1
+        if (document.getElementById('1Q2A_exam').checked) {
+            low_sub_final_point += 1;
+            console.log(low_sub_final_point);
+            document.getElementById('1Q_exam').style.color = 'Green';
+        } else {
+            document.getElementById('1Q_exam').style.color = 'Red';
+        }
+
+        // Question 2
+        if (document.getElementById('2Q1A_exam').checked) {
+            low_sub_final_point += 1;
+            console.log(low_sub_final_point);
+            document.getElementById('2Q_exam').style.color = 'Green';
+        } else {
+            document.getElementById('2Q_exam').style.color = 'Red';
+        }
+
+        // Question 3
+        if (document.getElementById('3Q3A_exam').checked) {
+            low_sub_final_point += 1;
+            console.log(low_sub_final_point);
+            document.getElementById('3Q_exam').style.color = 'Green';
+        } else {
+            document.getElementById('3Q_exam').style.color = 'Red';
+        }
+
+        // Question 4
+        if (document.getElementById('4Q2A_exam').checked) {
+            low_sub_final_point += 1;
+            console.log(low_sub_final_point);
+            document.getElementById('4Q_exam').style.color = 'Green';
+        } else {
+            document.getElementById('4Q_exam').style.color = 'Red';
+        }
+
+        // Question 5
+        if (document.getElementById('5Q2A_exam').checked) {
+            low_sub_final_point += 1;
+            console.log(low_sub_final_point);
+            document.getElementById('5Q_exam').style.color = 'Green';
+        } else {
+            document.getElementById('5Q_exam').style.color = 'Red';
+        }
+
+        if (low_sub_final_point < 3) {
+            console.log('111')
+            document.getElementById('low_sub_failed_exam').style.display = "block";
+            document.getElementById('low_sub_exam_fail_mark').innerText = 'Your Score is: ' + low_sub_final_point + ' You have Failed the Examination'
+            //console.log(low_sub_final_point);
+        } else {
+            console.log('222')
+            document.getElementById('passed_exam').style.display = "block";
+            document.getElementById('low_sub_exam_pass_mark').innerText = 'Your Score is: ' + low_sub_final_point + 'You have Passed the Examination'
+            //console.log(low_sub_final_point);
+        }
+    }
+
+    function re_exam_low_sub() {
+        const answers = document.querySelectorAll('input[type="radio"]');
+            answers.forEach(answer => {
+                answer.checked = false;
+            });
+            const color_code_delet_low_add_eg_ex = document.querySelectorAll('#low_sub_exam i');
+        color_code_delet_low_add_eg_ex.forEach(element => {
+            element.style.color = 'black';
+        });
+                document.getElementById('low_sub_exam_fail_mark').innerText= ''
+                document.getElementById('low_sub_failed_exam').style.display = "none";
+}
+    function show_low_mul() {
+        document.getElementById('low_sub').style.display="none"
+    }
+
+
+    function show_low_mul() {
+        document.getElementById('low_mul').style.display = "block"
+        document.getElementById('low_sub').style.display = "none"
+    }
 
     </script>
 </body>
