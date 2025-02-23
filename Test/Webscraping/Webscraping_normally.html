@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+</head>
+<body>
+    <h2>Scraped Data:</h2>
+    <div id="output"></div>
+
+    <script>
+        async function scrapeWebsite() {
+            try {
+                // Fetch the HTML content of the target page
+                const response = await fetch('https://cors-anywhere.herokuapp.com/https://example.com');
+                const text = await response.text();
+
+                // Parse the HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+
+                // Extract data (modify selector as needed)
+                const headings = doc.querySelectorAll('h1');
+                let output = '';
+
+                headings.forEach(h1 => {
+                    output += `<p>${h1.innerText}</p>`;
+                });
+
+                // Display data on page
+                document.getElementById('output').innerHTML = output;
+
+            } catch (error) {
+                console.error('Error scraping:', error);
+                document.getElementById('output').innerText = 'Failed to fetch data!';
+            }
+        }
+
+        scrapeWebsite();
+    </script>
+</body>
+</html>
