@@ -18,7 +18,7 @@
         </div>
     </div>
     <div style="display: none;" id="Qs">
-        <i style="font-weight: bold; font-size: 40px;">Answer the following questions</i><br><br>
+        <i style="font-weight: bold; font-size: 40px; color: aqua;">Answer the following questions</i><br><br>
             <i id="1Q" style="font-weight: bold; font-size: 40px;">Which of the following shapes has only one line of symmetry?</i><br><br>
                 <input id="1Q1A" type="radio" name="answer1" readonly>
                 <label for="1Q1A">Square</label><br>
@@ -27,7 +27,7 @@
                 <label for="1Q2A">Rectangle</label><br>
         
                 <input id="1Q3A" type="radio" name="answer1" readonly>
-                <label for="1Q3A">Isosceles triangle</label><br><br>
+                <label for="1Q3A">Isosceles triangle</label><br>
                 <input id="1Q4A" type="radio" name="answer1" readonly>
                 <label for="1Q4A">Circle</label><br><br>
             </ol>
@@ -80,9 +80,9 @@
                 <input id="5Q1A" type="radio" name="answer5" readonly>
                 <label for="5Q1A">Square</label><br>
                 <input id="5Q2A" type="radio" name="answer5" readonly>
-                <label for="5Q2A">Scalene triangle</label><br>
+                <label for="5Q2A">Rhombus</label><br>
                 <input id="5Q3A" type="radio" name="answer5" readonly>
-                <label for="5Q3A">Rhombus</label><br>
+                <label for="5Q3A">Scalene triangle</label><br>
                 <input id="5Q3A" type="radio" name="answer5" readonly>
                 <label for="5Q3A">Circle</label><br>
            <hr><hr>
@@ -146,7 +146,7 @@
             }
 
            
-            document.getElementById('low_add_eg_ex_ans').innerHTML = 'You scored ' + points + ' out of 10!';
+            document.getElementById('low_add_eg_ex_ans').innerHTML = 'You scored ' + points + ' out of 5!';
             document.getElementById('final_answer').style.display = 'block';
             if (points < 5) {
                 document.getElementById('body').style.backgroundColor = 'Orange' 
