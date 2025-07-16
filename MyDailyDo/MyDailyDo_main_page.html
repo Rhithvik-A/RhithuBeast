@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,58 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="../Favican/MyDailyDo (1).png" type="image/png">
     <title>MyDailyDo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 30px;
+        }
+        main {
+            display: flex;
+            padding: 20px;
+        }
+        article {
+            flex: 3;
+            background-color: #e6f7ff;
+            padding: 20px;
+        }
+        aside {
+            flex: 1;
+            background-color: #ffecd1;
+            padding: 20px;
+            margin-left: 20px;
+        }
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <header style="position: fixed; top: 0; width: 100%; background-color: #f1f1f1; text-align: center;">
-        <h1 style="color:aqua ;">MyDailyDo</h1>
-    </header>
-    
+<header>
+    <h1>MyDailyDo</h1>
+</header>
+
+<main>
+    <article>
+        <h2>Daily Update</h2>
+        <p>This is the main content of the day. It goes inside the article tag.</p>
+    </article>
+
+    <aside>
+        <h3>Side Notes</h3>
+        <p>Quick links, ads, or related tips go here.</p>
+    </aside>
+</main>
+
+<footer>
+    <p>© 2025 MyDailyDo</p>
+</footer>
+
 </body>
 </html>

@@ -13,6 +13,8 @@
         background-repeat: no-repeat;
         background-position: top;
         text-align: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
         }
     </style>
 </head>
@@ -20,11 +22,12 @@
     <h1 style="font-size: 50px; color: aqua;">Sign In</h1>
     <br>
     <br>
-    <input type="email" placeholder="Email id" required style="font-size: 25px;"><br>
-    <input type="password" id="password" placeholder="Password" required style="font-size: 25px;"><br><br><br>
-    <p style="color: red; display: none;" id="wrong_password">Your password is wrong.</p>
-    <button type="submit" style="color: aqua; font-size: 30px;" onclick="password_check()">Sign In</button>
-
+    <div class="wrapper" style="backdrop-filter: blur(40px); width: 50px; padding: 10px;">
+        <input type="email" placeholder="Email id" required style="font-size: 20px; border-radius: 40px; padding: 10px;"><br><br>
+        <input type="password" id="password" placeholder="Password" required style="font-size: 20px; border-radius: 40px; padding: 10px;"><br><br><br>
+        <p style="color: red; display: none;" id="wrong_password">Your password is wrong.</p>
+        <button type="submit" style="font-size: 25px; border-radius: 40px; padding: 10px;" onclick="password_check()">Sign In</button>
+    </div>
     <script>
         function password_check() {
             let password = document.getElementById('password').value
