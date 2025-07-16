@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyDailyDo</title>
-    <link rel="icon" href="../FavicanMyDailyDo (1).png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="../Favican/MyDailyDo (1).png" type="image/png">
     <style>
         body {
         background-image: url("../Favican/Usign-Gradients-Featured-Image.webp");
@@ -16,6 +17,25 @@
     </style>
 </head>
 <body>
-    
+    <h1 style="font-size: 50px; color: aqua;">Sign In</h1>
+    <br>
+    <br>
+    <input type="email" placeholder="Email id" required style="font-size: 25px;"><br>
+    <input type="password" id="password" placeholder="Password" required style="font-size: 25px;"><br><br><br>
+    <p style="color: red; display: none;" id="wrong_password">Your password is wrong.</p>
+    <button type="submit" style="color: aqua; font-size: 30px;" onclick="password_check()">Sign In</button>
+
+    <script>
+        function password_check() {
+            let password = document.getElementById('password').value
+        if (password != "mydailydo_economy_password") {
+            document.getElementById('wrong_password').style.display = 'block'
+        }
+        else{
+            window.location.href = 'MyDailyDo_main_page.html'
+        }  
+        }
+       
+    </script>
 </body>
 </html>
