@@ -38,27 +38,52 @@
         }
     </style>
 </head>
-<body>
+    <body>
 
-<header>
-    <h1>MyDailyDo</h1>
-</header>
+        <header>
+            <h1>MyDailyDo</h1>
+        </header>
 
-<main>
-    <article>
-        <h2>Daily Update</h2>
-        <p>This is the main content of the day. It goes inside the article tag.</p>
-    </article>
+        <main>
+            <article>
+                <input type="text" style="display: block; font-size: 25px;" placeholder="Task1" id="1"><br>
+                <input type="text" style="display: none; font-size: 25px;" placeholder="Task2" id="2"><br>
+                <input type="text" style="display: none; font-size: 25px;" placeholder="Task3" id="3"><br>
+                <input type="text" style="display: none; font-size: 25px;" placeholder="Task4" id="4"><br>
+                <input type="text" style="display: none; font-size: 25px;" placeholder="Task5" id="5"><br>
+            </article>
 
-    <aside>
-        <h3>Side Notes</h3>
-        <p>Quick links, ads, or related tips go here.</p>
-    </aside>
-</main>
+            <aside>
+                <button style="padding: 10px; font-size: 20px;" onclick="add_task()">Add Task</button><br><br>
+                <button style="padding: 10px;font-size: 20px;" onclick="completed_task()">Completed Task</button><br><br>
+                <button style="padding: 10px; font-size: 20px;" onclick="delete_task()">Delete Task</button><br><br>
+                <button style="padding: 10px; font-size: 20px;">Upgrade Membership</button><br><br>
+            </aside>
+        </main>
 
-<footer>
-    <p>© 2025 MyDailyDo</p>
-</footer>
+        <footer>
+            <p>© 2025 MyDailyDo</p>
+            <marquee behavior="" direction=""></marquee>
+        </footer>
 
-</body>
+        <script>
+            no_task = 2
+            function add_task() {
+                if (no_task === 6) {
+                    console.log('Hi')
+                }
+                else{
+                    document.getElementById(String(no_task)).style.display = 'block'
+                    console.log(no_task)
+                }
+
+                no_task++
+                
+            }
+
+            function completed_task() {
+                
+            }
+        </script>
+    </body>
 </html>
