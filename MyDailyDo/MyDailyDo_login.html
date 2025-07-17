@@ -9,12 +9,14 @@
     <link rel="icon" href="../Favican/MyDailyDo (1).png" type="image/png">
     <style>
         body {
-        background-image: url("../Favican/Usign-Gradients-Featured-Image.webp");
-        background-repeat: no-repeat;
-        background-position: top;
-        text-align: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
+            background-image: url("../Favican/360_F_735447660_Mb1mTmfff8EhrRuornYjGkE9JlGUk4lP.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-position: top;
+            text-align: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
@@ -22,16 +24,17 @@
     <h1 style="font-size: 50px; color: aqua;">Sign In</h1>
     <br>
     <br>
-    <div class="wrapper" style="backdrop-filter: blur(40px); width: 50px; padding: 10px;">
-        <input type="email" placeholder="Email id" required style="font-size: 20px; border-radius: 40px; padding: 10px;"><br><br>
-        <input type="password" id="password" placeholder="Password" required style="font-size: 20px; border-radius: 40px; padding: 10px;"><br><br><br>
-        <p style="color: red; display: none;" id="wrong_password">Your password is wrong.</p>
-        <button type="submit" style="font-size: 25px; border-radius: 40px; padding: 10px;" onclick="password_check()">Sign In</button>
-    </div>
+    <input type="email" placeholder="Email id" required style="font-size: 20px; border-radius: 40px; padding: 10px;">
+    <i class='bx bxs-user' style="font-size: 30px; color: white;"></i><br><br>
+    <input type="password" id="password" placeholder="Password" required style="font-size: 20px; border-radius: 40px; padding: 10px;">
+    <i class='bx bxs-lock-alt' style="font-size: 30px; color: white;"></i><br><br>
+    <p style="color: red; display: none;" id="wrong_password">Your password is wrong.</p><br>
+    <a href="forgot_password.html" style="color: white;">Forgot Password</a><br><br>
+    <button type="submit" style="font-size: 25px; border-radius: 40px; padding: 10px;" onclick="password_check()">Sign In</button>
     <script>
         function password_check() {
             let password = document.getElementById('password').value
-        if (password != "mydailydo_economy_password") {
+        if (password != "mydailydo_password") {
             document.getElementById('wrong_password').style.display = 'block'
         }
         else{
