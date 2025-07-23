@@ -1,89 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" href="../Favican/MyDailyDo (1).png" type="image/png">
-    <title>MyDailyDo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 30px;
-        }
-        main {
-            display: flex;
-            padding: 20px;
-        }
-        article {
-            flex: 3;
-            background-color: #e6f7ff;
-            padding: 20px;
-        }
-        aside {
-            flex: 1;
-            background-color: #ffecd1;
-            padding: 20px;
-            margin-left: 20px;
-        }
-        footer {
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" href="../Favican/MyDailyDo (1).png" type="image/png">
+  <title>MyDailyDo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 30px;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+    }
+
+    article {
+      flex: 3;
+      background-color: #e6f7ff;
+      padding: 20px;
+    }
+
+    aside {
+      flex: 1;
+      background-color: #ffecd1;
+      padding: 20px;
+      margin-left: 20px;
+    }
+
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #completed_task {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .task-list {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .task-item b {
+      font-size: 20px;
+      margin-left: 10px;
+      color: #333;
+    }
+
+    button {
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px 30px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0097a7;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      aside {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
-    <body>
+<body>
+  <div id="main_page" style="display: block;">
+    <header>
+      <h1>MyDailyDo</h1>
+    </header>
 
-        <header>
-            <h1>MyDailyDo</h1>
-        </header>
+    <main>
+      <article>
+        <input type="text" style="display: block; font-size: 25px;" placeholder="Task1" id="1"><br>
+        <input type="text" style="display: none; font-size: 25px;" placeholder="Task2" id="2"><br>
+        <input type="text" style="display: none; font-size: 25px;" placeholder="Task3" id="3"><br>
+        <input type="text" style="display: none; font-size: 25px;" placeholder="Task4" id="4"><br>
+        <input type="text" style="display: none; font-size: 25px;" placeholder="Task5" id="5"><br>
+      </article>
 
-        <main>
-            <article>
-                <input type="text" style="display: block; font-size: 25px;" placeholder="Task1" id="1"><br>
-                <input type="text" style="display: none; font-size: 25px;" placeholder="Task2" id="2"><br>
-                <input type="text" style="display: none; font-size: 25px;" placeholder="Task3" id="3"><br>
-                <input type="text" style="display: none; font-size: 25px;" placeholder="Task4" id="4"><br>
-                <input type="text" style="display: none; font-size: 25px;" placeholder="Task5" id="5"><br>
-            </article>
+      <aside>
+        <button onclick="add_task()">Add Task</button><br><br>
+        <button onclick="completed_task()">Completed Task</button><br><br>
+        <button onclick="delete_task()">Delete Task</button><br><br>
+        <button>Upgrade Membership</button><br><br>
+      </aside>
+    </main>
 
-            <aside>
-                <button style="padding: 10px; font-size: 20px;" onclick="add_task()">Add Task</button><br><br>
-                <button style="padding: 10px;font-size: 20px;" onclick="completed_task()">Completed Task</button><br><br>
-                <button style="padding: 10px; font-size: 20px;" onclick="delete_task()">Delete Task</button><br><br>
-                <button style="padding: 10px; font-size: 20px;">Upgrade Membership</button><br><br>
-            </aside>
-        </main>
+    <footer>
+      <p>© 2025 MyDailyDo</p>
+      <marquee behavior="" direction="">Stay organized. Stay productive. ✨</marquee>
+    </footer>
+  </div>
 
-        <footer>
-            <p>© 2025 MyDailyDo</p>
-            <marquee behavior="" direction=""></marquee>
-        </footer>
+  <div id="completed_task" style="display: none;">
+    <div class="task-list">
+      <div class="task-item">
+        <input type="checkbox" id="check1">
+        <b id="com_1"></b>
+      </div>
+      <div class="task-item">
+        <input type="checkbox" id="check2">
+        <b id="com_2"></b>
+      </div>
+      <div class="task-item">
+        <input type="checkbox" id="check3">
+        <b id="com_3"></b>
+      </div>
+      <div class="task-item">
+        <input type="checkbox" id="check4">
+        <b id="com_4"></b>
+      </div>
+      <div class="task-item">
+        <input type="checkbox" id="check5">
+        <b id="com_5"></b>
+      </div>
 
-        <script>
-            no_task = 2
-            function add_task() {
-                if (no_task === 6) {
-                    console.log('Hi')
-                }
-                else{
-                    document.getElementById(String(no_task)).style.display = 'block'
-                    console.log(no_task)
-                }
+      <button onclick="submit()">Submit</button>
+      <button onclick="main_page()">Main Page</button>
+    </div>
+  </div>
 
-                no_task++
-                
-            }
+  <script>
+    let no_task = 2;
 
-            function completed_task() {
-                
-            }
-        </script>
-    </body>
+    function add_task() {
+      if (no_task > 5) {
+        alert("Maximum 5 tasks allowed.");
+        return;
+      }
+      document.getElementById(String(no_task)).style.display = 'block';
+      no_task++;
+    }
+
+    function completed_task() {
+      document.getElementById('main_page').style.display = 'none';
+      document.getElementById('completed_task').style.display = 'block';
+
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`com_${i}`).textContent = document.getElementById(`${i}`).value;
+      }
+    }
+
+    function submit() {
+      alert("Your checked tasks will go to completed tasks, but they will not be visible on the main page.");
+
+      for (let i = 1; i <= 5; i++) {
+        if (document.getElementById(`check${i}`).checked) {
+          const inputElem = document.getElementById(`${i}`);
+          localStorage.setItem(`completed_task_${i}`, inputElem.value);
+          inputElem.value = "";
+        }
+      }
+    }
+
+    function main_page() {
+      document.getElementById('main_page').style.display = 'block';
+      document.getElementById('completed_task').style.display = 'none';
+    }
+
+    function delete_task() {
+      alert("Delete task feature coming soon!");
+    }
+  </script>
+</body>
 </html>
+
