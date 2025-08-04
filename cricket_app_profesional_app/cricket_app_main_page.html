@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket</title>
+  <title>CricketZone</title>
+  <link rel="stylesheet" href="style_main_page.css" />
 </head>
 <body>
+    <div class="grid">
+
+        <!-- Row 1 -->
+        <div class="card title" style="grid-column: span 2;">
+          <h1>CricketZone  🏏  </h1>
+          <p>Cricket is not just a game it is an <u><i style="color: aqua;">Emotion</i></u>.</p>
+        </div>
+        <div class="card toc" style="grid-column: span 1;">
+          <h2>TABLE OF CONTENTS</h2>
+          <ul>
+            <li>01. All Matches</li>
+            <li>02. How to play?</li>
+            <li>03. How to become a pro in Cricket?</li>
+            <li>04. What is happening?  (or)  News</li>
+          </ul>
+        </div>    
+        <!-- Row 2 -->
+        <div class="card weare">
+          <h2 id="match_1"></h2><br><br>
+          <p id="match_1_score_1"></p>
+          <p id="match_1_score_2"></p>
+        </div>
+        <div class="card primary">
+          <h2 id="match_2"></h2>
+          <p id="match_2_score_1"></p>
+          <p id="match_2_score_2"></p>
+        </div>
+        <div class="card secondary">
+          <h2 id="match_3"></h2>
+          <p id="match_3_score_1"></p>
+          <p id="match_3_score_2"></p>
+        </div>
+    </div>
+        <!-- Row 3 -->
+        <div class="card logomark">
+            <h3 style="text-align: center; align-self: center;"><b>WALL OF ICONS</b></h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); justify-content: center; justify-self: center; gap: 10px;">
+              <img src="images/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.webp" alt="Kolhi" style="height: 250px; width: 270px;">
+              <img src="images/dhoni.webp" alt="Dhoni" style="height: 250px; width: 270px;">
+              <img src="images/sachin.webp" alt="Sachin" style="height: 250px; width: 270px;">
+            </div>
+            <br>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); justify-content: center; justify-self: center; gap: 10px;">
+              <img src="images/lara.jpeg" alt="Lara" style="height: 250px;" width="250px">
+              <img src="images/viv.jpeg" alt="Viv" style="height: 250px;" width="250px">
+              <img src="images/warne.jpeg" alt="Warne" style="height: 250px;" width="250px">
+              <img src="images/murali.jpeg" alt="Murali" style="height: 250px;" width="250px">
+            </div>
+        </div>
     
+            
+            <div class="card clearspace">
+              <marquee behavior="" direction="">Hi</marquee>
+            </div>
+    </div>
+          
+
 </body>
 </html>

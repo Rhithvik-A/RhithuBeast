@@ -13,7 +13,7 @@
         async function scrapeWebsite() {
             try {
                 // Fetch the HTML content of the target page
-                const response = await fetch('https://cors-anywhere.herokuapp.com/corsdemo');
+                const response = await fetch('https://www.cricbuzz.com/live-cricket-scores/114616/wi-vs-aus-2nd-t20i-australia-tour-of-west-indies-2025');
                 const text = await response.text();
 
                 // Parse the HTML
@@ -21,7 +21,7 @@
                 const doc = parser.parseFromString(text, 'text/html');
 
                 // Extract data (modify selector as needed)
-                const headings = doc.querySelectorAll('p');
+                const headings = doc.querySelectorAll('h2');
                 let output = '';
 
                 headings.forEach(h1 => {

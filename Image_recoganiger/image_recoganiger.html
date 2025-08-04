@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Recoganiger</title>
-    <style>
-        body{
-            align-items: center;
-            background-color: aqua;
-        }
-    </style>
+  <title>Image Upload and Preview</title>
 </head>
 <body>
-    <a href="https://teachablemachine.withgoogle.com/models/TkESk2ySb/" style="font-size: 40px;">Click me</a>
+  <h2>Select an Image</h2>
+
+  <input type="file" id="imageInput" accept="image/*">
+  <br><br>
+
+  <img id="preview" src="" alt="Image will appear here" style="max-width: 300px; display: none;">
+  <a href="https://teachablemachine.withgoogle.com/models/TkESk2ySb/"><button>Finish</button></a>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+
+    imageInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+
+        reader.readAsDataURL(file); // Converts file to base64 and sets as img src
+      }
+    });
+  </script>
 </body>
 </html>
+

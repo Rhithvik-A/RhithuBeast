@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #59149a;
+    color: white;
+    align-items: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 16px;
+    max-width: 1200px;
+    margin: auto;
+    box-sizing: border-box;
+  }
+  
+  .card {
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  .title {
+    background-color: #30005a;
+    text-align: center;
+  }
+  
+  .toc {
+    background-color: #f933b9;
+  }
+  
+  .toc ul {
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+  
+  
+  .weare {
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  
+  .weare span {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .primary, .secondary {
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+
+  .row3{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 16px;
+    max-width: 1200px;
+    margin: auto;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+  
+  .logo {
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 80%;
+  }
+  
+  .logo.pink {
+    background-color: #f933b9;
+    color: white;
+  }
+  
+  .logo.white {
+    background-color: #330066;
+    color: white;
+  }
+  
+  .logomark {
+    background-color: #37006d;
+  }
+  
+  
+  .clearspace {
+    grid-column: span 3;
+    background-color: #190033;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  
