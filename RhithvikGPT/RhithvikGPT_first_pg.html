@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RhithvikGPT</title>
+  <style>
+    body {
+      height: 100vh; /* full viewport height */
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      background-image: url("../Favican/Usign-Gradients-Featured-Image.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: aliceblue;
+    }
+
+    .first_pg {
+      background-color: rgba(0, 0, 0, 0.4); /* translucent box */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* nice shadow */
+      display: block;
+    }
+
+    h1 {
+      font-size: 80px;
+      color: white;
+      margin: 0 0 30px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="first_pg">
+    <h1>RhithvikGPT</h1>
+    <button onclick="shift_to_main_pg()" id="start_button" style="border-radius: 40px; padding: 20px; width: 75%; font-size: 20px; border: none; outline: none; text-align: center; ">Start</button>
+  </div>
+
+  <script>
+    function shift_to_main_pg() {
+        window.location.href = "RhithvikGPT_main_pg.html";
+    }
+  </script>
+</body>
+</html>

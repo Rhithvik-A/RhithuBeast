@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RhithvikGPT</title>
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1 id="mainTitle"></h1>
+    </section>
+    <footer>
+        <input type="text" placeholder="Ask Questions" style="font-size: 40px; width: 60%; border-radius: 40px; text-align: center;">
+        <button style="font-size: 40px;"><i class="bxr bx-send-alt bx-breathe"></i></button>
+    </footer>
+
+    <script>
+        // Fetch value from Python API
+        fetch("http://127.0.0.1:8000/get-title")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("mainTitle").innerText = data;
+            });
+    </script>
+</body>
+</html>
