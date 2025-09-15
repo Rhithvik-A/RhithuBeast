@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+python-multipart      # if you handle file uploads
+sqlalchemy            # if you use a database
+pydantic[email]       # if you use email validations
+requests              # if you call external APIs
+easyocr
