@@ -5,8 +5,8 @@ import easyocr
 import re
 
 app = FastAPI()
-UPLOAD_FOLDER = r"C:\plain"
-DATA_FOLDER = r"C:\data"
+UPLOAD_FOLDER = r"C:\Users\Ashok\Desktop\student_details\plain"
+DATA_FOLDER = r"C:\Users\Ashok\Desktop\student_details\data"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.post("/upload/")
