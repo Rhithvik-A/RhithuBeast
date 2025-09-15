@@ -9,6 +9,22 @@
   .form-container { background: rgba(255,255,255,0.95); padding:30px; border-radius:15px; box-shadow:0 12px 30px rgba(0,0,0,0.15); width:400px; display:flex; flex-direction:column; gap:15px;}
   .submit-btn { padding:12px; border:none; border-radius:8px; background:#2575fc; color:white; cursor:pointer;}
   .submit-btn:hover { background:#1255d1;}
+  .loader {
+    border: 6px solid #f3f3f3; /* Light gray background */
+    border-top: 6px solid #2575fc; /* Blue top color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: none; /* Hidden by default */
+    margin: 10px auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+
 </style>
 </head>
 <body>
@@ -23,6 +39,8 @@
   <input type="file" id="details_doc">
 
   <button type="button" class="submit-btn" onclick="uploadFile()">Decrypt</button>
+
+  <div class="loader" id="loader"></div>
 
   <p id="status" style="color:green;"></p>
 </div>
@@ -40,6 +58,10 @@ async function uploadFile() {
     const formData = new FormData();
     formData.append("encrypted_id_file", id_file);
     formData.append("encrypted_details_file", details_file);
+
+    
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('status').innerText = "";
 
     try {
         const res = await fetch("https://rhithubeast.onrender.com/decrypt/", {
@@ -64,6 +86,9 @@ async function uploadFile() {
     } catch (err) {
         console.error(err);
         document.getElementById('status').innerText = "Decryption failed!";
+    }
+    finally {
+      document.getElementById('loader').style.display = 'none';
     }
 }
 </script>

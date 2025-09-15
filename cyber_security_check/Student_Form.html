@@ -13,6 +13,22 @@ body { font-family: 'Segoe UI', sans-serif; background:#f4f7f9; display:flex; ju
 .submit-btn { padding:12px; border:none; border-radius:8px; background:#2575fc; color:white; cursor:pointer; }
 .submit-btn:hover { background:#1255d1; }
 #status { color:green; margin-top:10px; }
+.loader {
+  border: 6px solid #f3f3f3; /* Light gray background */
+  border-top: 6px solid #2575fc; /* Blue top color */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  display: none; /* Hidden by default */
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
 </style>
 </head>
 <body>
@@ -62,6 +78,8 @@ body { font-family: 'Segoe UI', sans-serif; background:#f4f7f9; display:flex; ju
   <button type="button" class="submit-btn" onclick="uploadFile()">Submit Without Encryption</button>
   <button type="button" class="submit-btn" onclick="uploadFile_encrypt()">Submit With Encryption</button>
 
+  <div class="loader" id="loader"></div>
+
   <p id="status"></p>
 </form>
 
@@ -76,7 +94,9 @@ async function uploadFile() {
     formData.append("email", document.getElementById('email').value);
     formData.append("adm_num", document.getElementById('admition_number').value);
     formData.append("file", file);
-
+    
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('status').innerText = "";
     try {
         const res = await fetch("https://rhithubeast.onrender.com/upload/", {
             method: "POST",
@@ -88,6 +108,9 @@ async function uploadFile() {
     } catch (err) {
         console.error(err);
         document.getElementById('status').innerText = "Upload failed!";
+    }
+    finally {
+      document.getElementById('loader').style.display = 'none';
     }
 }
 
@@ -101,6 +124,9 @@ async function uploadFile_encrypt() {
     formData.append("email", document.getElementById('email').value);
     formData.append("adm_num", document.getElementById('admition_number').value);
     formData.append("file", file);
+    
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('status').innerText = "";
 
     try {
         const res = await fetch("https://rhithubeast.onrender.com/encrypt_and_upload/", {
@@ -124,6 +150,9 @@ async function uploadFile_encrypt() {
     } catch (err) {
         console.error(err);
         document.getElementById('status').innerText = "Upload failed!";
+    }
+    finally {
+      document.getElementById('loader').style.display = 'none';
     }
 }
 </script>
