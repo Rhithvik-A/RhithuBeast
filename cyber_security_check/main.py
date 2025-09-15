@@ -3,10 +3,12 @@ from cryptography.fernet import Fernet
 import shutil, os
 import easyocr
 import re
+from pathlib import Path
 
 app = FastAPI()
-UPLOAD_FOLDER = r"C:\Users\Ashok\Desktop\student_details\plain"
-DATA_FOLDER = r"C:\Users\Ashok\Desktop\student_details\data"
+BASE_DIR = Path(__file__).parent
+UPLOAD_FOLDER = BASE_DIR / "files/plain"
+DATA_FOLDER = BASE_DIR / "files/data"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.post("/upload/")
@@ -44,7 +46,7 @@ with open("secret.key", "rb") as key_file:
     key = key_file.read()
 fernet = Fernet(key)
 
-UPLOAD_ENCRYPTED_FOLDER = r"C:\Users\Ashok\Desktop\student_details\encrypted"
+UPLOAD_ENCRYPTED_FOLDER = BASE_DIR / "files/encrypted"
 os.makedirs(UPLOAD_ENCRYPTED_FOLDER, exist_ok=True)
 
 @app.post("/encrypt_and_upload/")
