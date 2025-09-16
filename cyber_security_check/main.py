@@ -50,6 +50,7 @@ def upload_file(
     adm_num: int = Form(16206344),
     file: UploadFile = File(...)
 ):
+    filename = f"{adm_num}_{Path(file.filename).name}"
     file_path = UPLOAD_FOLDER / Path(file.filename).name
     data_path = DATA_FOLDER / Path(file.filename).name
 
@@ -73,7 +74,19 @@ def upload_file(
             f"File: {file.filename}, Admission Number: {adm_num}, EmiratesID: {eid}\n"
         )
 
-    return {"message": "Student details have been saved successfully!"}
+    
+    # Create ZIP
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zipf:
+        zipf.write(file_path, arcname=filename)
+        zipf.write(details_file, arcname="encrypted_details.txt")
+    zip_buffer.seek(0)
+
+    return StreamingResponse(
+        zip_buffer,
+        media_type="application/zip",
+        headers={"Content-Disposition": f"attachment; filename={adm_num}_encrypted_package.zip"}
+    )
 
 
 # ----------------- Encrypt and Upload -----------------
