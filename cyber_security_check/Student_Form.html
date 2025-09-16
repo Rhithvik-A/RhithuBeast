@@ -103,8 +103,18 @@ async function uploadFile() {
             body: formData
         });
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        const data = await res.json();
-        document.getElementById('status').innerText = data.message;
+        // handle ZIP download
+        const blob = await res.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = document.getElementById('admition_number').value + "_encrypted_package.zip";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+
+        document.getElementById('status').innerText = "Encrypted ZIP downloaded!";
     } catch (err) {
         console.error(err);
         document.getElementById('status').innerText = "Upload failed!";
