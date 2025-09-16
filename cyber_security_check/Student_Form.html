@@ -108,13 +108,13 @@ async function uploadFile() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = document.getElementById('admition_number').value + "_encrypted_package.zip";
+        a.download = document.getElementById('admition_number').value + "_student_package.zip";
         document.body.appendChild(a);
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
 
-        document.getElementById('status').innerText = "Encrypted ZIP downloaded!";
+        document.getElementById('status').innerText = "Student ZIP file downloaded!";
     } catch (err) {
         console.error(err);
         document.getElementById('status').innerText = "Upload failed!";
