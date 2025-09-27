@@ -79,13 +79,13 @@ def upload_file(
     zip_buffer = io.BytesIO()
     with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zipf:
         zipf.write(file_path, arcname=filename)
-        zipf.write(details_file, arcname="encrypted_details.txt")
+        zipf.write(details_file, arcname="student_details.txt")
     zip_buffer.seek(0)
 
     return StreamingResponse(
         zip_buffer,
         media_type="application/zip",
-        headers={"Content-Disposition": f"attachment; filename={adm_num}_encrypted_package.zip"}
+        headers={"Content-Disposition": f"attachment; filename={adm_num}_student_package.zip"}
     )
 
 
