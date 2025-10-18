@@ -8,8 +8,11 @@
 </head>
 <body>
     <input type="file" id="input">
+    <button>Click me</button>
+    <h2 id="mainTitle"></h2>
     <script>
-    const file = document.getElementById('input').files[0];
+        function x() {
+            const file = document.getElementById('input').files[0];
     formData.append("file", file);
         // Fetch value from Python API
         fetch("http://127.0.0.1:8000/get-title")
@@ -17,6 +20,7 @@
             .then(data => {
                 document.getElementById("mainTitle").innerText = data;
             });
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rhithvik Tycoon - Terms & Conditions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .terms-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    h2 {
+      color: #555;
+      margin-top: 20px;
+    }
+    p, li {
+      color: #444;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="terms-container">
+    <h1>Terms and Conditions – Rhithvik Tycoon</h1>
+    <p>Welcome to <strong>Rhithvik Tycoon: The Startup Simulator</strong>! By playing this game, you agree to the following rules and guidelines:</p>
+    
+    <h2>1. Objective of the Game</h2>
+    <p>Players aim to grow their virtual startup from a single coder in a bedroom to a global tech empire by accumulating users through clicks and upgrades.</p>
+    
+    <h2>2. Gameplay Mechanics</h2>
+    <ul>
+      <li>Each click earns “Users.”</li>
+      <li>Users can be spent on upgrades that increase clicking power or generate automatic Users over time.</li>
+      <li>Upgrades include hiring developers, implementing AI automation, purchasing cloud servers, and securing investor funding.</li>
+    </ul>
+
+    <h2>3. Upgrades and Progression</h2>
+    <ul>
+      <li><strong>Hire Developer:</strong> Adds +1 User per second.</li>
+      <li><strong>AI Automation:</strong> Adds +10 Users per second.</li>
+      <li><strong>Cloud Servers:</strong> Doubles the number of Users earned per click.</li>
+      <li><strong>Investor Funding:</strong> Multiplies all User gains by three.</li>
+      <li>Progression is tied to milestones representing growth stages, from Intern to Tech Empire.</li>
+    </ul>
+
+    <h2>4. Gameplay Notifications</h2>
+    <p>Players may receive in-game messages, such as productivity boosts or setbacks (e.g., bugs), which affect User accumulation.</p>
+
+    <h2>5. No Real Money Transactions</h2>
+    <p>All in-game currency and upgrades are virtual. There are no monetary exchanges required to play the game.</p>
+
+    <h2>6. Responsibility</h2>
+    <p>Players are responsible for their own gameplay experience. The game is intended for entertainment and educational purposes only.</p>
+
+    <h2>7. Modifications</h2>
+    <p>The game developers reserve the right to modify rules, gameplay mechanics, or features at any time without prior notice.</p>
+
+    <p>By continuing to play <strong>Rhithvik Tycoon</strong>, you acknowledge and accept these terms and conditions.</p>
+    <br><br><br>
+    <div style="display: flex; justify-content: flex-end; align-items: center; padding: 20px;">
+        <div>
+            <input type="checkbox" id="agreement">
+            <label for="agreement">I agree</label>
+            <br><br>
+            <button id="startBtn">Start Rhithvik Tycoon</button>
+        </div>
+    </div>
+</div>
+
+ <script>
+  document.getElementById("startBtn").addEventListener("click", function() {
+    const checkbox = document.getElementById("agreement");
+    if (checkbox.checked) {
+      alert("Thank you! Starting Rhithvik Tycoon...");
+      window.location.href = "http://127.0.0.1:5500/Clicker%20Game/ClickerGameMain.html";
+      // Add your game start code here
+    } else {
+      alert("You must agree to the Terms & Conditions to continue.");
+    }
+  });
+</script>
+</body>
+</html>

@@ -10,10 +10,17 @@
         <source src="../../Sound/flute.mp3" type="audio/mp3">
     </audio>-->
 
-    <audio id="myAudio" controls>
-        <source src="../../Sound/flute.mp3" type="audio/mp3">
+    <audio id="myAudio">
+        <source src="../../Clicker Game/All Images/keyboard-typing-sound-effect-335503.mp3" type="audio/mp3">
     </audio>
+    <button onclick="sound()">Hi</button>
     <!-- document.getElementById('myAudio').play(); -->
+
+    <script>
+        function sound() {
+                    document.getElementById('myAudio').play();         
+        }
+    </script>
 </body>
 </html>
 

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhithvik Tycoon</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+
+
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0c0c0c;
+  color: white;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+img.bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+
+.counters {
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+}
+
+.users, .points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 150px;
+  height: 70px;
+  border-radius: 35px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  font-size: 2em;
+  font-weight: 600;
+  text-shadow: 2px 2px 6px #000;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.users:hover, .points:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.users img, .points img {
+  width: 40px;
+  height: 40px;
+}
+
+.container {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.45);
+}
+
+.panel-item {
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.panel-item:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.25);
+}
+
+.center-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.4s ease;
+  width: 340px;
+}
+
+.center-panel h3 {
+  margin: 0;
+  font-size: 1.6em;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.center-panel-item {
+  border-radius: 16px;
+  padding: 15px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.3em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+.center-panel-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.25);
+}
+
+.center-panel-item p {
+  font-size: 0.8em;
+  font-weight: 400;
+  margin: 6px 0 0;
+}
+
+.close-btn {
+  background: #333;
+  height: 55px;
+  font-size: 1em;
+  border-radius: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.close-btn:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+.level{
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    font-family: 'Bungee Spice', cursive; 
+
+    font-size: 32px;
+    color: #ff6600;
+
+    padding: 25px;
+
+
+}
+
+</style>
+</head>
+<body onclick="points_manager()">
+
+<img class="bg" src="All Images/Gemini_Generated_Image_7mdog77mdog77mdo.png" alt="Coder in bedroom">
+<audio id="keyboard_sound">
+    <source src="All Images/keyboard-typing-sound-effect-335503_XRxpY7Gg.mp3" type="audio/mp3">
+</audio>
+<div class="overlay"></div>
+
+<div class="counters">
+  <div class="users">
+    <span id="users">0</span>
+    <img src="All Images/user.png" alt="Users">
+  </div>
+  <div class="points">
+    <span id="points">0</span>
+    <img src="All Images/dollar.png" alt="$">
+  </div>
+</div>
+
+<div class="container" id="side_pannel">
+  <div class="right-panel">
+    <div class="panel-item" onclick="openPowerups()">Power Ups ⚡</div>
+    <div class="panel-item">Upgrades ⬆️</div>
+    <div class="panel-item">Store 🏪</div>
+  </div>
+</div>
+
+
+<div class="center-panel" id="powerups" style="display: none;">
+  <h3>Power Ups</h3>
+
+  <div class="center-panel-item" style="background: linear-gradient(135deg, #f200ff, #00b3ff);" onclick="powerups(2,1)">
+    2X
+    <p>Gives 2x profit per click. Lasts 1 min</p><br>
+    <p style="color: #000000;">10$</p>
+  </div>
+
+  <div class="center-panel-item" style="background: linear-gradient(135deg, #ff0055, #ff7b00);" onclick="powerups(3,1)">
+    3X
+    <p>Gives 3x profit per click. Lasts 1 min</p><br>
+    <p style="color: #000000;">20$</p>
+  </div>
+
+  <div class="center-panel-item" style="background: linear-gradient(135deg, #ffbf00, #ff0000);" onclick="powerups(2,10)">
+    2X
+    <p>Gives 2x profit per click. Lasts 10 min</p><br>
+    <p style="color: #000000;">90$</p>
+  </div>
+
+  <div class="center-panel-item close-btn" onclick="closePowerups()">
+    Close PowerUps
+  </div>
+</div>
+
+<div class="level" title="404: Team Not Found">The Solo Coder</div>
+
+<script>
+let users = 0;
+let points = 0;
+let multipliers = 1;
+
+function points_manager() {
+  const oldUsers = users;
+  users += multipliers;
+  document.getElementById('users').innerText = users;
+  document.getElementById('keyboard_sound').play();
+
+
+  const oldTens = Math.floor(oldUsers / 10);
+  const newTens = Math.floor(users / 10);
+
+  if (newTens > oldTens) {
+    points += newTens - oldTens;
+    document.getElementById('points').innerText = points;
+  }
+}
+
+function openPowerups() {
+  document.getElementById('powerups').style.display = 'flex';
+  document.getElementById('side_pannel').style.display = 'none';
+}
+
+function powerups(multiplier, time) {
+  if (multiplier === 2 && time === 1) {
+    if (points >= 10) {
+      alert("You Have Activated The 2X Power Up")
+      points = points - 10
+      document.getElementById('powerups').style.display = 'none';
+      document.getElementById('side_pannel').style.display = 'block';
+      multipliers = multiplier;
+      console.log("Timer Started");
+      setTimeout(() => {
+        multipliers = 1;
+        console.log("Timer Ended");
+        alert("Your 2X PowerUp Has Ended")}, time * 60000);
+    }
+    else{
+      alert("You Don't Have Enough Money For This PowerUp")
+    }
+
+}
+
+  if (multiplier === 3 && time === 1) {
+    if (points >= 20) {
+      alert("You Have Activated The 2X Power Up")
+      points = points - 20
+      document.getElementById('powerups').style.display = 'none';
+      document.getElementById('side_pannel').style.display = 'block';
+      multipliers = multiplier;
+      console.log("Timer Started");
+      setTimeout(() => {
+        multipliers = 1;
+        console.log("Timer Ended");
+        alert("Your 3X PowerUp Has Ended")}, time * 60000);
+    }
+    else{
+      alert("You Don't Have Enough Money For This PowerUp")
+    }
+}
+
+  if (multiplier === 2 && time === 10) {
+    if (points >= 90) {
+      alert("You Have Activated The 2X Power Up")
+      points = points - 90
+      document.getElementById('powerups').style.display = 'none';
+      document.getElementById('side_pannel').style.display = 'block';
+      multipliers = multiplier;
+      console.log("Timer Started");
+      setTimeout(() => {
+        multipliers = 1;
+        console.log("Timer Ended");
+        alert("Your 2X PowerUp Has Ended")}, time * 60000);
+    }
+    else{
+      alert("You Don't Have Enough Money For This PowerUp")
+    }
+}
+  }
+
+function closePowerups() {
+  document.getElementById('powerups').style.display = 'none';
+  document.getElementById('side_pannel').style.display = 'block';
+}
+</script>
+</body>
+</html>
