@@ -1,78 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Rhithvik Tycoon – The Startup Simulator</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url('../Favican/360_F_735447660_Mb1mTmfff8EhrRuornYjGkE9JlGUk4lP.jpg');
-      background-size: cover;
-      background-position: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhithvik Tycoon – The Startup Simulator</title>
 
-    .box {
-      padding: 50px 80px;
-      background-color: rgba(255, 255, 255, 0.15); /* translucent */
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(15px); /* frosted glass effect */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
 
-    .box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-    }
-
-    .box h1 {
-      color: white;
-      font-size: 48px;
-      margin: 0 0 40px 0;
-      text-align: center;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
-
-    .btn {
-      background: rgba(0, 128, 255, 0.8);
-      border: none;
-      color: white;
-      padding: 15px 40px;
-      margin: 15px 0;
-      font-size: 28px;
-      border-radius: 15px;
-      font-weight: bold;
-      transition: 0.3s;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background: rgba(0, 180, 255, 0.9);
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-
-    .btn a {
-      color: white;
-      text-decoration: none;
-    }
-  </style>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+</style>
 </head>
-<body>
+<body class="flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('../Favican/360_F_735447660_Mb1mTmfff8EhrRuornYjGkE9JlGUk4lP.jpg');">
 
-<div class="box">
-  <h1>Rhithvik Tycoon</h1>
-  <button class="btn">Login / Sign Up</button>
-  <button class="btn"><a href="http://127.0.0.1:5500/Clicker%20Game/TermConditions.html">Start Playing</a></button>
+<div class="flex flex-col items-center bg-white/15 backdrop-blur-[15px] rounded-[25px] border border-white/30 p-12 shadow-[0_10px_30px_rgba(0,0,0,0.4)] transform transition duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+  <h1 class="text-white text-4xl md:text-5xl font-bold text-center mb-10 drop-shadow-[0_2px_5px_rgba(0,0,0,0.7)]">Rhithvik Tycoon</h1>
+
+  <button class="bg-blue-500/80 text-white font-bold text-2xl md:text-3xl py-3 px-10 rounded-xl mb-4 transition transform duration-300 hover:bg-blue-500/90 hover:scale-105 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
+    Login / Sign Up
+  </button>
+
+  <a href="http://127.0.0.1:5500/Clicker%20Game/TermConditions.html" class="w-full">
+    <button class="bg-blue-500/80 text-white font-bold text-2xl md:text-3xl py-3 px-10 rounded-xl transition transform duration-300 hover:bg-blue-500/90 hover:scale-105 hover:shadow-[0_8px_20px_rgba(0,0,0,0.4)] w-full">
+      Start Playing
+    </button>
+  </a>
 </div>
 
 </body>
