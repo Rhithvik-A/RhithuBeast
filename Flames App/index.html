@@ -1,78 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FLAMES TESTR</title>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FLAMES TESTER</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.95); }
+    }
+    .fade-in { animation: fadeIn 0.6s ease-in-out forwards; }
+    .fade-out { animation: fadeOut 0.6s ease-in-out forwards; }
+  </style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-white bg-cover bg-center"
-style="background-image: url('unnamed.jpg');">
->
 
-<div class="bg-white/10 backdrop-blur-md rounded-2xl p-10 w-80 shadow-2xl text-center">
-  <h2 class="text-3xl font-bold mb-6 tracking-wide">FLAMES TESTER</h2> 
+<body id="body"
+  class="flex items-center justify-center min-h-screen text-white bg-cover bg-center transition-all duration-500"
+  style="background-image: url('Gemini_Generated_Image_iikq6xiikq6xiikq.png');">
 
+  <!-- HOME PAGE -->
+  <div id="main"
+    class="bg-white/10 backdrop-blur-xl rounded-2xl p-10 w-80 shadow-2xl text-center transform transition hover:scale-105">
+    <h2 class="text-3xl font-bold mb-6 tracking-wide bg-clip-text">FLAMES TESTER</h2>
 
+    <input id="name1" type="text" placeholder="Enter First Name"
+      class="w-full mb-4 p-3 rounded-xl text-black text-center focus:ring-2 focus:ring-cyan-400 outline-none transition transform hover:scale-105">
+    <input id="name2" type="text" placeholder="Enter Second Name"
+      class="w-full mb-6 p-3 rounded-xl text-black text-center focus:ring-2 focus:ring-fuchsia-400 outline-none transition transform hover:scale-105">
 
-  <input id="name1" type="text" placeholder="Enter First Name" 
-         class="w-full mb-4 p-3 rounded-xl text-black focus:ring-2 focus:ring-purple-400 outline-none transition transform hover:scale-105">
+    <button onclick="flames()"
+      class="w-full text-white font-bold py-3 rounded-xl shadow-lg transform transition hover:scale-105 hover:shadow-xl"
+      style="background: linear-gradient(135deg, #f200ff, #00b3ff);">
+      Find Relationship
+    </button>
+  </div>
 
-  <input id="name2" type="text" placeholder="Enter Second Name" 
-         class="w-full mb-4 p-3 rounded-xl text-black focus:ring-2 focus:ring-blue-400 outline-none transition transform hover:scale-105">
+  <!-- DETAILS 1 -->
+  <div id="dtails1"
+    class="hidden flex flex-col items-center justify-center bg-white/10 backdrop-blur-xl rounded-2xl p-6 w-80 shadow-2xl text-center text-white h-auto">
+    <p id="1name" class="text-[40px]" style="font-family: 'Italianno', cursive;"></p>
+    <p class="text-[35px]" style="font-family: 'Italianno', cursive;">&</p>
+    <p id="2name" class="text-[40px]" style="font-family: 'Italianno', cursive;"></p>
+    <p id="result" class="text-xl font-semibold mt-2"></p>
 
-  <button onclick="flames()" 
-          class="w-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-3 rounded-xl shadow-lg transform transition hover:scale-105">
-    Find Relationship
-  </button>
+    <div id="friends" class="hidden mt-4"><img src="unnamed (2).jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="love" class="hidden mt-4"><img src="unnamed.jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="affection" class="hidden mt-4"><img src="unnamed (1).jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="marriage" class="hidden mt-4"><video src="ezgif.com-gif-to-mp4-converter.mp4" autoplay loop muted playsinline class="rounded-2xl w-56 mx-auto"></video></div>
+    <div id="enemy" class="hidden mt-4"><img src="unnamed (3).jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="sibling" class="hidden mt-4"><img src="unnamed (4).jpg" class="rounded-2xl w-56 mx-auto" /></div>
 
-  <p id="result" class="mt-6 text-xl font-semibold min-h-[28px]"></p>
-</div>
+    <button onclick="goto2()" 
+      class="mt-4 w-full py-2 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
+      style="background: linear-gradient(135deg, #00b3ff, #f200ff);">
+      View More Details
+    </button>
 
-<script>
-function flames() {
-    let name1 = document.getElementById('name1').value.toLowerCase().replace(/\s+/g, '');
-    let name2 = document.getElementById('name2').value.toLowerCase().replace(/\s+/g, '');
+    <button onclick="restart()" 
+      class="mt-4 w-full py-2 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
+      style="background: linear-gradient(135deg, #f200ff, #00b3ff);">
+      Try Again
+    </button>
+  </div>
 
-    if(!name1 || !name2){
-        document.getElementById('result').innerText = "Enter both names!";
+  <!-- DETAILS 2 -->
+  <div id="details2"
+    class="hidden flex flex-col items-center justify-center bg-white/10 backdrop-blur-xl rounded-2xl p-6 w-80 shadow-2xl text-center text-white h-auto">
+    <p id="name1Display" class="text-xl font-semibold mt-2"></p>
+    <p id="name2Display" class="text-xl font-semibold mt-2"></p>
+    <p id="lovepercent" class="text-xl font-semibold mt-2"></p>
+    <p id="magicletter" class="text-xl font-semibold mt-2"></p>
+    <p id="magicword" class="text-xl font-semibold mt-2"></p>
+
+    <button onclick="goto1()" 
+      class="mt-4 w-full py-2 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
+      style="background: linear-gradient(135deg, #00b3ff, #f200ff);">
+      Back
+    </button>
+  </div>
+
+  <script>
+    let currentFlamesResult = ''; 
+
+    function resetAnimation(el) {
+      el.classList.remove('fade-in', 'fade-out');
+      void el.offsetWidth; // force reflow
+    }
+
+    function flames() {
+      const name1 = document.getElementById('name1').value.trim().toLowerCase();
+      const name2 = document.getElementById('name2').value.trim().toLowerCase();
+      if (!name1 || !name2) return alert("Enter Both Names!");
+
+      if (name1 === name2) {
+        currentFlamesResult = 'L';
+        showResult(name1, name2, 'Self Love 💖');
+        confettiBurst();
         return;
+      }
+
+      let arr1 = name1.split('');
+      let arr2 = name2.split('');
+      for (let i = 0; i < arr1.length; i++) {
+        let idx = arr2.indexOf(arr1[i]);
+        if (idx !== -1) { arr1[i] = ''; arr2[idx] = ''; }
+      }
+
+      let remaining = arr1.filter(c => c).length + arr2.filter(c => c).length;
+      let flamesArr = ['F','L','A','M','E','S'];
+      let index = 0;
+      while (flamesArr.length > 1) {
+        index = (index + remaining - 1) % flamesArr.length;
+        flamesArr.splice(index, 1);
+      }
+
+      currentFlamesResult = flamesArr[0];
+      const resultMap = {
+        'F':'Friends 🤝','L':'Love ❤️','A':'Affection 🥰',
+        'M':'Marriage 💍','E':'Enemy 😈','S':'Sibling 👨‍👩‍👧‍👦'
+      };
+      showResult(name1, name2, resultMap[currentFlamesResult]);
+      showImage(currentFlamesResult);
+      confettiBurst();
     }
 
-    let arr1 = name1.split('');
-    let arr2 = name2.split('');
-
-    for(let i=0; i<arr1.length; i++){
-        let index = arr2.indexOf(arr1[i]);
-        if(index !== -1){
-            arr1[i] = ''; 
-            arr2[index] = ''; 
-        }
+    function showResult(name1, name2, result) {
+      const main = document.getElementById('main');
+      const d1 = document.getElementById('dtails1');
+      main.classList.add('hidden');
+      d1.classList.remove('hidden');
+      resetAnimation(d1);
+      d1.classList.add('fade-in');
+      document.getElementById('1name').innerText = name1[0].toUpperCase()+name1.slice(1);
+      document.getElementById('2name').innerText = name2[0].toUpperCase()+name2.slice(1);
+      document.getElementById('result').innerText = result;
     }
 
-    let remaining = arr1.filter(c => c !== '').length + arr2.filter(c => c !== '').length;
-
-    let flamesArr = ['F','L','A','M','E','S'];
-    let idx = 0;
-
-    while(flamesArr.length > 1){
-        idx = (idx + remaining - 1) % flamesArr.length;
-        flamesArr.splice(idx,1);
+    function showImage(letter) {
+      const all = ['friends','love','affection','marriage','enemy','sibling'];
+      all.forEach(id => document.getElementById(id).classList.add('hidden'));
+      const active = {'F':'friends','L':'love','A':'affection','M':'marriage','E':'enemy','S':'sibling'}[letter];
+      document.getElementById(active).classList.remove('hidden');
     }
 
-    let resultMap = {
-        'F': 'Friends 🤝',
-        'L': 'Love ❤️',
-        'A': 'Affection 🥰',
-        'M': 'Marriage 💍',
-        'E': 'Enemy 😈',
-        'S': 'Sibling 👨‍👩‍👧‍👦'
+    function confettiBurst() {
+      confetti({ particleCount: 200, spread: 120, origin: { y: 1 } });
+    }
+
+    const fixedResults = {
+      'F': { percent: 70, letter: 'F', word: 'Friendship' },
+      'L': { percent: 95, letter: 'L', word: 'Loyalty' },
+      'A': { percent: 85, letter: 'A', word: 'Admiration' },
+      'M': { percent: 99, letter: 'M', word: 'Miracle' },
+      'E': { percent: 20, letter: 'E', word: 'Ego Clash' },
+      'S': { percent: 60, letter: 'S', word: 'Support' }
     };
 
-    document.getElementById('result').innerText = `Relationship: ${resultMap[flamesArr[0]]}`;
-}
-</script>
+    function goto2() {
+      const d1 = document.getElementById('dtails1');
+      const d2 = document.getElementById('details2');
+      resetAnimation(d1);
+      d1.classList.add('fade-out');
+      setTimeout(() => {
+        d1.classList.add('hidden');
+        d2.classList.remove('hidden');
+        resetAnimation(d2);
+        d2.classList.add('fade-in');
+      }, 500);
 
+      const n1 = document.getElementById('1name').innerText;
+      const n2 = document.getElementById('2name').innerText;
+      const fix = fixedResults[currentFlamesResult];
+      document.getElementById('name1Display').innerText = "Name 1: " + n1;
+      document.getElementById('name2Display').innerText = "Name 2: " + n2;
+      document.getElementById('lovepercent').innerText = "Love Percentage 💘: " + fix.percent + "%";
+      document.getElementById('magicletter').innerText = "Magic Letter ✉️: " + fix.letter;
+      document.getElementById('magicword').innerText = "Magic Word ✨: " + fix.word;
+    }
+
+    function goto1() {
+      const d1 = document.getElementById('dtails1');
+      const d2 = document.getElementById('details2');
+      resetAnimation(d2);
+      d2.classList.add('fade-out');
+      setTimeout(() => {
+        d2.classList.add('hidden');
+        d1.classList.remove('hidden');
+        resetAnimation(d1);
+        d1.classList.add('fade-in');
+      }, 500);
+    }
+
+    function restart() {
+      const main = document.getElementById('main');
+      const d1 = document.getElementById('dtails1');
+      const d2 = document.getElementById('details2');
+
+      // Hide details
+      d1.classList.add('hidden');
+      d2.classList.add('hidden');
+
+      // Clear all text
+      ['1name','2name','result','name1Display','name2Display','lovepercent','magicletter','magicword']
+        .forEach(id => document.getElementById(id).innerText = '');
+
+      // Clear inputs
+      document.getElementById('name1').value = '';
+      document.getElementById('name2').value = '';
+
+      // Hide all images/videos
+      ['friends','love','affection','marriage','enemy','sibling'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+
+      // Reset animations
+      [main,d1,d2].forEach(el => {
+        el.classList.remove('fade-in','fade-out');
+        void el.offsetWidth;
+      });
+
+      // Show main
+      main.classList.remove('hidden');
+      main.classList.add('fade-in');
+    }
+  </script>
 </body>
 </html>
-
+``
