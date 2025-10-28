@@ -3,7 +3,7 @@ from google import genai
 
 client = genai.Client(api_key="AIzaSyCLEZkSqwjB3xx7-Eq6NKYO4XfYstnkxX8")
 
-def chat_with_retry(prompt, retries=3, delay=0):
+def chat_with_retry(prompt, retries=1, delay=0):
     for i in range(retries):
         try:
             response = client.models.generate_content(

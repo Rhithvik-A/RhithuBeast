@@ -26,7 +26,6 @@
   class="flex items-center justify-center min-h-screen text-white bg-cover bg-center transition-all duration-500"
   style="background-image: url('Gemini_Generated_Image_iikq6xiikq6xiikq.png');">
 
-  <!-- HOME PAGE -->
   <div id="main"
     class="bg-white/10 backdrop-blur-xl rounded-2xl p-10 w-80 shadow-2xl text-center transform transition hover:scale-105">
     <h2 class="text-3xl font-bold mb-6 tracking-wide bg-clip-text">FLAMES TESTER</h2>
@@ -43,7 +42,6 @@
     </button>
   </div>
 
-  <!-- DETAILS 1 -->
   <div id="dtails1"
     class="hidden flex flex-col items-center justify-center bg-white/10 backdrop-blur-xl rounded-2xl p-6 w-80 shadow-2xl text-center text-white h-auto">
     <p id="1name" class="text-[40px]" style="font-family: 'Italianno', cursive;"></p>
@@ -57,6 +55,8 @@
     <div id="marriage" class="hidden mt-4"><video src="ezgif.com-gif-to-mp4-converter.mp4" autoplay loop muted playsinline class="rounded-2xl w-56 mx-auto"></video></div>
     <div id="enemy" class="hidden mt-4"><img src="unnamed (3).jpg" class="rounded-2xl w-56 mx-auto" /></div>
     <div id="sibling" class="hidden mt-4"><img src="unnamed (4).jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="self_love" class="hidden mt-4"><img src="unnamed7.jpg" class="rounded-2xl w-56 mx-auto" /></div>
+    <div id="true_love" class="hidden mt-4"><img src="Gemini_Generated_Image_dw9tsmdw9tsmdw9t.png" class="rounded-2xl w-56 mx-auto" /></div>
 
     <button onclick="goto2()" 
       class="mt-4 w-full py-2 text-white font-semibold rounded-xl shadow-md hover:scale-105 transition"
@@ -71,7 +71,6 @@
     </button>
   </div>
 
-  <!-- DETAILS 2 -->
   <div id="details2"
     class="hidden flex flex-col items-center justify-center bg-white/10 backdrop-blur-xl rounded-2xl p-6 w-80 shadow-2xl text-center text-white h-auto">
     <p id="name1Display" class="text-xl font-semibold mt-2"></p>
@@ -92,7 +91,7 @@
 
     function resetAnimation(el) {
       el.classList.remove('fade-in', 'fade-out');
-      void el.offsetWidth; // force reflow
+      void el.offsetWidth; 
     }
 
     function flames() {
@@ -101,8 +100,17 @@
       if (!name1 || !name2) return alert("Enter Both Names!");
 
       if (name1 === name2) {
-        currentFlamesResult = 'L';
+        currentFlamesResult = 'SL';
         showResult(name1, name2, 'Self Love 💖');
+        showImage('SL');
+        confettiBurst();
+        return;
+      }
+
+      if (name1 === "aiden" || name2 === "aiden") {
+        currentFlamesResult = 'TL';
+        showResult(name1, name2, 'True Love 💞');
+        showImage('TL');
         confettiBurst();
         return;
       }
@@ -123,10 +131,18 @@
       }
 
       currentFlamesResult = flamesArr[0];
+
       const resultMap = {
         'F':'Friends 🤝','L':'Love ❤️','A':'Affection 🥰',
-        'M':'Marriage 💍','E':'Enemy 😈','S':'Sibling 👨‍👩‍👧‍👦'
+        'M':'Marriage 💍','E':'Enemy 😈','S':'Sibling 👨‍👩‍👧‍👦','SL':'Self Love 💖','TL':'True Love 💞'
       };
+
+      // small random chance of true love
+      if (currentFlamesResult === "L") {
+        let num = Math.floor(Math.random() * 10) + 1;
+        if (num === 1) currentFlamesResult = "TL";
+      }
+
       showResult(name1, name2, resultMap[currentFlamesResult]);
       showImage(currentFlamesResult);
       confettiBurst();
@@ -145,9 +161,12 @@
     }
 
     function showImage(letter) {
-      const all = ['friends','love','affection','marriage','enemy','sibling'];
+      const all = ['friends','love','affection','marriage','enemy','sibling','self_love','true_love'];
       all.forEach(id => document.getElementById(id).classList.add('hidden'));
-      const active = {'F':'friends','L':'love','A':'affection','M':'marriage','E':'enemy','S':'sibling'}[letter];
+      const active = {
+        'F':'friends','L':'love','A':'affection','M':'marriage',
+        'E':'enemy','S':'sibling','SL':'self_love','TL':'true_love'
+      }[letter];
       document.getElementById(active).classList.remove('hidden');
     }
 
@@ -161,7 +180,9 @@
       'A': { percent: 85, letter: 'A', word: 'Admiration' },
       'M': { percent: 99, letter: 'M', word: 'Miracle' },
       'E': { percent: 20, letter: 'E', word: 'Ego Clash' },
-      'S': { percent: 60, letter: 'S', word: 'Support' }
+      'S': { percent: 60, letter: 'S', word: 'Support' },
+      'SL': { percent: 100, letter: 'SL', word: 'Self Growth' },
+      'TL': { percent: '∞', letter: 'TL', word: 'Infinite Love 💞' }
     };
 
     function goto2() {
@@ -204,34 +225,29 @@
       const d1 = document.getElementById('dtails1');
       const d2 = document.getElementById('details2');
 
-      // Hide details
       d1.classList.add('hidden');
       d2.classList.add('hidden');
 
-      // Clear all text
       ['1name','2name','result','name1Display','name2Display','lovepercent','magicletter','magicword']
         .forEach(id => document.getElementById(id).innerText = '');
 
-      // Clear inputs
       document.getElementById('name1').value = '';
       document.getElementById('name2').value = '';
 
-      // Hide all images/videos
-      ['friends','love','affection','marriage','enemy','sibling'].forEach(id => {
+      ['friends','love','affection','marriage','enemy','sibling','self_love','true_love'].forEach(id => {
         document.getElementById(id).classList.add('hidden');
       });
 
-      // Reset animations
       [main,d1,d2].forEach(el => {
         el.classList.remove('fade-in','fade-out');
         void el.offsetWidth;
       });
 
-      // Show main
       main.classList.remove('hidden');
       main.classList.add('fade-in');
     }
   </script>
 </body>
 </html>
-``
+
+
