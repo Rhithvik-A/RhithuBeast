@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>HomeWork GPT</title>
+  <style>
+    /* Floating bubbles animation */
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 0.6; }
+    }
+    .bubble {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center">
+
+  <div class="absolute w-6 h-6 bg-white/30 rounded-full bubble" style="top:10%; left:20%; animation-delay:0s;"></div>
+  <div class="absolute w-4 h-4 bg-white/40 rounded-full bubble" style="top:40%; left:70%; animation-delay:1s;"></div>
+  <div class="absolute w-5 h-5 bg-white/30 rounded-full bubble" style="top:60%; left:30%; animation-delay:2s;"></div>
+  <div class="absolute w-6 h-6 bg-white/20 rounded-full bubble" style="top:80%; left:50%; animation-delay:3s;"></div>
+  <div class="absolute w-3 h-3 bg-white/50 rounded-full bubble" style="top:25%; left:80%; animation-delay:1.5s;"></div>
+
+  <div id="main" class="flex flex-col items-center justify-center bg-white/90 border border-white/20 rounded-3xl p-8 w-80 shadow-2xl text-center transform transition hover:scale-105 z-10">
+    <h2 class="text-4xl font-extrabold mb-6 tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500">
+      HomeWork GPT
+    </h2>
+    <button onclick="showSubjects()"
+      class="w-full font-bold py-3 rounded-2xl shadow-xl transform transition hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 text-white">
+      🚀 Get Started
+    </button>
+  </div>
+
+  <script>
+    function showSubjects() {
+      window.open('http://127.0.0.1:5500/HomeWorkGPT/main_ai.html', '_self');
+
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

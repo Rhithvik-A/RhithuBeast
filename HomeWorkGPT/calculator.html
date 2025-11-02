@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HomeWork GPT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* small polished tweaks beyond Tailwind utilities */
+    .glass {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+    .ring-faint {
+      box-shadow: 0 8px 24px rgba(2,6,23,0.25);
+    }
+    /* make buttons press animation subtle */
+    .btn-press:active { transform: translateY(1px) scale(.998); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Helvetica Neue", monospace; }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100 flex items-center justify-center p-6">
+  <div class="max-w-2xl w-full grid grid-cols-1 gap-6">
+    <!-- Header -->
+    <header class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-semibold">ProCalc</h1>
+        <p class="text-sm text-slate-400">Professional calculator · clean, fast, accurate</p>
+      </div>
+      <div class="flex gap-3 items-center">
+        <button id="themeBtn" class="px-3 py-1 rounded-md bg-slate-700/40 hover:bg-slate-700/60 text-sm">Toggle Theme</button>
+        <button id="copyBtn" class="px-3 py-1 rounded-md bg-indigo-600 hover:bg-indigo-500 text-sm">Copy</button>
+      </div>
+    </header>
+
+    <!-- Calculator Card -->
+    <main class="glass ring-faint rounded-2xl p-6 shadow-xl">
+      <div class="grid grid-cols-12 gap-4">
+        <!-- Display column -->
+        <section class="col-span-12 md:col-span-7 flex flex-col gap-4">
+          <div class="rounded-xl p-4 bg-gradient-to-b from-slate-900/60 to-slate-900/40 border border-slate-700/30">
+            <div class="flex justify-between items-start">
+              <div class="text-xs text-slate-400">Expression</div>
+              <div id="memoryIndicator" class="text-xs text-amber-400 hidden">M</div>
+            </div>
+            <div id="expr" class="mt-2 text-slate-300 text-sm mono break-words">0</div>
+            <div id="result" class="mt-3 text-4xl font-semibold mono">0</div>
+          </div>
+
+          <div class="grid grid-cols-4 gap-3">
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-action="clear">AC</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-action="back">⌫</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="(">(</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-medium" data-value=")">)</button>
+
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="7">7</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="8">8</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="9">9</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-medium" data-value="/">÷</button>
+
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="4">4</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="5">5</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="6">6</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-medium" data-value="*">×</button>
+
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="1">1</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="2">2</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="3">3</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-medium" data-value="-">−</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-900 font-medium" data-value="+">+</button>
+
+            <button class="col-span-2 btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value="0">0</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700/60 text-sm" data-value=".">.</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-slate-100 font-medium" data-action="equals">=</button>
+
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/50 text-sm" data-action="sqrt">√</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/50 text-sm" data-action="pow">^</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/50 text-sm" data-action="percent">%</button>
+            <button class="btn-press px-3 py-2 rounded-lg bg-slate-700/40 hover:bg-slate-700/50 text-sm" data-action="neg">±</button>
+          </div>
+        </section>
+
+        <!-- History / Tools column -->
+        <aside class="col-span-12 md:col-span-5 border-l md:border-l-0 md:pl-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm text-slate-300">History</h3>
+            <button id="clearHistory" class="text-xs text-amber-400">Clear</button>
+          </div>
+          <div id="history" class="h-64 overflow-auto rounded-xl p-3 bg-slate-800/40 border border-slate-700/30">
+            <!-- history entries injected here -->
+          </div>
+
+          <div class="mt-4">
+            <label class="text-xs text-slate-400">Memory</label>
+            <div class="mt-2 flex gap-2">
+              <button id="memSave" class="px-3 py-1 rounded-md bg-slate-700/50">M+</button>
+              <button id="memRecall" class="px-3 py-1 rounded-md bg-slate-700/50">MR</button>
+              <button id="memClear" class="px-3 py-1 rounded-md bg-slate-700/50">MC</button>
+            </div>
+          </div>
+
+          <div class="mt-6 text-xs text-slate-400">
+            Tip: You can also type with your keyboard. Press Enter to evaluate.
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="text-xs text-slate-500 text-center">Made with care — fast, accurate, and a tiny bit smug.</footer>
+  </div>
+
+<script>
+  // Basic safe evaluator: allow digits, operators, parentheses, decimals, percent and functions we define
+  const exprEl = document.getElementById('expr');
+  const resultEl = document.getElementById('result');
+  const historyEl = document.getElementById('history');
+  const memoryIndicator = document.getElementById('memoryIndicator');
+
+  let expression = '';
+  let memory = null;
+
+  function updateDisplays() {
+    exprEl.textContent = expression || '0';
+    try {
+      const val = evaluateExpression(expression || '0');
+      resultEl.textContent = formatNumber(val);
+    } catch (e) {
+      resultEl.textContent = '—';
+    }
+  }
+
+  function formatNumber(x) {
+    if (Number.isFinite(x)) {
+      // limit to sensible digits
+      let s = x.toString();
+      if (Math.abs(x) < 1e-6 || Math.abs(x) >= 1e12) s = x.toExponential(6);
+      else s = parseFloat(x.toFixed(10)).toString();
+      return s;
+    }
+    return 'Error';
+  }
+
+  function sanitize(input) {
+    // allow digits, whitespace, simple operators, parentheses, dot, percent and ^
+    const allowed = /^[0-9+\-*/().%\s^]*$/;
+    if (!allowed.test(input)) throw new Error('Invalid characters');
+    return input;
+  }
+
+  function evaluateExpression(input) {
+    if (!input) return 0;
+    // replace '^' with '**' for exponent, handle percent as division by 100
+    let s = input.replace(/\^/g, '**');
+    s = s.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+    sanitize(s);
+    // disallow sequences like '***' or '//'
+    if (/\*\*\*|\/\//.test(s)) throw new Error('Malformed');
+    // Use Function to evaluate with Math in scope
+    const fn = new Function('Math', 'with(Math){ return ' + s + '}');
+    const out = fn(Math);
+    if (typeof out !== 'number' || !isFinite(out)) throw new Error('Math error');
+    return out;
+  }
+
+  // Button handling
+  document.querySelectorAll('[data-value]').forEach(b => b.addEventListener('click', e => {
+    const v = e.currentTarget.getAttribute('data-value');
+    expression += v;
+    updateDisplays();
+  }));
+
+  document.querySelectorAll('[data-action]').forEach(b => b.addEventListener('click', e => {
+    const a = e.currentTarget.getAttribute('data-action');
+    if (a === 'clear') { expression = ''; updateDisplays(); }
+    else if (a === 'back') { expression = expression.slice(0, -1); updateDisplays(); }
+    else if (a === 'equals') { try { const val = evaluateExpression(expression); pushHistory(expression, val); expression = String(val); updateDisplays(); } catch (err) { resultEl.textContent = 'Error'; }}
+    else if (a === 'sqrt') { expression += 'Math.sqrt('; updateDisplays(); }
+    else if (a === 'pow') { expression += '^'; updateDisplays(); }
+    else if (a === 'percent') { expression += '%'; updateDisplays(); }
+    else if (a === 'neg') { expression = toggleNegative(expression); updateDisplays(); }
+  }));
+
+  function toggleNegative(s) {
+    if (!s) return '-';
+    // if last token is number, wrap it with ( -1 * ... )
+    return s + '*-1';
+  }
+
+  function pushHistory(expr, result) {
+    const row = document.createElement('div');
+    row.className = 'p-2 rounded-md mb-2 bg-slate-900/40 text-sm';
+    row.innerHTML = '<div class="text-xs text-slate-400">' + escapeHtml(expr) + '</div>' +
+      '<div class="font-medium mono">' + escapeHtml(String(result)) + '</div>';
+    historyEl.prepend(row);
+  }
+
+  function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // Memory
+  document.getElementById('memSave').addEventListener('click', ()=>{
+    try { memory = evaluateExpression(expression || '0'); memoryIndicator.classList.remove('hidden'); } catch(e){ alert('Cannot save: invalid expression'); }
+  });
+  document.getElementById('memRecall').addEventListener('click', ()=>{ if (memory !== null) { expression += String(memory); updateDisplays(); } });
+  document.getElementById('memClear').addEventListener('click', ()=>{ memory = null; memoryIndicator.classList.add('hidden'); });
+
+  // History clear
+  document.getElementById('clearHistory').addEventListener('click', ()=>{ historyEl.innerHTML = ''; });
+
+  // Copy result
+  document.getElementById('copyBtn').addEventListener('click', async ()=>{
+    try { await navigator.clipboard.writeText(resultEl.textContent); alert('Result copied'); } catch(e){ alert('Copy failed'); }
+  });
+
+  // Theme toggle (light/dark)
+  const themeBtn = document.getElementById('themeBtn');
+  let light = false;
+  themeBtn.addEventListener('click', ()=>{
+    light = !light;
+    document.body.classList.toggle('bg-gradient-to-br');
+    if (light) {
+      document.body.classList.replace('bg-gradient-to-br','bg-gradient-to-br');
+      document.body.style.background = 'linear-gradient(180deg,#f8fafc,#e6eef8)';
+      document.documentElement.style.colorScheme = 'light';
+      document.body.classList.remove('text-slate-100');
+      document.body.classList.add('text-slate-900');
+    } else {
+      location.reload(); // quick reset to dark state (simple)
+    }
+  });
+
+  // Keyboard support
+  window.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') { e.preventDefault(); try{ const val = evaluateExpression(expression); pushHistory(expression, val); expression = String(val); updateDisplays(); } catch(err){ resultEl.textContent = 'Error'; } }
+    else if (e.key === 'Backspace') { expression = expression.slice(0,-1); updateDisplays(); }
+    else if (['0','1','2','3','4','5','6','7','8','9','.','+','-','*','/','%','(',')','^'].includes(e.key)) { expression += e.key; updateDisplays(); }
+  });
+
+  // utility on load
+  updateDisplays();
+
+</script>
+</body>
+</html>
