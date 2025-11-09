@@ -1,36 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RhithvikGPT</title>
-    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-    <style>
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhithvik GPT</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="Favicon/Untitled design.png">
 </head>
-<body>
-    <section>
-        <h1 id="mainTitle"></h1>
-    </section>
-    <footer>
-        <input type="text" placeholder="Ask Questions" style="font-size: 40px; width: 60%; border-radius: 40px; text-align: center;">
-        <button style="font-size: 40px;"><i class="bxr bx-send-alt bx-breathe"></i></button>
-    </footer>
 
-    <script>
-        // Fetch value from Python API
-        fetch("http://127.0.0.1:8000/get-title")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("mainTitle").innerText = data;
-            });
-    </script>
+<body class="w-screen bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 font-inter cursor-pointer">
+
+<!-- ✅ SIDEBAR -->
+<div id="sidebar"
+  class="fixed left-0 top-0 h-full w-60 bg-white/70 backdrop-blur-lg shadow-xl p-6 transform -translate-x-full transition-all duration-300 z-50 overflow-y-auto">
+
+  <h2 class="text-2xl font-bold mb-6 text-purple-700" onclick="toggleSidebar()">⚡ Menu</h2>
+
+  <button onclick="btn_1()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    📐 Math
+  </button>
+  <button onclick="btn_2()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    🔬 Science
+  </button>
+  <button onclick="btn_3()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    🧪 Chemistry
+  </button>
+  <button onclick="btn_4()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200">
+    📄 Study Tips
+  </button>
+</div>
+
+<!-- ✅ HEADER -->
+<header class="flex items-center gap-3 p-4">
+  <button onclick="toggleSidebar()" class="text-3xl font-bold rounded-lg">☰</button>
+
+  <img src="Untitled design1.png" class="w-12 h-12 rounded-xl" alt="Rhithvik GPT Logo">
+  
+  <div class="flex flex-col leading-tight">
+      <span class="text-xl font-bold tracking-wide">Rhithvik GPT</span>
+      <p class="text-sm"><em>AI Assistant</em></p>
+  </div>
+</header>
+
+<div id="chatContainer" class="relative w-full flex flex-col items-center p-6">
+
+  <div id="buttonSection" class="w-full max-w-4xl mb-6 flex flex-col items-center">
+    <h1 class="text-5xl font-extrabold mb-4 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400 text-center">
+      Rhithvik GPT
+    </h1>
+    <p class="text-gray-700 text-lg mb-6 text-center">Your intelligent AI assistant, ready to help with anything</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+      <button onclick="btn_1()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
+        📐 Math: Numbers & Equations
+      </button>
+      <button onclick="btn_2()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
+        🔬 Science: Concepts & Experiments
+      </button>
+      <button onclick="btn_3()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
+        🧪 Chemistry: Reactions & Elements
+      </button>
+      <button onclick="btn_4()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
+        📄 Study & Exam Tips
+      </button>
+    </div>
+  </div>
+
+  <div id="chatSection" class="flex-1 w-full max-w-4xl flex flex-col overflow-hidden rounded-2xl p-4">
+    <div id="chat" class="flex-1 w-full overflow-y-auto flex flex-col gap-3 scroll-smooth p-2
+    scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200"></div>
+
+    <div id="inputSection" class="flex w-full mt-2">
+      <input id="userInput" type="text" placeholder="Ask me a question..."
+        class="flex-grow p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-md placeholder-gray-400 text-gray-900 font-medium transition-all duration-200 bg-white/80 backdrop-blur-md">
+      <button onclick="askBot()"
+        class="ml-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full hover:scale-105 hover:shadow-lg active:scale-95 transition duration-300 font-semibold">
+        Ask
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleSidebar() {
+    const bar = document.getElementById("sidebar");
+    bar.classList.toggle("-translate-x-full");
+}
+
+const input = document.getElementById('userInput');
+const chat = document.getElementById('chat');
+
+function addBotMessage(message) {
+  const botMsg = document.createElement('div');
+  botMsg.className = 'self-start bg-white/70 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft backdrop-blur-md';
+  botMsg.textContent = message;
+  chat.appendChild(botMsg);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function btn_1() {
+  document.getElementById('buttonSection').style.display = 'none';
+  addBotMessage('I can help you solve arithmetic problems, simplify equations, and explain algebra concepts step by step, no matter your grade.');
+}
+
+function btn_2() {
+  document.getElementById('buttonSection').style.display = 'none';
+  addBotMessage('Ask me about physics, chemistry, or biology topics, and I’ll explain them clearly with examples and simple experiments you can try.');
+}
+
+function btn_3() {
+  document.getElementById('buttonSection').style.display = 'none';
+  addBotMessage('I can guide you through chemical reactions, properties of elements, and make tricky concepts easy to understand.');
+}
+
+function btn_4() {
+  document.getElementById('buttonSection').style.display = 'none';
+  addBotMessage('I provide smart strategies for homework, revision, and time management to help you study efficiently and score better.');
+}
+
+input.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    document.getElementById('buttonSection').style.display = 'none'
+    event.preventDefault();
+    askBot();
+  }
+});
+
+async function askBot() {
+  document.getElementById('buttonSection').style.display = 'none'
+  const question = input.value.trim();
+  if (!question) return;
+  input.value = "";
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'self-end bg-gradient-to-r from-purple-300 to-pink-200 text-purple-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInRight';
+  userMsg.textContent = question;
+  chat.appendChild(userMsg);
+
+  const typing = document.createElement('div');
+  typing.className = 'self-start bg-blue-100 text-blue-900 p-3 rounded-2xl max-w-[75%] shadow-md italic';
+  typing.textContent = '🤖 Thinking...';
+  chat.appendChild(typing);
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/ai_response?Question=${encodeURIComponent(question)}`);
+    const data = await response.json();
+    typing.remove();
+
+    const botMsg = document.createElement('div');
+    botMsg.className = 'self-start bg-white/70 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft backdrop-blur-md';
+    botMsg.innerHTML = marked.parse(data.answer || data.error || "No response");
+    chat.appendChild(botMsg);
+  } catch (error) {
+    typing.textContent = "❌ Error: Unable to fetch response";
+  }
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// Sidebar toggle
+function toggleSidebar() {
+  const bar = document.getElementById("sidebar");
+  bar.classList.toggle("-translate-x-full");
+}
+</script>
+
+<style>
+@keyframes slideInRight {
+  0% { transform: translateX(50%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInLeft {
+  0% { transform: translateX(-50%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.animate-slideInRight { animation: slideInRight 0.3s ease-out; }
+.animate-slideInLeft { animation: slideInLeft 0.3s ease-out; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(147, 51, 234, 0.8);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(147, 51, 234, 1);
+}
+</style>
+
 </body>
 </html>

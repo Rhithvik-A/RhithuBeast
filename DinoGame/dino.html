@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dino Game 🦖</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background: linear-gradient(-45deg, #00ff33, #ff0000, #f700ff, #00ddff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #gameArea {
+    position: relative;
+    width: 800px;
+    height: 250px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+
+  .dino {
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.4));
+  }
+
+  .cactus {
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    height: 40px;
+  }
+
+  #score, #highScore {
+    position: absolute;
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 10;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  #score {
+    top: 8px;
+    right: 12px;
+    background: linear-gradient(90deg,#fbbf24,#f97316);
+  }
+
+  #highScore {
+    top: 48px;
+    right: 12px;
+    background: linear-gradient(90deg,#34d399,#059669);
+  }
+</style>
+</head>
+<body onclick="jump()">
+
+<h1 class="text-4xl font-extrabold text-gray-900 mb-4 drop-shadow-md">🦖 Dino Run</h1>
+
+<div id="gameArea">
+  <img id="dino" class="dino" src="image.png">
+  <p id="score">Score: 0</p>
+  <p id="highScore">High Score: 0</p>
+</div>
+
+<script>
+const gameArea = document.getElementById("gameArea");
+const dino = document.getElementById("dino");
+const scoreDisplay = document.getElementById("score");
+const highScoreDisplay = document.getElementById("highScore");
+
+const dinoW = 50, dinoH = 50;
+const cactusW = 30, cactusH = 40;
+
+let dinoX = 50, dinoY = 0, dinoVy = 0, jumping = false;
+
+let cacti = [];
+const cactusSpeed = 7; 
+let startTime = null;
+let gameOver = false;
+let highScore = 0;
+
+// Spawn 5 cacti
+for (let i = 0; i < 5; i++) {
+  const cactus = document.createElement("img");
+  cactus.src = "cactus.png";
+  cactus.classList.add("cactus");
+  cactus.style.left = 800 + i*800 + Math.random()*200 + "px"; // far apart
+  gameArea.appendChild(cactus);
+  cacti.push(cactus);
+}
+
+function jump() {
+  if (!jumping && !gameOver) {
+    dinoVy = 12;
+    jumping = true;
+  } else if (gameOver) {
+    resetGame();
+  }
+}
+
+function resetGame() {
+  window.location.href = 'http://127.0.0.1:5500/DinoGame/dino.html';
+  update();
+}
+
+function isColliding(dinoElem, cactusElem){
+  const shrink=0.8;
+  const dRect = {
+    x:dinoX + dinoW*(1-shrink)/2,
+    y:dinoY + dinoH*(1-shrink)/2,
+    w:dinoW*shrink,
+    h:dinoH*shrink
+  };
+  const cX=parseFloat(cactusElem.style.left);
+  const cRect={
+    x:cX + cactusW*(1-shrink)/2,
+    y:0,
+    w:cactusW*shrink,
+    h:cactusH*shrink
+  };
+  return (
+    dRect.x < cRect.x + cRect.w &&
+    dRect.x + dRect.w > cRect.x &&
+    dRect.y < cRect.y + cRect.h &&
+    dRect.y + dRect.h > cRect.y
+  );
+}
+
+function update(){
+  if(!startTime) startTime=performance.now();
+  if(gameOver){ 
+    scoreDisplay.innerText+=" 💀 GAME OVER! Press R to Restart"; 
+    if(scoreDisplay.innerText.match(/\d+/)){
+      let scoreVal = parseInt(scoreDisplay.innerText.match(/\d+/)[0]);
+      if(scoreVal > highScore) highScore = scoreVal;
+      highScoreDisplay.innerText = "High Score: " + Math.floor(highScore/10);
+    }
+    return; 
+  }
+
+  dinoY += dinoVy; 
+  dinoVy -= 0.75; 
+  if(dinoY<0){ dinoY=0; dinoVy=0; jumping=false; }
+  dino.style.bottom=dinoY+"px"; 
+  dino.style.left=dinoX+"px";
+
+  const elapsed = Math.floor(performance.now() - startTime);
+
+  cacti.forEach(c=>{
+    let x=parseFloat(c.style.left);
+    x -= cactusSpeed;
+    if(x + cactusW < 0){
+      let maxRight = Math.max(...cacti.map(c2=>parseFloat(c2.style.left)));
+      x = 800 + Math.random()*400 + Math.min(100,maxRight);
+    }
+    c.style.left = x + "px";
+    if(isColliding(dino,c)) gameOver=true;
+  });
+
+  scoreDisplay.innerText="Score: "+ Math.floor(elapsed / 10);
+  if(elapsed > highScore) highScore = elapsed;
+  highScoreDisplay.innerText = "High Score: " + Math.floor(highScore / 10);
+
+  requestAnimationFrame(update);
+}
+
+document.addEventListener("keydown", e=>{
+  if(e.code==="Space") jump();
+  if(e.code==="KeyR") resetGame();
+});
+gameArea.addEventListener("click", jump);
+
+resetGame();
+</script>
+
+</body>
+</html>

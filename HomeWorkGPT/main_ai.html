@@ -7,57 +7,97 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="Favicon/Untitled design.png">
 </head>
 
-<body class="h-screen w-screen bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 font-inter overflow-hidden">
+<body class="w-screen min-h-screen bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 font-inter cursor-pointer">
 
-  <div id="chatContainer" class="relative w-full h-full flex flex-col items-center p-6">
+<!-- ✅ SIDEBAR -->
+<div id="sidebar"
+  class="fixed left-0 top-0 h-full w-60 bg-white/70 backdrop-blur-lg shadow-xl p-6 transform -translate-x-full transition-all duration-300 z-50 overflow-y-auto">
 
-    <div id="buttonSection" class="w-full max-w-4xl mb-6 flex flex-col items-center">
-      <h1 class="text-5xl font-extrabold mb-4 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400 text-center">
-        HomeWork GPT
-      </h1>
-      <p class="text-gray-700 text-lg mb-6 text-center">Your intelligent AI assistant, ready to help with anything</p>
+  <h2 class="text-2xl font-bold mb-6 text-purple-700" onclick="toggleSidebar()">⚡ Menu</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
-        <button onclick="btn_1()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
-          📐 Math: Numbers & Equations
-        </button>
-        <button onclick="btn_2()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
-          🔬 Science: Concepts & Experiments
-        </button>
-        <button onclick="btn_3()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
-          🧪 Chemistry: Reactions & Elements
-        </button>
-        <button onclick="btn_4()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300 backdrop-blur-md">
-          📄 Study & Exam Tips
-        </button>
-      </div>
+  <button onclick="btn_1()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    📐 Math
+  </button>
+  <button onclick="btn_2()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    🔬 Science
+  </button>
+  <button onclick="btn_3()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200 mb-2">
+    🧪 Chemistry
+  </button>
+  <button onclick="btn_4()" class="w-full text-left p-3 rounded-xl bg-purple-100 hover:bg-purple-200">
+    📄 Study Tips
+  </button>
+</div>
+
+<!-- ✅ HEADER -->
+<header class="flex items-center gap-3 p-4">
+  <button onclick="toggleSidebar()" class="text-3xl font-bold rounded-lg">☰</button>
+
+  <img src="../RhithvikGPT/Untitled design1.png" class="w-12 h-12 rounded-xl" alt="HomeWork GPT Logo">
+  
+  <div class="flex flex-col leading-tight">
+      <span class="text-xl font-bold tracking-wide">HomeWork GPT</span>
+      <p class="text-sm"><em>AI Assistant</em></p>
+  </div>
+</header>
+
+<!-- ✅ MAIN CONTAINER -->
+<div id="chatContainer" class="relative w-full flex flex-col items-center p-6 min-h-screen">
+
+  <!-- Buttons Section -->
+  <div id="buttonSection" class="w-full max-w-4xl mb-6 flex flex-col items-center">
+    <h1 class="text-5xl font-extrabold mb-4 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-400 text-center">
+      HomeWork GPT
+    </h1>
+    <p class="text-gray-700 text-lg mb-6 text-center">Your intelligent AI assistant, ready to help with anything</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
+      <button onclick="btn_1()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300">
+        📐 Math: Numbers & Equations
+      </button>
+      <button onclick="btn_2()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300">
+        🔬 Science: Concepts & Experiments
+      </button>
+      <button onclick="btn_3()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300">
+        🧪 Chemistry: Reactions & Elements
+      </button>
+      <button onclick="btn_4()" class="px-8 py-5 rounded-2xl text-lg font-semibold text-purple-900 bg-white/60 border border-white/50 shadow-lg hover:bg-white/80 hover:shadow-2xl hover:scale-105 transition duration-300">
+        📄 Study & Exam Tips
+      </button>
     </div>
-
-    <div id="chatSection" class="flex-1 w-full max-w-4xl flex flex-col overflow-hidden rounded-2xl p-4">
-      <div id="chat" class="flex-1 w-full overflow-y-auto flex flex-col gap-3 scroll-smooth p-2"></div>
-
-      <div id="inputSection" class="flex w-full mt-2">
-        <input id="userInput" type="text" placeholder="Ask me a question..."
-          class="flex-grow p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-md placeholder-gray-400 text-gray-900 font-medium transition-all duration-200 bg-white/80 backdrop-blur-md">
-        <button onclick="askBot()"
-          class="ml-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full hover:scale-105 hover:shadow-lg active:scale-95 transition duration-300 font-semibold">
-          Ask
-        </button>
-      </div>
-    </div>
-
   </div>
 
+  <div id="chatSection" class="w-full max-w-4xl flex flex-col rounded-2xl p-4">
+    <div id="chat" class="w-full max-h-[500px] overflow-y-auto flex flex-col gap-3 scroll-smooth p-2
+    scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200"></div>
+
+<div id="inputSection" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[100%] max-w-xl flex items-center justify-between bg-white/30 backdrop-blur-md border border-white/20 shadow-lg rounded-full p-2">
+  <input id="userInput" type="text" placeholder="Ask me a question..."
+    class="flex-grow px-5 py-3 bg-transparent rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 font-medium">
+  <button onclick="askBot()"
+    class="ml-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:scale-105 hover:shadow-xl active:scale-95 transition duration-300">
+    Ask ✨
+  </button>
+</div>
+
+</div>
+
 <script>
+function toggleSidebar() {
+    const bar = document.getElementById("sidebar");
+    bar.classList.toggle("-translate-x-full");
+}
+
 const input = document.getElementById('userInput');
 const chat = document.getElementById('chat');
 
 function addBotMessage(message) {
   const botMsg = document.createElement('div');
-  botMsg.className = 'self-start bg-white/70 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft backdrop-blur-md';
-  botMsg.textContent = message; // you can use innerHTML if needed
+  botMsg.className = 'self-start bg-white/80 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft';
+  botMsg.textContent = message;
   chat.appendChild(botMsg);
   chat.scrollTop = chat.scrollHeight;
 }
@@ -82,7 +122,6 @@ function btn_4() {
   addBotMessage('I provide smart strategies for homework, revision, and time management to help you study efficiently and score better.');
 }
 
-
 input.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     document.getElementById('buttonSection').style.display = 'none'
@@ -98,9 +137,10 @@ async function askBot() {
   input.value = "";
 
   const userMsg = document.createElement('div');
-  userMsg.className = 'self-end bg-gradient-to-r from-purple-300 to-pink-200 text-purple-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInRight';
+  userMsg.className = 'self-end bg-white/80 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInRight';
   userMsg.textContent = question;
   chat.appendChild(userMsg);
+
 
   const typing = document.createElement('div');
   typing.className = 'self-start bg-blue-100 text-blue-900 p-3 rounded-2xl max-w-[75%] shadow-md italic';
@@ -114,7 +154,7 @@ async function askBot() {
     typing.remove();
 
     const botMsg = document.createElement('div');
-    botMsg.className = 'self-start bg-white/70 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft backdrop-blur-md';
+    botMsg.className = 'self-start bg-white/80 text-gray-900 p-3 rounded-2xl max-w-[75%] shadow-md animate-slideInLeft';
     botMsg.innerHTML = marked.parse(data.answer || data.error || "No response");
     chat.appendChild(botMsg);
   } catch (error) {
@@ -125,19 +165,7 @@ async function askBot() {
 }
 </script>
 
-<style>
-@keyframes slideInRight {
-  0% { transform: translateX(50%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-@keyframes slideInLeft {
-  0% { transform: translateX(-50%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-.animate-slideInRight { animation: slideInRight 0.3s ease-out; }
-.animate-slideInLeft { animation: slideInLeft 0.3s ease-out; }
-</style>
+
 
 </body>
 </html>
-
