@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PyLearn</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+<body
+  class="flex items-center justify-center min-h-screen text-white bg-cover bg-center transition-all duration-500"
+  style="background-image: url('../Favican/login.jpg');">
+
+  <!-- Background -->
+  <img 
+    class="fixed inset-0 w-full h-full object-cover z-[-2] 
+           filter brightness-110 blur-sm saturate-150" 
+    src="home_page_img.png" 
+    alt="PyLearn Background">
+
+  <!-- Blue overlay -->
+  <div class="fixed inset-0 bg-blue-900/40 z-[-1]"></div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full flex justify-between items-center 
+              py-4 px-8 bg-black/30 backdrop-blur-md shadow-lg z-10">
+    
+    <!-- Logo -->
+    <div class="flex items-center gap-2">
+      <img src="Untitled design1.png" class="w-12 h-12 rounded-xl" alt="PyLearn Logo">
+      <div class="flex flex-col leading-tight">
+        <span class="text-xl font-bold tracking-wide text-blue-400">PyLearn</span>
+        <p class="text-sm text-gray-200 italic">AI Assistant</p>
+      </div>
+    </div>
+
+    <!-- Nav Links -->
+    <div class="flex items-center gap-8 text-lg font-semibold">
+      <a href="#" class="flex items-center gap-2 hover:text-blue-300 transition">
+        🏠 <span>Home</span>
+      </a>
+      <a href="#" class="flex items-center gap-2 hover:text-blue-300 transition">
+        📘 <span>Learn</span>
+      </a>
+      <a href="#" class="flex items-center gap-2 hover:text-blue-300 transition">
+        🧠 <span>Quizzes</span>
+      </a>
+      <a href="#" class="flex items-center gap-2 hover:text-blue-300 transition">
+        🧩 <span>Playground</span>
+      </a>
+    </div>
+
+    <!-- Optional Button -->
+    <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-xl transition text-sm font-semibold">
+      Login
+    </button>
+
+  </nav>
+
+    <div class="flex flex-col md:flex-row items-center justify-between mt-32 px-8 gap-12">
+    
+    <!-- Left: Text Content -->
+    <div class="flex-1 text-center md:text-left space-y-6">
+        <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-600 opacity-80 drop-shadow-2xl">
+        Welcome to PyLearn ✨
+        </h1>
+        <p class="text-lg text-gray-200 max-w-xl">
+        Learn Python interactively, solve quizzes, and play with code in our playground.
+        </p>
+        <a href="#learn" class="inline-block bg-blue-500 hover:bg-blue-600 px-6 py-3 
+                                rounded-full font-semibold transition text-white shadow-lg">
+        Start Learning
+        </a>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="flex-1 flex justify-center md:justify-end">
+        <img src="python_code_example.jpg" alt="python_code_example" class="w-full max-w-md rounded-2xl shadow-2xl">
+    </div>
+
+    </div>
+
+
+</body>
+</html>

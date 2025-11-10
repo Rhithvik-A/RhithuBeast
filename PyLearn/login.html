@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PyLearn Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('../Favican/login.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-white">
+
+  <div id="login_screen" class="glass p-8 rounded-2xl shadow-2xl w-96 blur-4">
+    <h2 class="text-3xl font-bold text-center mb-6 text-white">
+      Welcome to PyLearn
+    </h2>
+
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label for="email" class="block text-sm mb-1">Email ID</label>
+        <input id="email" type="text" placeholder="Enter your email"
+        class="w-full mb-4 p-3 rounded-xl text-black text-center focus:ring-2 focus:ring-cyan-400 outline-none transition transform hover:scale-105">
+      </div>
+      <div>
+        <label for="password" class="block text-sm mb-1">Password</label>
+        <input id="password" type="text" placeholder="Enter your password"
+        class="w-full mb-6 p-3 rounded-xl text-black text-center focus:ring-2 focus:ring-fuchsia-400 outline-none transition transform hover:scale-105">
+
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 mt-2 bg-gradient-to-r from-purple-500 via-pink-400 to-blue-400 text-white rounded-md font-semibold hover:opacity-90 transition-all" style="background: linear-gradient(135deg, #00b3ff, #f200ff);">
+        Login
+      </button>
+    </form>
+
+  </div>
+
+  <script>
+    const validPassword = "PyLEarn@86752013_USER";
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (password === validPassword) {
+        alert(`✅ Welcome, ${email.split('@')[0]}!`);
+
+        setTimeout(() => {
+          window.location.href = "http://127.0.0.1:5500/PyLearn/home.html"; // Change this to your main page
+        }, 1500);
+      } else {
+        alert("❌ Invalid password! Try again.");
+      }
+    });
+  </script>
+
+</body>
+</html>
