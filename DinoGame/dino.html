@@ -73,6 +73,18 @@
     right: 12px;
     background: linear-gradient(90deg,#34d399,#059669);
   }
+
+  #gameOverText {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff0033;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    display: none;
+  }
 </style>
 </head>
 <body onclick="jump()">
@@ -83,6 +95,7 @@
   <img id="dino" class="dino" src="image.png">
   <p id="score">Score: 0</p>
   <p id="highScore">High Score: 0</p>
+  <div id="gameOverText"><button onclick="resetGame()" style="background-color: #cacaca; border-radius: 20px; padding: 10px 20px;">Restart</button></div>
 </div>
 
 <script>
@@ -90,56 +103,65 @@ const gameArea = document.getElementById("gameArea");
 const dino = document.getElementById("dino");
 const scoreDisplay = document.getElementById("score");
 const highScoreDisplay = document.getElementById("highScore");
+const gameOverText = document.getElementById("gameOverText");
 
 const dinoW = 50, dinoH = 50;
 const cactusW = 30, cactusH = 40;
 
 let dinoX = 50, dinoY = 0, dinoVy = 0, jumping = false;
-
 let cacti = [];
-const cactusSpeed = 7; 
+let cactusSpeed = 7;
 let startTime = null;
 let gameOver = false;
 let highScore = 0;
+let score = 0;
 
-// Spawn 5 cacti
-for (let i = 0; i < 5; i++) {
-  const cactus = document.createElement("img");
-  cactus.src = "cactus.png";
-  cactus.classList.add("cactus");
-  cactus.style.left = 800 + i*800 + Math.random()*200 + "px"; // far apart
-  gameArea.appendChild(cactus);
-  cacti.push(cactus);
+function setupCacti() {
+  cacti.forEach(c => c.remove());
+  cacti = [];
+  for (let i = 0; i < 5; i++) {
+    const cactus = document.createElement("img");
+    cactus.src = "cactus.png";
+    cactus.classList.add("cactus");
+    cactus.style.left = 800 + i*800 + Math.random()*300 + "px";
+    gameArea.appendChild(cactus);
+    cacti.push(cactus);
+  }
 }
 
 function jump() {
   if (!jumping && !gameOver) {
     dinoVy = 12;
     jumping = true;
-  } else if (gameOver) {
-    resetGame();
   }
 }
 
 function resetGame() {
-  window.location.href = 'http://127.0.0.1:5500/DinoGame/dino.html';
-  update();
+  dinoY = 0;
+  dinoVy = 0;
+  jumping = false;
+  score = 0;
+  startTime = performance.now();
+  gameOver = false;
+  gameOverText.style.display = "none";
+  setupCacti();
+  requestAnimationFrame(update);
 }
 
 function isColliding(dinoElem, cactusElem){
-  const shrink=0.8;
+  const shrink = 0.8;
   const dRect = {
-    x:dinoX + dinoW*(1-shrink)/2,
-    y:dinoY + dinoH*(1-shrink)/2,
-    w:dinoW*shrink,
-    h:dinoH*shrink
+    x: dinoX + dinoW*(1-shrink)/2,
+    y: dinoY + dinoH*(1-shrink)/2,
+    w: dinoW*shrink,
+    h: dinoH*shrink
   };
-  const cX=parseFloat(cactusElem.style.left);
-  const cRect={
-    x:cX + cactusW*(1-shrink)/2,
-    y:0,
-    w:cactusW*shrink,
-    h:cactusH*shrink
+  const cX = parseFloat(cactusElem.style.left);
+  const cRect = {
+    x: cX + cactusW*(1-shrink)/2,
+    y: 0,
+    w: cactusW*shrink,
+    h: cactusH*shrink
   };
   return (
     dRect.x < cRect.x + cRect.w &&
@@ -149,50 +171,52 @@ function isColliding(dinoElem, cactusElem){
   );
 }
 
-function update(){
-  if(!startTime) startTime=performance.now();
-  if(gameOver){ 
-    scoreDisplay.innerText+=" 💀 GAME OVER! Press R to Restart"; 
-    if(scoreDisplay.innerText.match(/\d+/)){
-      let scoreVal = parseInt(scoreDisplay.innerText.match(/\d+/)[0]);
-      if(scoreVal > highScore) highScore = scoreVal;
-      highScoreDisplay.innerText = "High Score: " + Math.floor(highScore/10);
-    }
-    return; 
-  }
-
-  dinoY += dinoVy; 
-  dinoVy -= 0.75; 
-  if(dinoY<0){ dinoY=0; dinoVy=0; jumping=false; }
-  dino.style.bottom=dinoY+"px"; 
-  dino.style.left=dinoX+"px";
+function update() {
+  if (gameOver) return;
 
   const elapsed = Math.floor(performance.now() - startTime);
+  score = elapsed / 10;
+  scoreDisplay.innerText = "Score: " + Math.floor(score);
 
-  cacti.forEach(c=>{
-    let x=parseFloat(c.style.left);
+  if (score > highScore) {
+    highScore = score;
+    highScoreDisplay.innerText = "High Score: " + Math.floor(highScore);
+  }
+
+  dinoY += dinoVy;
+  dinoVy -= 0.75;
+  if (dinoY < 0) {
+    dinoY = 0;
+    dinoVy = 0;
+    jumping = false;
+  }
+
+  dino.style.bottom = dinoY + "px";
+  dino.style.left = dinoX + "px";
+
+  cacti.forEach(c => {
+    let x = parseFloat(c.style.left);
     x -= cactusSpeed;
-    if(x + cactusW < 0){
-      let maxRight = Math.max(...cacti.map(c2=>parseFloat(c2.style.left)));
-      x = 800 + Math.random()*400 + Math.min(100,maxRight);
+    if (x + cactusW < 0) {
+      let maxRight = Math.max(...cacti.map(c2 => parseFloat(c2.style.left)));
+      x = 800 + Math.random() * 400 + Math.min(100, maxRight);
     }
     c.style.left = x + "px";
-    if(isColliding(dino,c)) gameOver=true;
+    if (isColliding(dino, c)) {
+      gameOver = true;
+      gameOverText.style.display = "block";
+    }
   });
-
-  scoreDisplay.innerText="Score: "+ Math.floor(elapsed / 10);
-  if(elapsed > highScore) highScore = elapsed;
-  highScoreDisplay.innerText = "High Score: " + Math.floor(highScore / 10);
 
   requestAnimationFrame(update);
 }
 
-document.addEventListener("keydown", e=>{
-  if(e.code==="Space") jump();
-  if(e.code==="KeyR") resetGame();
+document.addEventListener("keydown", e => {
+  if (e.code === "Space") jump();
+  if (e.code === "KeyR" && gameOver) resetGame();
 });
-gameArea.addEventListener("click", jump);
 
+setupCacti();
 resetGame();
 </script>
 
