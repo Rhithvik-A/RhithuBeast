@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CricketZone 🏏</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     body {
       background: radial-gradient(circle at top left, #0a192f, #001f3f);
@@ -13,16 +14,17 @@
     }
   </style>
 </head>
-<body class="min-h-screen p-6">
-  <div class="max-w-7xl mx-auto grid gap-6">
 
-    <!-- Header -->
-    <div class="col-span-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-2xl shadow-lg text-center py-8">
-      <h1 class="text-5xl font-extrabold tracking-tight">CricketZone 🏏</h1>
+<body class="min-h-screen p-6">
+  <div class="max-w-7xl mx-auto grid gap-8">
+
+    <!-- HEADER -->
+    <div class="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-2xl shadow-lg text-center py-10">
+      <h1 class="text-5xl font-extrabold tracking-tight">Cricket-Zone 🏏</h1>
       <p class="text-lg mt-2">Cricket is not just a game — it’s an <span class="italic text-cyan-300 underline">Emotion</span>.</p>
     </div>
 
-    <!-- Table of Contents -->
+    <!-- TABLE OF CONTENTS -->
     <div class="bg-gray-900 bg-opacity-70 rounded-2xl shadow-md p-6 border border-gray-700">
       <h2 class="text-2xl font-semibold mb-4 text-cyan-300">TABLE OF CONTENTS</h2>
       <ul class="space-y-2 text-gray-300">
@@ -33,49 +35,54 @@
       </ul>
     </div>
 
-    <!-- Match Cards -->
+    <!-- MATCH CARDS GRID -->
     <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- MATCH 1 -->
       <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-cyan-500/30 transition">
         <h2 id="match_1" class="text-xl font-semibold text-yellow-400 mb-3">Match 1</h2>
-        <div class="match_1_score_1">
-          
+        <div class="match_1_score">
+          <div class="flex flex-col gap-3 mb-2 pt-4"><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="south-africa" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtPrim dark:text-cbWhite hidden wb:block whitespace-nowrap">RSA</span><span class="text-cbTxtPrim dark:text-cbWhite block wb:hidden whitespace-nowrap">RSA</span></div><span class="font-medium wb:font-semibold text-cbTxtPrim dark:text-cbWhite">159 &amp; 93-7</span></div><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="india" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtSec dark:text-cbTxtSec hidden wb:block whitespace-nowrap">IND</span><span class="text-cbTxtSec dark:text-cbTxtSec block wb:hidden whitespace-nowrap">IND</span></div><span class="font-medium wb:font-semibold text-cbTxtSec dark:text-cbTxtSec">189</span></div></div>
         </div>
       </div>
 
-      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-purple-500/30 transition">
-        <h2 id="match_2" class="text-xl font-semibold text-green-400 mb-3">Match 2</h2>
-        <div class="match_1_score_1">
-
+      <!-- MATCH 2 -->
+      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-cyan-500/30 transition">
+        <h2 id="match_2" class="text-xl font-semibold text-yellow-400 mb-3">Match 2</h2>
+        <div class="match_2_score">
+          <div class="flex flex-col gap-3 mb-2 pt-4"><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="south-africa" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtPrim dark:text-cbWhite hidden wb:block whitespace-nowrap">RSA</span><span class="text-cbTxtPrim dark:text-cbWhite block wb:hidden whitespace-nowrap">RSA</span></div><span class="font-medium wb:font-semibold text-cbTxtPrim dark:text-cbWhite">159 &amp; 93-7</span></div><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="india" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtSec dark:text-cbTxtSec hidden wb:block whitespace-nowrap">IND</span><span class="text-cbTxtSec dark:text-cbTxtSec block wb:hidden whitespace-nowrap">IND</span></div><span class="font-medium wb:font-semibold text-cbTxtSec dark:text-cbTxtSec">189</span></div></div>
         </div>
       </div>
 
-      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-pink-500/30 transition">
-        <h2 id="match_3" class="text-xl font-semibold text-blue-400 mb-3">Match 3</h2>
-        <div class="match_1_score_1">
-
+      <!-- MATCH 3 -->
+      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-lg hover:shadow-cyan-500/30 transition">
+        <h2 id="match_3" class="text-xl font-semibold text-yellow-400 mb-3">Match 3</h2>
+        <div class="match_3_score">
+          <div class="flex flex-col gap-3 mb-2 pt-4"><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="south-africa" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776287/south-africa.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtPrim dark:text-cbWhite hidden wb:block whitespace-nowrap">RSA</span><span class="text-cbTxtPrim dark:text-cbWhite block wb:hidden whitespace-nowrap">RSA</span></div><span class="font-medium wb:font-semibold text-cbTxtPrim dark:text-cbWhite">159 &amp; 93-7</span></div><div class="flex items-center gap-4 justify-between"><div class="flex items-center gap-2"><div class="w-smallFlag h-smallFlag"><img alt="india" data-nimg="1" decoding="async" height="18" loading="lazy" src="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg" srcset="https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 1x, https://static.cricbuzz.com/a/img/v1/25x18/i1/c776162/india.jpg 2x" style="color:transparent;width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-image:url(&quot;data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 25 18'%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cimage preserveAspectRatio='none' filter='url(%23b)' x='0' y='0' height='100%25' width='100%25' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC'/%3E%3C/svg%3E&quot;)" width="25"/></div><span class="text-cbTxtSec dark:text-cbTxtSec hidden wb:block whitespace-nowrap">IND</span><span class="text-cbTxtSec dark:text-cbTxtSec block wb:hidden whitespace-nowrap">IND</span></div><span class="font-medium wb:font-semibold text-cbTxtSec dark:text-cbTxtSec">189</span></div></div>
         </div>
       </div>
+
     </div>
 
-    <!-- Wall of Icons -->
-    <div class="bg-gray-900 bg-opacity-80 rounded-2xl shadow-lg p-8 mt-8">
+    <!-- WALL OF ICONS -->
+    <div class="bg-gray-900 bg-opacity-80 rounded-2xl shadow-lg p-8 mt-4">
       <h3 class="text-3xl font-bold text-center text-cyan-400 mb-6">WALL OF ICONS</h3>
 
       <div class="grid md:grid-cols-3 gap-6 justify-items-center">
-        <img src="images/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.webp" alt="Kohli" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
-        <img src="images/dhoni.webp" alt="Dhoni" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
-        <img src="images/sachin.webp" alt="Sachin" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+        <img src="images/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+        <img src="images/dhoni.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+        <img src="images/sachin.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
       </div>
 
       <div class="grid md:grid-cols-4 gap-6 justify-items-center mt-8">
-        <img src="images/lara.jpeg" alt="Lara" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
-        <img src="images/viv.jpeg" alt="Viv" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
-        <img src="images/warne.jpeg" alt="Warne" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
-        <img src="images/murali.jpeg" alt="Murali" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/lara.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/viv.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/warne.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/murali.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
       </div>
     </div>
 
-    <!-- Footer Marquee -->
+    <!-- FOOTER -->
     <div class="mt-8 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-center py-3 rounded-xl shadow-md">
       <marquee behavior="scroll" direction="left" class="text-white font-semibold tracking-wide">
         🏏 Welcome to CricketZone! Stay tuned for live scores, tips, and cricket fun! 🏏
@@ -85,3 +92,4 @@
   </div>
 </body>
 </html>
+

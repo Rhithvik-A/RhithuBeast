@@ -12,7 +12,7 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.text, 'html.parser')
     
     # First 3 matches
-    matches = soup.findAll('a', class_='h-full block w-[316px]')[:3]
+    matches = soup.findAll('div', class_='flex flex-col gap-3 mb-2 pt-4')[:3]
     print(matches [0])
 
     
