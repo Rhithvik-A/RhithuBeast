@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CricketZone 🏏</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #0a192f, #001f3f);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen p-6">
+  <div class="max-w-7xl mx-auto space-y-10">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-2xl shadow-lg text-center py-10 px-4">
+      <h1 class="text-5xl font-extrabold tracking-tight">Cricket-Zone 🏏</h1>
+      <p class="text-lg mt-2">Cricket is not just a game — it’s an <span class="italic text-cyan-300 underline">Emotion</span>.</p>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <section class="bg-gray-900 bg-opacity-70 rounded-2xl shadow-md p-8 border border-gray-700">
+      <h2 class="text-2xl font-semibold mb-4 text-cyan-300 text-center">TABLE OF CONTENTS</h2>
+      <ul class="space-y-2 text-gray-300 text-center">
+        <li>01. All Matches</li>
+        <li>02. How to play?</li>
+        <li>03. How to become a pro in Cricket?</li>
+        <li>04. What is happening? (or) News</li>
+      </ul>
+    </section>
+
+    <!-- MATCH CARDS GRID -->
+    <section class="grid md:grid-cols-3 gap-8">
+      
+      <!-- MATCH 1 -->
+      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+        <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 1</h2>
+        <div id="match_1_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+
+      <!-- MATCH 2 -->
+      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+        <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 2</h2>
+        <div id="match_2_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+
+      <!-- MATCH 3 -->
+      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+        <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 3</h2>
+        <div id="match_3_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
+          <!-- Dynamic content -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- WALL OF ICONS -->
+    <section class="bg-gray-900 bg-opacity-80 rounded-2xl shadow-lg p-8">
+      <h3 class="text-3xl font-bold text-center text-cyan-400 mb-8">WALL OF ICONS</h3>
+
+      <div class="grid md:grid-cols-3 gap-6 justify-items-center mb-10">
+        <img src="images/Virat-Kohli-India-celebrates-50th-century-Cricket-November-15-2023.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+        <img src="images/dhoni.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+        <img src="images/sachin.webp" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-72 object-cover">
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 justify-items-center">
+        <img src="images/lara.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/viv.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/warne.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+        <img src="images/murali.jpeg" class="rounded-xl shadow-lg hover:scale-105 transition h-64 w-64 object-cover">
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-center py-3 rounded-xl shadow-md">
+      <marquee class="text-white font-semibold tracking-wide">
+        🏏 Welcome to CricketZone! Stay tuned for live scores, tips, and cricket fun! 🏏
+      </marquee>
+    </footer>
+
+  </div>
+
+
+<script>
+async function ping() {
+    try {
+        const res = await fetch("http://127.0.0.1:8000/matches");
+        const data = await res.json();
+        console.log(data);
+
+        let m = data.matches || [];
+
+        document.getElementById("match_1_score").innerText = m[0] || "No data";
+        document.getElementById("match_2_score").innerText = m[1] || "No data";
+        document.getElementById("match_3_score").innerText = m[2] || "No data";
+
+    } catch (err) {
+        console.log("FETCH ERROR: ", err);
+    }
+}
+
+ping();
+</script>
+
+
+</body>
+</html>
