@@ -41,7 +41,7 @@
       <!-- MATCH 1 -->
       <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
         <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 1</h2>
-        <div id="match_1_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
+        <div id="match_17_score" class="text-black min-h-[60px] flex items-center justify-center">
           <!-- Dynamic content -->
         </div>
       </div>
@@ -93,25 +93,20 @@
 
 
 <script>
-async function ping() {
-    try {
-        const res = await fetch("http://127.0.0.1:8000/matches");
-        const data = await res.json();
-        console.log(data);
+  async function loadScores() {
+    const res = await fetch("http://127.0.0.1:8000/scores");
+    const data = await res.json();
 
-        let m = data.matches || [];
+    document.getElementById("match_17_score").innerText = data.scores[0] || "No Data";
+    document.getElementById("match_2_score").innerText = data.scores[1] || "No Data";
+    document.getElementById("match_3_score").innerText = data.scores[2] || "No Data";
+  }
 
-        document.getElementById("match_1_score").innerText = m[0] || "No data";
-        document.getElementById("match_2_score").innerText = m[1] || "No data";
-        document.getElementById("match_3_score").innerText = m[2] || "No data";
-
-    } catch (err) {
-        console.log("FETCH ERROR: ", err);
-    }
-}
-
-ping();
+  loadScores();
+  setInterval(loadScores, 8000);
 </script>
+
+
 
 
 </body>

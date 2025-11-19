@@ -1,14 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
-url = "https://www.cricbuzz.com/live-cricket-scores/128809/hun-vs-rom-2nd-match-budapest-cup-2025"
+url = "https://www.cricbuzz.com/"
 headers = {
     "User-Agent": "Mozilla/5.0"
 }
 
-response = requests.get(url, headers=headers)
+while True:
+    response = requests.get(url, headers=headers)
 
-if response.status_code == 200:
-    soup = BeautifulSoup(response.text, 'html.parser')
-    score = soup.find('div', class_ = 'cb-col-100 cb-col cb-col-scores')
-    print(score.text, "\n")
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        scores = soup.find_all('div', class_='bg-white px-4 pb-2')[:3]
+
+        print("\n=== LIVE UPDATE ===")
+        for s in scores:
+            print(s.text.strip())
+            print("---------------")
+
+    # refresh every 10 seconds
+    time.sleep(10)

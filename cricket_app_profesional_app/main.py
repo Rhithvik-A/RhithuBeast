@@ -1,6 +1,6 @@
-import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import requests
 from bs4 import BeautifulSoup
 
 app = FastAPI()
@@ -12,25 +12,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-URL = "https://www.cricbuzz.com/"
+URL = "https://www.cricbuzz.com/cricket-match/live-scores"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-@app.get("/matches")
-def get_matches():
+@app.get("/scores")
+def get_scores():
     response = requests.get(URL, headers=HEADERS)
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-    if response.status_code != 200:
-        return {"error": "Could not fetch Cricbuzz"}
+    blocks = soup.find_all("div", class_="cb-mtch-lst")[:3]
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    scores = []
 
-    # Cricbuzz home match cards use this:
-    cards = soup.find_all("div", class_="cb-mtch-crd")
-
-    results = []
-
-    for card in cards[:3]:
-        text = card.get_text(" ", strip=True)
-        results.append(text)
-
-    return {"matches": results}
+    for b in blocks:
+        text = b.get_text(separator="\n", strip=True)
+        scores.append(text)
+    print(scores)
+    return "Hi"
+    
