@@ -5,22 +5,15 @@ url = "https://www.cricbuzz.com"
 headers = {
     "User-Agent": "Mozilla/5.0"
 }
+def a ():
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, "html.parser")
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            score = soup.find('div', class_ = 'flex flex-col gap-3 mb-2 pt-4')
+            return(score)
+        
 
-response = requests.get(url, headers=headers)
 
-if response.status_code == 200:
-    soup = BeautifulSoup(response.text, 'html.parser')
-    score = soup.find('div', class_ = 'cb-col-100 cb-col cb-col-scores')
-    print(score.text, "\n")
 
-soup = BeautifulSoup(response.text, "html.parser")
 
-# Cricbuzz home match cards use this:
-cards = soup.find_all("div", class_="cb-mtch-crd")
-
-results = []
-
-for card in cards[:3]:
-    text = card.get_text(" ", strip=True)
-    results.append(text)
-print(results)

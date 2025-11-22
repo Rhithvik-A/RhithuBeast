@@ -39,15 +39,15 @@
     <section class="grid md:grid-cols-3 gap-8">
       
       <!-- MATCH 1 -->
-      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+      <div class="bg-gray-800 text-white rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
         <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 1</h2>
-        <div id="match_17_score" class="text-black min-h-[60px] flex items-center justify-center">
+        <div id="match_1_score" class="text-black min-h-[60px] flex items-center justify-center">
           <!-- Dynamic content -->
         </div>
       </div>
 
       <!-- MATCH 2 -->
-      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+      <div class="bg-gray-800 text-white rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
         <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 2</h2>
         <div id="match_2_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
           <!-- Dynamic content -->
@@ -55,7 +55,7 @@
       </div>
 
       <!-- MATCH 3 -->
-      <div class="bg-gray-800 rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
+      <div class="bg-gray-800 text-white rounded-xl p-6 text-center shadow-xl hover:shadow-cyan-500/30 transition transform hover:-translate-y-1">
         <h2 class="text-xl font-semibold text-yellow-400 mb-4">Match 3</h2>
         <div id="match_3_score" class="text-gray-300 min-h-[60px] flex items-center justify-center">
           <!-- Dynamic content -->
@@ -97,16 +97,17 @@
     const res = await fetch("http://127.0.0.1:8000/scores");
     const data = await res.json();
 
-    document.getElementById("match_17_score").innerText = data.scores[0] || "No Data";
-    document.getElementById("match_2_score").innerText = data.scores[1] || "No Data";
-    document.getElementById("match_3_score").innerText = data.scores[2] || "No Data";
+    document.getElementById("match_1_score").innerHTML = data.scores[0];
+    document.getElementById("match_2_score").innerHTML = data.scores[1];
+    document.getElementById("match_3_score").innerHTML = data.scores[2];
   }
 
+  // Load instantly
   loadScores();
-  setInterval(loadScores, 8000);
+
+  // 🔥 auto-refresh every 10 seconds
+  setInterval(loadScores, 2000);
 </script>
-
-
 
 
 </body>

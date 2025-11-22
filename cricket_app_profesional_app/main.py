@@ -12,21 +12,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-URL = "https://www.cricbuzz.com/cricket-match/live-scores"
-HEADERS = {"User-Agent": "Mozilla/5.0"}
+url = "https://www.cricbuzz.com"
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
 
 @app.get("/scores")
-def get_scores():
-    response = requests.get(URL, headers=HEADERS)
-    soup = BeautifulSoup(response.text, 'html.parser')
+def scores():
+    response = requests.get(url, headers=headers)
 
-    blocks = soup.find_all("div", class_="cb-mtch-lst")[:3]
+    if response.status_code != 200:
+        return {"scores": ["Error loading data"]}
 
-    scores = []
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    for b in blocks:
-        text = b.get_text(separator="\n", strip=True)
-        scores.append(text)
-    print(scores)
-    return "Hi"
-    
+    score_blocks = soup.find_all('div', class_='bg-white px-4 pb-2')[:3]
+
+    scores_list = []
+
+    for block in score_blocks:
+        html_block = str(block)
+        html_block = html_block.replace(
+            'bg-white px-4 pb-2',
+            'bg-gray-800 text-gray-300 min-h-[60px]'
+        )
+        scores_list.append(html_block)
+
+    return {"scores": scores_list}
+
