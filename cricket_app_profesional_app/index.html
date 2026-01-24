@@ -28,10 +28,8 @@
     <section class="bg-gray-900 bg-opacity-70 rounded-2xl shadow-md p-8 border border-gray-700">
       <h2 class="text-2xl font-semibold mb-4 text-cyan-300 text-center">TABLE OF CONTENTS</h2>
       <ul class="space-y-2 text-gray-300 text-center">
-        <li>01. All Matches</li>
-        <li>02. How to play?</li>
-        <li>03. How to become a pro in Cricket?</li>
-        <li>04. What is happening? (or) News</li>
+        <li>01. How to play?</li>
+        <li>02. What is happening? (or) News</li>
       </ul>
     </section>
 
@@ -93,7 +91,7 @@
 
 
 <script>
-  async function loadScores() {
+  async function loadScoresFirst3() {
     const res = await fetch("http://127.0.0.1:8000/scores");
     const data = await res.json();
 
@@ -103,9 +101,9 @@
   }
 
   // Load instantly
-  loadScores();
+  loadScoresFirst3();
 
-  setInterval(loadScores, 2000);
+  setInterval(loadScoresFirst3, 2000);
 </script>
 
 

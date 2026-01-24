@@ -18,7 +18,7 @@ headers = {
 }
 
 @app.get("/scores")
-def scores():
+def scoresfirst3():
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:

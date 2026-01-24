@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Market - Fresh Groceries Delivered</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'outfit': ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': 'hsl(280, 85%, 60%)',
+                        'primary-dark': 'hsl(280, 85%, 50%)',
+                        'secondary': 'hsl(200, 90%, 55%)',
+                        'accent': 'hsl(330, 85%, 60%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: hsl(240, 25%, 8%);
+            background-image: 
+                radial-gradient(circle at 20% 20%, hsla(280, 85%, 60%, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, hsla(200, 90%, 55%, 0.15) 0%, transparent 50%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(280, 85%, 60%), hsl(200, 90%, 55%), hsl(330, 85%, 60%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-100 min-h-screen overflow-x-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <header class="text-center py-8 sm:py-12 animate-fade-in">
+            <h1 class="font-outfit text-4xl sm:text-5xl lg:text-6xl font-extrabold gradient-text mb-2 tracking-tight">
+                🛒 Meta Market
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg font-light tracking-wide">
+                Fresh Groceries Delivered to Your Doorstep
+            </p>
+        </header>
+
+        <!-- Main Card -->
+        <div class="bg-gray-900/60 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] border border-white/10 p-6 sm:p-8 lg:p-12 shadow-2xl animate-fade-in">
+            
+            <!-- Delivery Location Section -->
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-outfit text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-3xl drop-shadow-[0_0_10px_currentColor]">📍</span>
+                    Delivery Location
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                    <div class="lg:col-span-2">
+                        <label for="address" class="block mb-2 text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-widest">
+                            Street Address
+                        </label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            placeholder="123 Main Street"
+                            class="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 border-2 border-white/10 rounded-2xl text-gray-100 text-base sm:text-lg font-inter transition-all duration-300 outline-none focus:border-primary focus:bg-gray-800/90 focus:shadow-[0_0_0_4px_rgba(168,85,247,0.15),0_8px_24px_rgba(168,85,247,0.2)] focus:-translate-y-0.5 placeholder:text-gray-500"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="city" class="block mb-2 text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-widest">
+                            City
+                        </label>
+                        <input 
+                            type="text" 
+                            id="city" 
+                            placeholder="New York"
+                            class="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 border-2 border-white/10 rounded-2xl text-gray-100 text-base sm:text-lg font-inter transition-all duration-300 outline-none focus:border-primary focus:bg-gray-800/90 focus:shadow-[0_0_0_4px_rgba(168,85,247,0.15),0_8px_24px_rgba(168,85,247,0.2)] focus:-translate-y-0.5 placeholder:text-gray-500"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="notes" class="block mb-2 text-gray-400 text-xs sm:text-sm font-medium uppercase tracking-widest">
+                            Delivery Notes (Optional)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="notes" 
+                            placeholder="Leave at door, Ring doorbell, etc."
+                            class="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 border-2 border-white/10 rounded-2xl text-gray-100 text-base sm:text-lg font-inter transition-all duration-300 outline-none focus:border-primary focus:bg-gray-800/90 focus:shadow-[0_0_0_4px_rgba(168,85,247,0.15),0_8px_24px_rgba(168,85,247,0.2)] focus:-translate-y-0.5 placeholder:text-gray-500"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grocery Selection Section -->
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-outfit text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-3xl drop-shadow-[0_0_10px_currentColor]">🥬</span>
+                    Select Your Groceries
+                </h2>
+
+                <!-- Search Bar -->
+                <div class="mb-6">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="🔍 Search for groceries..."
+                            oninput="filterItems()"
+                            class="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/80 border-2 border-white/10 rounded-2xl text-gray-100 text-base sm:text-lg font-inter transition-all duration-300 outline-none focus:border-secondary focus:bg-gray-800/90 focus:shadow-[0_0_0_4px_rgba(56,189,248,0.15),0_8px_24px_rgba(56,189,248,0.2)] placeholder:text-gray-500"
+                        >
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="mb-6 flex flex-wrap gap-2">
+                    <button onclick="filterByCategory('all')" class="category-btn active px-4 py-2 rounded-xl bg-primary/20 border-2 border-primary text-sm font-semibold transition-all hover:bg-primary/30">
+                        All
+                    </button>
+                    <button onclick="filterByCategory('Fruits')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🍎 Fruits
+                    </button>
+                    <button onclick="filterByCategory('Vegetables')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🥦 Vegetables
+                    </button>
+                    <button onclick="filterByCategory('Dairy')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🥛 Dairy
+                    </button>
+                    <button onclick="filterByCategory('Meat')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🍖 Meat
+                    </button>
+                    <button onclick="filterByCategory('Bakery')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🍞 Bakery
+                    </button>
+                    <button onclick="filterByCategory('Snacks')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🍿 Snacks
+                    </button>
+                    <button onclick="filterByCategory('Beverages')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🥤 Beverages
+                    </button>
+                    <button onclick="filterByCategory('Frozen')" class="category-btn px-4 py-2 rounded-xl bg-gray-800/60 border-2 border-white/10 text-sm font-semibold transition-all hover:bg-gray-800">
+                        🧊 Frozen
+                    </button>
+                </div>
+                
+                <!-- Selected Items Summary -->
+                <div id="summary" class="hidden bg-green-500/10 border-2 border-green-500/30 rounded-2xl p-4 sm:p-6 mb-6 animate-fade-in">
+                    <div class="font-bold text-base sm:text-lg mb-3 text-green-400">✓ Selected Items</div>
+                    <div id="summaryItems" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Grocery Grid -->
+                <div id="groceryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 max-h-[600px] overflow-y-auto scrollbar-hide pr-2">
+                    <!-- Items will be dynamically generated -->
+                </div>
+
+                <div id="noResults" class="hidden text-center py-12 text-gray-400">
+                    <div class="text-6xl mb-4">🔍</div>
+                    <div class="text-xl font-semibold mb-2">No items found</div>
+                    <div class="text-sm">Try searching for something else</div>
+                </div>
+            </div>
+
+            <!-- Terms & Conditions -->
+            <div class="mb-6">
+                <label class="flex items-start gap-3 cursor-pointer group">
+                    <input type="checkbox" id="agreeTerms" class="mt-1 w-5 h-5 rounded border-2 border-white/20 bg-gray-800 checked:bg-primary checked:border-primary transition-all cursor-pointer">
+                    <span class="text-sm text-gray-300 group-hover:text-white transition-colors">
+                        I agree to the <button type="button" onclick="showTerms()" class="text-primary hover:text-primary-dark underline font-semibold">Terms & Conditions</button> including cash payment to the delivery driver
+                    </span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button onclick="submitOrder()" class="w-full px-6 py-4 sm:py-5 bg-gradient-to-r from-primary via-accent to-secondary rounded-2xl text-white font-outfit text-lg sm:text-xl font-bold uppercase tracking-wider shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/40 active:translate-y-0 relative overflow-hidden group">
+                <span class="relative z-10">🚀 Place Order</span>
+                <div class="absolute inset-0 bg-white/20 rounded-full scale-0 group-hover:scale-[4] transition-transform duration-700 ease-out"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-900 rounded-3xl border border-white/10 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl animate-fade-in">
+            <div class="sticky top-0 bg-gray-900 border-b border-white/10 p-6 flex justify-between items-center">
+                <h2 class="font-outfit text-2xl font-bold gradient-text">Terms & Conditions</h2>
+                <button onclick="closeTerms()" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-all flex items-center justify-center text-2xl">×</button>
+            </div>
+            
+            <div class="p-6 space-y-4 text-gray-300">
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">1. Payment Terms</h3>
+                    <p class="text-sm leading-relaxed">
+                        <strong class="text-green-400">Cash on Delivery (COD) Only:</strong> All orders are strictly Cash on Delivery. You must pay the full order amount in cash directly to the delivery driver upon receiving your groceries. Please keep the exact amount ready for a smooth transaction.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">2. Order Confirmation</h3>
+                    <p class="text-sm leading-relaxed">
+                        By placing an order, you agree to provide accurate delivery information and be available at the specified address during the delivery window. An order confirmation will be sent to your email with all order details.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">3. Delivery</h3>
+                    <p class="text-sm leading-relaxed">
+                        We strive to deliver fresh groceries within the estimated time frame. Delivery times may vary based on your location and order volume. The delivery driver will contact you upon arrival.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">4. Product Quality</h3>
+                    <p class="text-sm leading-relaxed">
+                        We ensure all products are fresh and of the highest quality. If you receive damaged or unsatisfactory products, please inform the delivery driver immediately before accepting the delivery.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">5. Cancellation Policy</h3>
+                    <p class="text-sm leading-relaxed">
+                        Orders can be cancelled within 30 minutes of placement. Once the order is being prepared or out for delivery, cancellation will not be possible.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="font-outfit text-xl font-semibold text-white mb-2">6. Pricing</h3>
+                    <p class="text-sm leading-relaxed">
+                        All prices are listed in Indian Rupees (₹) and are inclusive of applicable taxes. Prices are subject to change without prior notice. The final amount will be calculated at the time of order placement.
+                    </p>
+                </section>
+
+                <section class="bg-yellow-500/10 border-2 border-yellow-500/30 rounded-xl p-4">
+                    <h3 class="font-outfit text-lg font-semibold text-yellow-400 mb-2">⚠️ Important Reminder</h3>
+                    <p class="text-sm leading-relaxed text-yellow-200">
+                        <strong>You must pay the delivery driver in cash</strong> when your order arrives. No online payment is accepted at this time. Please have the exact amount or sufficient cash ready.
+                    </p>
+                </section>
+            </div>
+
+            <div class="sticky bottom-0 bg-gray-900 border-t border-white/10 p-6">
+                <button onclick="acceptTerms()" class="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all">
+                    I Agree & Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive grocery database with prices in Indian Rupees
+        const groceryItems = [
+            // Fruits (30 items)
+            { name: 'Apples', category: 'Fruits', icon: '🍎', price: 120, unit: 'per kg' },
+            { name: 'Bananas', category: 'Fruits', icon: '🍌', price: 40, unit: 'per dozen' },
+            { name: 'Oranges', category: 'Fruits', icon: '🍊', price: 80, unit: 'per kg' },
+            { name:'Strawberries', category: 'Fruits', icon: '🍓', price: 250, unit: 'per 250g' },
+            { name: 'Grapes', category: 'Fruits', icon: '🍇', price: 90, unit: 'per kg' },
+            { name: 'Watermelon', category: 'Fruits', icon: '🍉', price: 30, unit: 'per kg' },
+            { name: 'Mango', category: 'Fruits', icon: '🥭', price: 150, unit: 'per kg' },
+            { name: 'Pineapple', category: 'Fruits', icon: '🍍', price: 60, unit: 'each' },
+            { name: 'Peach', category: 'Fruits', icon: '🍑', price: 180, unit: 'per kg' },
+            { name: 'Pear', category: 'Fruits', icon: '🍐', price: 140, unit: 'per kg' },
+            { name: 'Cherries', category: 'Fruits', icon: '🍒', price: 400, unit: 'per kg' },
+            { name: 'Kiwi', category: 'Fruits', icon: '🥝', price: 200, unit: 'per kg' },
+            { name: 'Blueberries', category: 'Fruits', icon: '🫐', price: 350, unit: 'per 200g' },
+            { name: 'Lemon', category: 'Fruits', icon: '🍋', price: 60, unit: 'per kg' },
+            { name: 'Lime', category: 'Fruits', icon: '🟢', price: 50, unit: 'per kg' },
+            { name: 'Avocado', category: 'Fruits', icon: '🥑', price: 180, unit: 'each' },
+            { name: 'Papaya', category: 'Fruits', icon: '🍈', price: 40, unit: 'per kg' },
+            { name: 'Guava', category: 'Fruits', icon: '🟢', price: 60, unit: 'per kg' },
+            { name: 'Pomegranate', category: 'Fruits', icon: '🟥', price: 150, unit: 'per kg' },
+            { name: 'Dragon Fruit', category: 'Fruits', icon: '🔴', price: 250, unit: 'each' },
+            { name: 'Coconut', category: 'Fruits', icon: '🥥', price: 40, unit: 'each' },
+            { name: 'Dates', category: 'Fruits', icon: '🟤', price: 300, unit: 'per 500g' },
+            { name: 'Figs', category: 'Fruits', icon: '🟣', price: 350, unit: 'per 250g' },
+            { name: 'Plum', category: 'Fruits', icon: '🟣', price: 160, unit: 'per kg' },
+            { name: 'Apricot', category: 'Fruits', icon: '🟠', price: 200, unit: 'per kg' },
+            { name: 'Litchi', category: 'Fruits', icon: '🔴', price: 120, unit: 'per kg' },
+            { name: 'Custard Apple', category: 'Fruits', icon: '🟢', price: 100, unit: 'per kg' },
+            { name: 'Sweet Lime', category: 'Fruits', icon: '🟢', price: 70, unit: 'per kg' },
+            { name: 'Blackberries', category: 'Fruits', icon: '⚫', price: 300, unit: 'per 200g' },
+            { name: 'Raspberries', category: 'Fruits', icon: '🔴', price: 320, unit: 'per 200g' },
+            
+            // Vegetables (35 items)
+            { name: 'Broccoli', category: 'Vegetables', icon: '🥦', price: 80, unit: 'per kg' },
+            { name: 'Carrots', category: 'Vegetables', icon: '🥕', price: 40, unit: 'per kg' },
+            { name: 'Tomatoes', category: 'Vegetables', icon: '🍅', price: 30, unit: 'per kg' },
+            { name: 'Lettuce', category: 'Vegetables', icon: '🥬', price: 60, unit: 'per piece' },
+            { name: 'Cucumber', category: 'Vegetables', icon: '🥒', price: 35, unit: 'per kg' },
+            { name: 'Bell Peppers', category: 'Vegetables', icon: '🫑', price: 80, unit: 'per kg' },
+            { name: 'Onions', category: 'Vegetables', icon: '🧅', price: 25, unit: 'per kg' },
+            { name: 'Garlic', category: 'Vegetables', icon: '🧄', price: 120, unit: 'per kg' },
+            { name: 'Potatoes', category: 'Vegetables', icon: '🥔', price: 25, unit: 'per kg' },
+            { name: 'Sweet Potatoes', category: 'Vegetables', icon: '🍠', price: 35, unit: 'per kg' },
+            { name: 'Corn', category: 'Vegetables', icon: '🌽', price: 40, unit: 'per kg' },
+            { name: 'Spinach', category: 'Vegetables', icon: '🥬', price: 30, unit: 'per bunch' },
+            { name: 'Mushrooms', category: 'Vegetables', icon: '🍄', price: 150, unit: 'per 200g' },
+            { name: 'Eggplant', category: 'Vegetables', icon: '🍆', price: 40, unit: 'per kg' },
+            { name: 'Cauliflower', category: 'Vegetables', icon: '🥦', price: 35, unit: 'per kg' },
+            { name: 'Zucchini', category: 'Vegetables', icon: '🥒', price: 60, unit: 'per kg' },
+            { name: 'Green Beans', category: 'Vegetables', icon: '🫛', price: 50, unit: 'per kg' },
+            { name: 'Peas', category: 'Vegetables', icon: '🫛', price: 60, unit: 'per kg' },
+            { name: 'Cabbage', category: 'Vegetables', icon: '🥬', price: 20, unit: 'per kg' },
+            { name: 'Radish', category: 'Vegetables', icon: '🔴', price: 30, unit: 'per kg' },
+            { name: 'Beetroot', category: 'Vegetables', icon: '🟣', price: 45, unit: 'per kg' },
+            { name: 'Pumpkin', category: 'Vegetables', icon: '🎃', price: 25, unit: 'per kg' },
+            { name: 'Bottle Gourd', category: 'Vegetables', icon: '🟢', price: 30, unit: 'per kg' },
+            { name: 'Ridge Gourd', category: 'Vegetables', icon: '🟢', price: 35, unit: 'per kg' },
+            { name: 'Bitter Gourd', category: 'Vegetables', icon: '🟢', price: 40, unit: 'per kg' },
+            { name: 'Okra (Bhindi)', category: 'Vegetables', icon: '🟢', price: 50, unit: 'per kg' },
+            { name: 'Green Chilli', category: 'Vegetables', icon: '🌶️', price: 80, unit: 'per kg' },
+            { name: 'Red Chilli', category: 'Vegetables', icon: '🌶️', price: 120, unit: 'per kg' },
+            { name: 'Ginger', category: 'Vegetables', icon: '🟠', price: 100, unit: 'per kg' },
+            { name: 'Coriander Leaves', category: 'Vegetables', icon: '🌿', price: 20, unit: 'per bunch' },
+            { name: 'Mint Leaves', category: 'Vegetables', icon: '🌿', price: 15, unit: 'per bunch' },
+            { name: 'Curry Leaves', category: 'Vegetables', icon: '🌿', price: 10, unit: 'per bunch' },
+            { name: 'Celery', category: 'Vegetables', icon: '🟢', price: 80, unit: 'per kg' },
+            { name: 'Asparagus', category: 'Vegetables', icon: '🟢', price: 200, unit: 'per kg' },
+            { name: 'Brussels Sprouts', category: 'Vegetables', icon: '🟢', price: 150, unit: 'per kg' },
+            
+            // Dairy (18 items)
+            { name: 'Milk', category: 'Dairy', icon: '🥛', price: 60, unit: 'per liter' },
+            { name: 'Paneer', category: 'Dairy', icon: '🧀', price: 320, unit: 'per kg' },
+            { name: 'Yogurt (Curd)', category: 'Dairy', icon: '🥛', price: 50, unit: 'per 500g' },
+            { name: 'Butter', category: 'Dairy', icon: '🧈', price: 500, unit: 'per kg' },
+            { name: 'Ghee', category: 'Dairy', icon: '🟡', price: 600, unit: 'per kg' },
+            { name: 'Cream', category: 'Dairy', icon: '🥛', price: 280, unit: 'per 500ml' },
+            { name: 'Sour Cream', category: 'Dairy', icon: '🥛', price: 180, unit: 'per 200ml' },
+            { name: 'Cottage Cheese', category: 'Dairy', icon: '🧀', price: 280, unit: 'per kg' },
+            { name: 'Cream Cheese', category: 'Dairy', icon: '🧀', price: 350, unit: 'per 200g' },
+            { name: 'Mozzarella', category: 'Dairy', icon: '🧀', price: 400, unit: 'per 200g' },
+            { name: 'Cheddar Cheese', category: 'Dairy', icon: '🧀', price: 450, unit: 'per 200g' },
+            { name: 'Eggs', category: 'Dairy', icon: '🥚', price: 60, unit: 'per 6 pieces' },
+            { name: 'Buttermilk', category: 'Dairy', icon: '🥛', price: 30, unit: 'per liter' },
+            { name: 'Condensed Milk', category: 'Dairy', icon: '🥫', price: 120, unit: 'per 400g' },
+            { name: 'Skimmed Milk', category: 'Dairy', icon: '🥛', price: 55, unit: 'per liter' },
+            { name: 'Flavored Milk', category: 'Dairy', icon: '🥛', price: 35, unit: 'per 200ml' },
+            { name: 'Greek Yogurt', category: 'Dairy', icon: '🥛', price: 150, unit: 'per 400g' },
+            { name: 'Whipping Cream', category: 'Dairy', icon: '🥛', price: 250, unit: 'per 250ml' },
+            
+            // Meat & Seafood (20 items)
+            { name: 'Chicken Breast', category: 'Meat', icon: '🍗', price: 280, unit: 'per kg' },
+            { name: 'Chicken Thighs', category: 'Meat', icon: '🍗', price: 240, unit: 'per kg' },
+            { name: 'Whole Chicken', category: 'Meat', icon: '🍗', price: 220, unit: 'per kg' },
+            { name: 'Chicken Wings', category: 'Meat', icon: '🍗', price: 200, unit: 'per kg' },
+            { name: 'Mutton', category: 'Meat', icon: '🥩', price: 650, unit: 'per kg' },
+            { name: 'Goat Meat', category: 'Meat', icon: '🥩', price: 700, unit: 'per kg' },
+            { name: 'Lamb Chops', category: 'Meat', icon: '🍖', price: 850, unit: 'per kg' },
+            { name: 'Pork', category: 'Meat', icon: '🥓', price: 380, unit: 'per kg' },
+            { name: 'Bacon', category: 'Meat', icon: '🥓', price: 600, unit: 'per 200g' },
+            { name: 'Sausages', category: 'Meat', icon: '🌭', price: 350, unit: 'per 400g' },
+            { name: 'Turkey', category: 'Meat', icon: '🦃', price: 450, unit: 'per kg' },
+            { name: 'Ham', category: 'Meat', icon: '🍖', price: 500, unit: 'per 200g' },
+            { name: 'Salmon', category: 'Meat', icon: '🐟', price: 800, unit: 'per kg' },
+            { name: 'Tuna', category: 'Meat', icon: '🐟', price: 550, unit: 'per kg' },
+            { name: 'Shrimp', category: 'Meat', icon: '🦐', price: 650, unit: 'per kg' },
+            { name: 'Prawns', category: 'Meat', icon: '🦐', price: 700, unit: 'per kg' },
+            { name: 'Fish Fillet', category: 'Meat', icon: '🐟', price: 350, unit: 'per kg' },
+            { name: 'Crab', category: 'Meat', icon: '🦀', price: 900, unit: 'per kg' },
+            { name: 'Squid', category: 'Meat', icon: '🦑', price: 450, unit: 'per kg' },
+            { name: 'Minced Meat', category: 'Meat', icon: '🥩', price: 320, unit: 'per kg' },
+            
+            // Bakery (20 items)
+            { name: 'White Bread', category: 'Bakery', icon: '🍞', price: 35, unit: 'per loaf' },
+            { name: 'Brown Bread', category: 'Bakery', icon: '🍞', price: 40, unit: 'per loaf' },
+            { name: 'Whole Wheat Bread', category: 'Bakery', icon: '🍞', price: 45, unit: 'per loaf' },
+            { name: 'Bagels', category: 'Bakery', icon: '🥯', price: 60, unit: 'per 6 pieces' },
+            { name: 'Croissants', category: 'Bakery', icon: '🥐', price: 80, unit: 'per 4 pieces' },
+            { name: 'Muffins', category: 'Bakery', icon: '🧁', price: 120, unit: 'per 6 pieces' },
+            { name: 'Donuts', category: 'Bakery', icon: '🍩', price: 100, unit: 'per 6 pieces' },
+            { name: 'Baguette', category: 'Bakery', icon: '🥖', price: 50, unit: 'each' },
+            { name: 'Cookies', category: 'Bakery', icon: '🍪', price: 80, unit: 'per 200g' },
+            { name: 'Cake', category: 'Bakery', icon: '🎂', price: 450, unit: 'per kg' },
+            { name: 'Cupcakes', category: 'Bakery', icon: '🧁', price: 150, unit: 'per 6 pieces' },
+            { name: 'Brownies', category: 'Bakery', icon: '🟤', price: 180, unit: 'per 6 pieces' },
+            { name: 'Pastries', category: 'Bakery', icon: '🥐', price: 140, unit: 'per 4 pieces' },
+            { name: 'Pizza Base', category: 'Bakery', icon: '🍕', price: 40, unit: 'per piece' },
+            { name: 'Pita Bread', category: 'Bakery', icon: '🫓', price: 60, unit: 'per pack' },
+            { name: 'Tortillas', category: 'Bakery', icon: '🫓', price: 80, unit: 'per 10 pieces' },
+            { name: 'Buns', category: 'Bakery', icon: '🍔', price: 30, unit: 'per 6 pieces' },
+            { name: 'Cake Rusk', category: 'Bakery', icon: '🟤', price: 50, unit: 'per 200g' },
+            { name: 'Bread Crumbs', category: 'Bakery', icon: '🟤', price: 35, unit: 'per 200g' },
+            { name: 'Puff Pastry', category: 'Bakery', icon: '🥐', price: 90, unit: 'per pack' },
+            
+            // Snacks (18 items)
+            { name: 'Lays Chips', category: 'Snacks', icon: '🥔', price: 20, unit: 'per 50g' },
+            { name: 'Kurkure', category: 'Snacks', icon: '🟠', price: 20, unit: 'per 50g' },
+            { name: 'Popcorn', category: 'Snacks', icon: '🍿', price: 50, unit: 'per 100g' },
+            { name: 'Pretzels', category: 'Snacks', icon: '🥨', price:150, unit: 'per 200g' },
+            { name: 'Crackers', category: 'Snacks', icon: '🍘', price: 60, unit: 'per pack' },
+            { name: 'Cashews', category: 'Snacks', icon: '🥜', price: 650, unit: 'per kg' },
+            { name: 'Almonds', category: 'Snacks', icon: '🥜', price: 700, unit: 'per kg' },
+            { name: 'Peanuts', category: 'Snacks', icon: '🥜', price: 120, unit: 'per kg' },
+            { name: 'Walnuts', category: 'Snacks', icon: '🥜', price: 900, unit: 'per kg' },
+            { name: 'Granola Bars', category: 'Snacks', icon: '🍫', price: 150, unit: 'per 6 pieces' },
+            { name: 'Dark Chocolate', category: 'Snacks', icon: '🍫', price: 200, unit: 'per 100g' },
+            { name: 'Milk Chocolate', category: 'Snacks', icon: '🍫', price: 150, unit: 'per 100g' },
+            { name: 'Candy', category: 'Snacks', icon: '🍬', price: 80, unit: 'per 100g' },
+            { name: 'Trail Mix', category: 'Snacks', icon: '🥜', price: 350, unit: 'per 200g' },
+            { name: 'Protein Bars', category: 'Snacks', icon: '🍫', price: 180, unit: 'per 6 pieces' },
+            { name: 'Biscuits', category: 'Snacks', icon: '🍪', price: 40, unit: 'per pack' },
+            { name: 'Namkeen Mix', category: 'Snacks', icon: '🟡', price: 80, unit: 'per 200g' },
+            { name: 'Rice Crackers', category: 'Snacks', icon: '🍘', price: 70, unit: 'per 150g' },
+            
+            // Beverages (20 items)
+            { name: 'Orange Juice', category: 'Beverages', icon: '🧃', price: 120, unit: 'per liter' },
+            { name: 'Apple Juice', category: 'Beverages', icon: '🧃', price: 130, unit: 'per liter' },
+            { name: 'Mango Juice', category: 'Beverages', icon: '🧃', price: 110, unit: 'per liter' },
+            { name: 'Coca Cola', category: 'Beverages', icon: '🥤', price: 40, unit: 'per bottle' },
+            { name: 'Pepsi', category: 'Beverages', icon: '🥤', price: 40, unit: 'per bottle' },
+            { name: 'Sprite', category: 'Beverages', icon: '🥤', price: 40, unit: 'per bottle' },
+            { name: 'Mineral Water', category: 'Beverages', icon: '💧', price: 20, unit: 'per liter' },
+            { name: 'Coffee Powder', category: 'Beverages', icon: '☕', price: 450, unit: 'per 500g' },
+            { name: 'Tea', category: 'Beverages', icon: '🍵', price: 300, unit: 'per 500g' },
+            { name: 'Green Tea', category: 'Beverages', icon: '🍵', price: 400, unit: 'per 100 bags' },
+            { name: 'Red Bull', category: 'Beverages', icon: '🥤', price: 125, unit: 'per can' },
+            { name: 'Monster Energy', category: 'Beverages', icon: '🥤', price: 150, unit: 'per can' },
+            { name: 'Gatorade', category: 'Beverages', icon: '🥤', price: 50, unit: 'per bottle' },
+            { name: 'Lemonade', category: 'Beverages', icon: '🍋', price: 30, unit: 'per glass' },
+            { name: 'Smoothie Mix', category: 'Beverages', icon: '🥤', price: 80, unit: 'per serving' },
+            { name: 'Coconut Water', category: 'Beverages', icon: '🥥', price: 35, unit: 'per bottle' },
+            { name: 'Iced Tea', category: 'Beverages', icon: '🧃', price: 50, unit: 'per bottle' },
+            { name: 'Hot Chocolate', category: 'Beverages', icon: '☕', price: 250, unit: 'per 200g' },
+            { name: 'Instant Coffee', category: 'Beverages', icon: '☕', price: 350, unit: 'per 200g' },
+            { name: 'Almond Milk', category: 'Beverages', icon: '🥛', price: 180, unit: 'per liter' },
+            
+            // Frozen (15 items)
+            { name: 'Vanilla Ice Cream', category: 'Frozen', icon: '🍦', price: 180, unit: 'per 500ml' },
+            { name: 'Chocolate Ice Cream', category: 'Frozen', icon: '🍦', price: 200, unit: 'per 500ml' },
+            { name: 'Frozen Pizza', category: 'Frozen', icon: '🍕', price: 280, unit: 'each' },
+            { name: 'Frozen Vegetables', category: 'Frozen', icon: '🥦', price: 120, unit: 'per kg' },
+            { name: 'Frozen Fruits', category: 'Frozen', icon: '🍓', price: 200, unit: 'per kg' },
+            { name: 'Frozen Meals', category: 'Frozen', icon: '🍱', price: 150, unit: 'each' },
+            { name: 'Ice Cubes', category: 'Frozen', icon: '🧊', price: 30, unit: 'per kg' },
+            { name: 'Popsicles', category: 'Frozen', icon: '🍡', price: 80, unit: 'per 6 pieces' },
+            { name: 'Frozen Waffles', category: 'Frozen', icon: '🧇', price: 160, unit: 'per pack' },
+            { name: 'Frozen French Fries', category: 'Frozen', icon: '🍟', price: 120, unit: 'per kg' },
+            { name: 'Frozen Chicken Nuggets', category: 'Frozen', icon: '🍗', price: 280, unit: 'per 500g' },
+            { name: 'Frozen Momo', category: 'Frozen', icon: '🥟', price: 180, unit: 'per pack' },
+            { name: 'Frozen Samosa', category: 'Frozen', icon: '🥟', price: 150, unit: 'per pack' },
+            { name: 'Frozen Parathas', category: 'Frozen', icon: '🫓', price: 100, unit: 'per 5 pieces' },
+            { name: 'Frozen Corn', category: 'Frozen', icon: '🌽', price: 80, unit: 'per500g' },
+        ];
+
+        let selectedItems = {};
+        let currentFilter = 'all';
+
+        // Initialize the grocery grid
+        function initializeGroceryGrid() {
+            const grid = document.getElementById('groceryGrid');
+            grid.innerHTML = '';
+            
+            let filteredItems = groceryItems;
+            if (currentFilter !== 'all') {
+                filteredItems = groceryItems.filter(item => item.category === currentFilter);
+            }
+            
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (searchTerm) {
+                filteredItems = filteredItems.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            if (filteredItems.length === 0) {
+                document.getElementById('noResults').classList.remove('hidden');
+                document.getElementById('groceryGrid').classList.add('hidden');
+                return;
+            } else {
+                document.getElementById('noResults').classList.add('hidden');
+                document.getElementById('groceryGrid').classList.remove('hidden');
+            }
+            
+            filteredItems.forEach(item => {
+                const isSelected = selectedItems[item.name];
+                const quantity = isSelected ? selectedItems[item.name] : 1;
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `grocery-item relative bg-gray-800/60 border-2 ${isSelected ? 'border-primary bg-primary/15' : 'border-white/10'} rounded-2xl p-4 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-primary/25 overflow-hidden group`;
+                itemDiv.onclick = () => toggleItem(item.name);
+                
+                itemDiv.innerHTML = `
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/10 group-hover:to-secondary/10 transition-all duration-300"></div>
+                    <div class="relative z-10">
+                        <div class="text-4xl mb-2 drop-shadow-lg">${item.icon}</div>
+                        <div class="font-outfit text-base sm:text-lg font-semibold mb-1">${item.name}</div>
+                        <div class="text-sm font-bold text-green-400 mb-0.5">₹${item.price}</div>
+                        <div class="text-xs text-gray-400">${item.unit}</div>
+                        ${isSelected ? `
+                            <div class="flex items-center gap-3 mt-3">
+                                <button onclick="event.stopPropagation(); changeQty('${item.name}', -1)" class="w-8 h-8 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all hover:scale-110 active:scale-95 flex items-center justify-center">−</button>
+                                <span class="text-base font-semibold min-w-[30px] text-center">${quantity}</span>
+                                <button onclick="event.stopPropagation(); changeQty('${item.name}', 1)" class="w-8 h-8 rounded-full bg-primary hover:bg-primary-dark text-white font-bold transition-all hover:scale-110 active:scale-95 flex items-center justify-center">+</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                
+                grid.appendChild(itemDiv);
+            });
+        }
+
+        function toggleItem(name) {
+            if (selectedItems[name]) {
+                delete selectedItems[name];
+            } else {
+                selectedItems[name] = 1;
+            }
+            updateUI();
+        }
+
+        function changeQty(name, delta) {
+            if (selectedItems[name]) {
+                selectedItems[name] += delta;
+                if (selectedItems[name] < 1) {
+                    selectedItems[name] = 1;
+                }
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            initializeGroceryGrid();
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summary = document.getElementById('summary');
+            const summaryItems = document.getElementById('summaryItems');
+            
+            const itemCount = Object.keys(selectedItems).length;
+            if (itemCount > 0) {
+                summary.classList.remove('hidden');
+                summaryItems.innerHTML = '';
+                
+                let totalCost = 0;
+                Object.entries(selectedItems).forEach(([name, qty]) => {
+                    const item = groceryItems.find(i => i.name === name);
+                    const itemTotal = item.price * qty;
+                    totalCost += itemTotal;
+                    
+                    const tag = document.createElement('div');
+                    tag.className = 'bg-green-500/20 px-3 py-1.5 rounded-xl text-sm font-medium';
+                    tag.textContent = `${name} (${qty}) - ₹${itemTotal}`;
+                    summaryItems.appendChild(tag);
+                });
+                
+                // Add total cost
+                const totalTag = document.createElement('div');
+                totalTag.className = 'bg-green-500/30 px-4 py-2 rounded-xl text-base font-bold text-green-300 w-full text-center mt-2';
+                totalTag.textContent = `Total: ₹${totalCost.toFixed(2)}`;
+                summaryItems.appendChild(totalTag);
+            } else {
+                summary.classList.add('hidden');
+            }
+        }
+
+        function filterItems() {
+            initializeGroceryGrid();
+        }
+
+        function filterByCategory(category) {
+            currentFilter = category;
+            
+            // Update button states
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary/20', 'border-primary');
+                btn.classList.add('bg-gray-800/60', 'border-white/10');
+            });
+            
+            event.target.classList.remove('bg-gray-800/60', 'border-white/10');
+            event.target.classList.add('active', 'bg-primary/20', 'border-primary');
+            
+            initializeGroceryGrid();
+        }
+
+        function submitOrder() {
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const notes = document.getElementById('notes').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+
+            if (!address || !city) {
+                alert('⚠️ Please fill in the delivery address and city!');
+                return;
+            }
+
+            if (Object.keys(selectedItems).length === 0) {
+                alert('⚠️ Please select at least one grocery item!');
+                return;
+            }
+            
+            if (!agreeTerms) {
+                alert('⚠️ Please agree to the Terms & Conditions before placing your order.');
+                return;
+            }
+
+            const order = {
+                location: {
+                    address,
+                    city,
+                    notes
+                },
+                items: selectedItems
+            };
+
+            console.log('Order submitted:', order);
+            
+            const itemCount = Object.keys(selectedItems).length;
+            const totalQty = Object.values(selectedItems).reduce((a, b) => a + b, 0);
+            
+            let totalCost = 0;
+            let itemsList = '';
+            Object.entries(selectedItems).forEach(([name, qty]) => {
+                const item = groceryItems.find(i => i.name === name);
+                const itemTotal = item.price * qty;
+                totalCost += itemTotal;
+                itemsList += `${name} - Qty: ${qty} - ₹${item.price} x ${qty} = ₹${itemTotal}\n`;
+            });
+            
+            // Prepare email content
+            const emailSubject = `New Order from Meta Market - ₹${totalCost.toFixed(2)}`;
+            const emailBody = `NEW GROCERY ORDER\n\n` +
+                `ORDER DETAILS:\n` +
+                `=============\n\n` +
+                `DELIVERY ADDRESS:\n` +
+                `${address}\n` +
+                `${city}\n\n` +
+                `DELIVERY NOTES:\n` +
+                `${notes || 'None'}\n\n` +
+                `ITEMS ORDERED:\n` +
+                `=============\n` +
+                `${itemsList}\n` +
+                `SUMMARY:\n` +
+                `--------\n` +
+                `Total Items: ${itemCount}\n` +
+                `Total Quantity: ${totalQty}\n` +
+                `TOTAL AMOUNT TO COLLECT: ₹${totalCost.toFixed(2)}\n\n` +
+                `PAYMENT METHOD: Cash on Delivery (COD)\n` +
+                `The customer will pay in cash to the delivery driver.\n\n` +
+                `Order placed at: ${new Date().toLocaleString()}`;
+            
+            
+            // Send email automatically using EmailJS
+            //  SETUP REQUIRED: Get your credentials from https://emailjs.com
+            const serviceID = 'service_o5oifjj';
+            const templateID = 'template_oxo5lgh';
+            const publicKey = 'bG5lAysXWzH9aVTRd';
+            
+            emailjs.send(serviceID, templateID, {
+                to_email: 'rhithvik.ashok@gmail.com',
+                subject: emailSubject,
+                message: emailBody,
+                from_address: address,
+                from_city: city
+            }, publicKey)
+                .then(() => {
+                    alert(`✅ Order Placed Successfully!\n\n📦 ${itemCount} item type(s) selected\n📊 Total quantity: ${totalQty}\n💰 Total Cost: ₹${totalCost.toFixed(2)}\n📍 Delivering to: ${address}, ${city}\n\n💵 Payment: Cash on Delivery\n📧 Email sent to rhithvik.ashok@gmail.com!\n\n🎉 Thank you for shopping with Meta Market!`);
+                })
+                .catch((error) => {
+                    console.error('Email error:', error);
+                    alert(`⚠️ Please setup EmailJS:\n1. Go to emailjs.com\n2. Get Service ID, Template ID, Public Key\n3. Replace in code line 674\n\nOrder: ₹${totalCost.toFixed(2)}`);
+                });
+
+            
+            // Show success message
+            setTimeout(() => {
+                alert(`✅ Order Placed Successfully!\n\n📦 ${itemCount} item type(s) selected\n📊 Total quantity: ${totalQty}\n💰 Total Cost: ₹${totalCost.toFixed(2)}\n📍 Delivering to: ${address}, ${city}\n\n💵 Payment: Cash on Delivery\n📧 Order details sent to email\n\n🎉 Thank you for shopping with Meta Market!`);
+            }, 500);
+        }
+        
+        // Terms & Conditions Modal Functions
+        function showTerms() {
+            document.getElementById('termsModal').classList.remove('hidden');
+        }
+        
+        function closeTerms() {
+            document.getElementById('termsModal').classList.add('hidden');
+        }
+        
+        function acceptTerms() {
+            document.getElementById('agreeTerms').checked = true;
+            closeTerms();
+        }
+
+        // Initialize on page load
+        initializeGroceryGrid();
+    </script>
+</body>
+</html>
