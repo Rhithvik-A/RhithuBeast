@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Family Budget</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1f2a24;--mute:#6b756f;--line:#e4e2da;--accent:#2f7d5b;--bad:#c4432f;--warn:#d89a1c;--track:#ecebe4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--card:#1d2420;--ink:#e8ece9;--mute:#97a39c;--line:#2c3630;--accent:#4fb78a;--bad:#ef7a66;--warn:#e8b64a;--track:#2a332e}}
+:root[data-theme="dark"]{--bg:#141816;--card:#1d2420;--ink:#e8ece9;--mute:#97a39c;--line:#2c3630;--accent:#4fb78a;--bad:#ef7a66;--warn:#e8b64a;--track:#2a332e}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:0}h2{font-size:15px;margin:0 0 10px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat small{color:var(--mute);display:block}.stat b{font-size:20px}
+input,select,button{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px;min-width:0}
+button{cursor:pointer;background:var(--accent);color:#fff;border:0;font-weight:600}
+button.ghost{background:none;color:var(--mute);padding:4px 8px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.form .full{grid-column:1/-1}
+.seg{display:flex;gap:6px}.seg label{flex:1;text-align:center;padding:8px;border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.seg input{display:none}.seg input:checked+span{font-weight:700}.seg label:has(input:checked){border-color:var(--accent);color:var(--accent)}
+.bar{height:8px;background:var(--track);border-radius:6px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--accent)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}.row .m{color:var(--mute);font-size:13px}
+.bud{display:grid;grid-template-columns:1fr 110px;gap:8px;align-items:center;margin-bottom:12px}
+.pos{color:var(--accent)}.neg{color:var(--bad)}
+.tabs{overflow-x:auto}.empty{color:var(--mute);text-align:center;padding:10px}
+@media (max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+  <h1>🏠 Family Budget</h1>
+  <div style="display:flex;gap:8px"><input type="month" id="month"><input id="cur" size="4" maxlength="4" aria-label="Currency" style="width:70px"></div>
+</div>
+
+<div class="card grid" id="stats"></div>
+
+<div class="card">
+  <h2>Add transaction</h2>
+  <div class="form">
+    <div class="seg full">
+      <label><input type="radio" name="type" value="exp" checked><span>Expense</span></label>
+      <label><input type="radio" name="type" value="inc"><span>Income</span></label>
+    </div>
+    <input id="desc" class="full" placeholder="What was it? (e.g. Weekly groceries)">
+    <input id="amt" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Amount">
+    <input id="date" type="date">
+    <select id="cat"></select>
+    <select id="who"></select>
+    <button class="full" id="add">Add</button>
+  </div>
+</div>
+
+<div class="card"><h2>Spending vs. budget</h2><div id="budgets"></div></div>
+<div class="card"><h2>By family member</h2><div id="members"></div></div>
+<div class="card"><h2>Transactions</h2><div id="list"></div></div>
+
+<div class="card">
+  <h2>Settings</h2>
+  <div class="form">
+    <input id="memb" class="full" placeholder="Family members, comma separated">
+    <button class="ghost full" id="reset">Clear all data on this device</button>
+  </div>
+  <p class="m" style="color:var(--mute);font-size:13px;margin:10px 0 0">Data is saved in this browser only. Each family member who opens the link gets their own separate copy.</p>
+</div>
+</main>
+<script>
+var CATS=["Groceries","Housing","Utilities","Transport","Dining","Kids","Health","Fun","Savings","Other"];
+var S={cur:"AED",members:["Me","Partner","Kids"],budgets:{Groceries:1500,Housing:4000,Utilities:600,Transport:500,Dining:500,Kids:400,Health:300,Fun:300,Savings:1000,Other:200},tx:[]};
+try{var raw=localStorage.getItem("famBudget");if(raw){S=Object.assign(S,JSON.parse(raw))}}catch(e){}
+function save(){try{localStorage.setItem("famBudget",JSON.stringify(S))}catch(e){}}
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fmt(n){return S.cur+" "+Math.round(n).toLocaleString()}
+var today=new Date().toISOString().slice(0,10);
+$("month").value=today.slice(0,7);$("date").value=today;$("cur").value=S.cur;$("memb").value=S.members.join(", ");
+
+function fill(){
+  $("cat").innerHTML=CATS.map(function(c){return"<option>"+c+"</option>"}).join("");
+  $("who").innerHTML=S.members.map(function(m){return"<option>"+esc(m)+"</option>"}).join("");
+}
+function render(){
+  var m=$("month").value,tx=S.tx.filter(function(t){return t.date.slice(0,7)===m}).sort(function(a,b){return b.date<a.date?-1:1});
+  var inc=0,exp=0,byCat={},byWho={};
+  tx.forEach(function(t){if(t.type==="inc")inc+=t.amt;else{exp+=t.amt;byCat[t.cat]=(byCat[t.cat]||0)+t.amt;byWho[t.who]=(byWho[t.who]||0)+t.amt}});
+  var left=inc-exp;
+  $("stats").innerHTML='<div class="stat"><small>Income</small><b class="pos">'+fmt(inc)+'</b></div><div class="stat"><small>Spent</small><b>'+fmt(exp)+'</b></div><div class="stat"><small>Left</small><b class="'+(left<0?"neg":"pos")+'">'+fmt(left)+'</b></div>';
+  $("budgets").innerHTML=CATS.map(function(c){
+    var b=S.budgets[c]||0,s=byCat[c]||0,p=b?Math.min(100,s/b*100):(s?100:0),col=s>b&&b?"var(--bad)":p>80?"var(--warn)":"var(--accent)";
+    return'<div class="bud"><div><div style="display:flex;justify-content:space-between"><span>'+c+'</span><span class="m" style="color:var(--mute)">'+fmt(s)+' / '+fmt(b)+'</span></div><div class="bar"><i style="width:'+p+'%;background:'+col+'"></i></div></div><input type="number" min="0" data-cat="'+c+'" value="'+b+'" aria-label="'+c+' budget"></div>'}).join("");
+  var ws=Object.keys(byWho);
+  $("members").innerHTML=ws.length?ws.map(function(w){return'<div class="row"><span>'+esc(w)+'</span><b>'+fmt(byWho[w])+'</b></div>'}).join(""):'<div class="empty">No spending yet this month.</div>';
+  $("list").innerHTML=tx.length?tx.map(function(t){return'<div class="row"><div><div>'+esc(t.desc||t.cat)+'</div><div class="m">'+t.date+' · '+(t.type==="inc"?"Income":t.cat)+' · '+esc(t.who)+'</div></div><div><b class="'+(t.type==="inc"?"pos":"")+'">'+(t.type==="inc"?"+":"−")+fmt(t.amt)+'</b><button class="ghost" data-del="'+t.id+'" aria-label="Delete">✕</button></div></div>'}).join(""):'<div class="empty">Nothing here yet. Add your first transaction above.</div>';
+}
+$("add").onclick=function(){
+  var a=parseFloat($("amt").value);if(!(a>0)){$("amt").focus();return}
+  S.tx.push({id:Date.now(),type:document.querySelector('input[name=type]:checked').value,desc:$("desc").value.trim(),amt:a,date:$("date").value||today,cat:$("cat").value,who:$("who").value});
+  $("desc").value="";$("amt").value="";save();render();
+};
+document.addEventListener("click",function(e){var d=e.target.getAttribute&&e.target.getAttribute("data-del");if(d){S.tx=S.tx.filter(function(t){return t.id!=d});save();render()}});
+document.addEventListener("change",function(e){var c=e.target.getAttribute&&e.target.getAttribute("data-cat");if(c){S.budgets[c]=parseFloat(e.target.value)||0;save();render()}});
+$("month").onchange=render;
+$("cur").onchange=function(){S.cur=this.value.trim()||"AED";save();render()};
+$("memb").onchange=function(){var m=this.value.split(",").map(function(x){return x.trim()}).filter(Boolean);if(m.length){S.members=m;save();fill()}};
+$("reset").onclick=function(){if(confirm("Delete all transactions and budgets on this device?")){try{localStorage.removeItem("famBudget")}catch(e){}location.reload()}};
+fill();render();
+</script>
+</body>
+</html>
